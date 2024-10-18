@@ -1,35 +1,50 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const rentContainer = document.getElementById('rent-container');
-
-
-    const Dvds = JSON.parse(localStorage.getItem('Dvds')) || [];
-
-    function createDvdCard(Dvd) {
-        const Dvdcard = document.createElement('div');
-        Dvdcard.classList.add('rent-box');
-
-        Dvdcard.innerHTML = `
-        <div class="card">
-            <img src="${Dvd.image}" alt="${Dvd.title}">
-            <div class="card-content">
-                <h2>Name: ${Dvd.title}</h2>
-                <p>Genre: ${Dvd.category} <br> Release date:${Dvd.Date} <br> Director:${Dvd.Director}<br> Quantity:${Dvd.quantity}</p>                  
-                <a href="../login.html"><button class="request-btn">Request</button> </a>
-            </div>
-        </div>
-        `;
-
-        return Dvdcard;
-    }
-
-    function displayDvd() {
-        Dvds.forEach(Dvd => {
+    function showdvd() {
+        const rentContainer = document.getElementById("rent-container");
+      
+      
+      
+        async function fetchdvd() {
+          try{
+            const response = await fetch('https://api.example.com/dvd');
+            Dvds = await response.json();
+            displayDvd();
+          }catch(error){
+            console.error('error fetching dvd',error)
+          }
+        }
+      
+        function createDvdCard(Dvd) {
+          const Dvdcard = document.createElement("div");
+          Dvdcard.classList.add("rent-box");
+          Dvdcard.innerHTML = `      <div class="card" id=${Dvd.id}>
+                  <img src="${Dvd.image}" alt="${Dvd.title}" class="item-image">
+                  <div class="card-content">
+                      <h2 class="item-title">Movie Name: ${Dvd.title}</h2>
+                      <p class="item-description">Genre: ${Dvd.category} <br> Release date: ${Dvd.Date} <br> Director: ${Dvd.Director}</p>
+                      <label>Quantity:</label><br>
+                      <input type="number" class="item-quantity" value="${Dvd.quantity}" min="1" readonly>  <br>
+                      <button class="rent-button" onclick="toggleRentButton(this)">Rent</button>
+                  
+                  </div>
+              </div>
+          `;
+      
+          return Dvdcard;
+        }
+      
+        async function displayDvd() {
+          const  Dvds = await fetchdvd();
+          Dvds.forEach((Dvd) => {
             const dvdCard = createDvdCard(Dvd);
             rentContainer.appendChild(dvdCard);
-        });
-    }
-
-    displayDvd();
+          });
+        }
+      
+        displayDvd();
+      }
+      
+      window.location.onload = showdvd();
 });
 
 document.getElementById('reviews').addEventListener('click', loadReviewsFromLocalStorage);

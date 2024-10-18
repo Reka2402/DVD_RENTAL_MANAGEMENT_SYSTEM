@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("reportcontainer").style.display = "none";
 
     // Fetch all DVDs from the server
-    fetch("/api/dvds")
+    fetch("http://localhost:5272/api/Manager/Add DVD")
       .then((response) => response.json())
       .then((Dvds) => {
         DvdsTableBody.innerHTML = ""; // Clear existing rows
@@ -172,9 +172,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const category = document.getElementById("add-Dvd-category").value.trim();
     const Date = document.getElementById("add-dvd-date").value.trim();
     const quantity = document.getElementById("add-Dvd-Quantity").value.trim();
-    const imageInput = document.getElementById("add-Dvd-image");
+    //const imageInput = document.getElementById("add-Dvd-image");
 
-    if (!title || !Director || !category || !Date || !quantity || !imageInput.files[0]) {
+    if (!title || !Director || !category || !Date || !quantity || !id) {
       alert("All fields are required.");
       return;
     }
@@ -186,10 +186,12 @@ document.addEventListener("DOMContentLoaded", function () {
     formData.append("category", category);
     formData.append("Date", Date);
     formData.append("quantity", quantity);
-    formData.append("image", imageInput.files[0]); // Add the image file to FormData
+   // formData.append("image", imageInput.files[0]); // Add the image file to FormData
+
+   console.log(formData)
 
     // Send the new DVD to the server using FormData
-    fetch("/api/dvds", {
+    fetch("http://localhost:5272/api/Manager/Add DVD", {
       method: "POST",
       body: formData, // Use FormData directly as the body of the request
     })
@@ -225,7 +227,7 @@ function customershow() {
 
 async function displayCustomers() {
   try {
-    const customerResponse = await fetch('http://localhost:5000/api/Customer/all');
+    const customerResponse = await fetch('http://localhost:5272/api/Customer/Get All Customers');
     const customers = await customerResponse.json();
 
     console.log(customers);
@@ -237,21 +239,20 @@ async function displayCustomers() {
     customers.forEach(async (customer) => {
       const row = document.createElement('tr');
 
-      const rentalResponse = await fetch(`http://localhost:5000/api/Customer/rentals/customer/${customer.id}`);
-      const customerRentals = await rentalResponse.json();
+      // const rentalResponse = await fetch(`http://localhost:5000/api/Customer/rentals/customer/${customer.id}`);
+      // const customerRentals = await rentalResponse.json();
 
-      let rentalHistory = '<ul>';
-      customerRentals.forEach(rental => {
-        rentalHistory += `<li>Reg: ${rental.motordvdID}, Date: ${rental.rentalDate}</li>`;
-      });
-      rentalHistory += '</ul>';
+      // let rentalHistory = '<ul>';
+      // customerRentals.forEach(rental => {
+      //   rentalHistory += `<li>Reg: ${rental.motordvdID}, Date: ${rental.rentalDate}</li>`;
+      // });
+      // rentalHistory += '</ul>';
 
       row.innerHTML = `
-              <td>${customer.firstName}</td>
+              <td>${customer.userName}</td>
               <td>${customer.nic}</td>
-              <td>${customer.licence}</td>
+              <td>${customer.email}</td>
               <td>${customer.mobilenumber}</td>
-              <td>${rentalHistory}</td>
           `;
       customerTable.appendChild(row);
     });
@@ -299,50 +300,50 @@ function returnshow() {
   document.getElementById("reportcontainer").style.display = "none";
 }
 
-function overdueshow() {
-  fetch('http://localhost:5000/api/Customer/CheckAndUpdateOverdueRentals')
-  .then(response => response.json())
-  .then(customers => {
+// function overdueshow() {
+//   fetch('http://localhost:5000/api/Customer/CheckAndUpdateOverdueRentals')
+//   .then(response => response.json())
+//   .then(customers => {
 
-    const now = new Date();
-    const overdueList = document.getElementById('overdue-list');
-    overdueList.innerHTML = '';
+//     const now = new Date();
+//     const overdueList = document.getElementById('overdue-list');
+//     overdueList.innerHTML = '';
 
-    customers.forEach(customer => {
-      customer.rentalHistory.forEach(rental => {
-        const returnDate = new Date(rental.returnDate);
-        if (!rental.returnProcessed && returnDate < now) {
-          const row = document.createElement('tr');
-          row.innerHTML = `
-                      <td>${customer.nic}</td>
-                      <td>${customer.username}</td>
-                      <td>${rental.regNumber}</td>
-                      <td>${new Date(rental.rentalDate).toLocaleString()}</td>
-                      <td>${returnDate.toLocaleString()}</td>
-                      <td>${((now - returnDate) / (1000 * 60 * 60)).toFixed(2)} hours</td>
-                  `;
-          overdueList.appendChild(row);
-        }
-      });
-    });
+//     customers.forEach(customer => {
+//       customer.rentalHistory.forEach(rental => {
+//         const returnDate = new Date(rental.returnDate);
+//         if (!rental.returnProcessed && returnDate < now) {
+//           const row = document.createElement('tr');
+//           row.innerHTML = `
+//                       <td>${customer.nic}</td>
+//                       <td>${customer.username}</td>
+//                       <td>${rental.regNumber}</td>
+//                       <td>${new Date(rental.rentalDate).toLocaleString()}</td>
+//                       <td>${returnDate.toLocaleString()}</td>
+//                       <td>${((now - returnDate) / (1000 * 60 * 60)).toFixed(2)} hours</td>
+//                   `;
+//           overdueList.appendChild(row);
+//         }
+//       });
+//     });
 
-    if (overdueList.innerHTML === '') {
-      overdueList.innerHTML = 'No overdue rentals found';
-    }
-  })
-  .catch(error => console.error('Error fetching data:', error));
-  // Show the overdue section and hide other sections
-  document.getElementById("dashboardcontainer").style.display = "none";
-  document.getElementById("customerdcontainer").style.display = "none";
-  document.getElementById("rentaldcontainer").style.display = "none";
-  document.getElementById("overduedcontainer").style.display = "block";
-  document.getElementById("returncontainer").style.display = "none";
-  document.getElementById("display").style.display = "none";
-  document.getElementById("reportcontainer").style.display = "none";
-};
+//     if (overdueList.innerHTML === '') {
+//       overdueList.innerHTML = 'No overdue rentals found';
+//     }
+//   })
+//   .catch(error => console.error('Error fetching data:', error));
+//   // Show the overdue section and hide other sections
+//   document.getElementById("dashboardcontainer").style.display = "none";
+//   document.getElementById("customerdcontainer").style.display = "none";
+//   document.getElementById("rentaldcontainer").style.display = "none";
+//   document.getElementById("overduedcontainer").style.display = "block";
+//   document.getElementById("returncontainer").style.display = "none";
+//   document.getElementById("display").style.display = "none";
+//   document.getElementById("reportcontainer").style.display = "none";
+// };
 
 
-overdueshow();
+//overdueshow();
 
 // Function to load pending rental requests from localStorage
 function loadPendingRentals() {
