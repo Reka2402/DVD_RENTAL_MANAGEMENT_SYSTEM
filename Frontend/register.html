@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sign_up</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+ 
+ * {
+   margin: 0;
+   padding: 0;
+   font-family: "Poppins", sans-serif;
+   box-sizing: border-box;
+ }
+ 
+ body {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('img/background.jpg') no-repeat center center fixed; /* Background image */
+   background-size: cover;
+   min-height: 100vh;
+   color: #fff; /* White text for contrast */
+ }
+ 
+ .container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   width: 100%;
+ }
+ 
+ .login-form {
+   background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Soft shadow for depth */
+   border-radius: 10px;
+   padding: 30px;
+   width: 400px; /* Set a consistent width */
+   text-align: center;
+ }
+ 
+ h2 {
+   color: #00bfff; /* Bright teal for heading */
+   font-size: 2.5em; /* Increased size */
+   margin-bottom: 20px;
+ }
+ 
+ .input-group {
+   margin-bottom: 20px;
+   width: 100%;
+   text-align: left; /* Align labels to the left */
+ }
+ 
+ .input-group label {
+   font-size: 1rem; /* More legible size */
+   margin-bottom: 5px;
+ }
+ 
+ .input-group input {
+   width: 100%;
+   padding: 12px;
+   border: 2px solid #00bfff; /* Teal border */
+   border-radius: 5px;
+   background: rgba(220, 229, 233, 0.973); /* Light background for inputs */
+   color: #fff; /* White text */
+   transition: border-color 0.3s; /* Smooth border color transition */
+ }
+ 
+ .input-group input:focus {
+   border-color: #00bfff; /* Bright blue on focus */
+ }
+ 
+ .btn {
+   width: 100%;
+   padding: 12px;
+   background-color: #00bfff; /* Teal background */
+   color: #1f293a; /* Dark text for contrast */
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   font-size: 1rem;
+   transition: background-color 0.3s; /* Smooth background color transition */
+ }
+ 
+ .btn:hover {
+   background-color: #00fffc; /* Bright blue on hover */
+ }
+ 
+ .signup-link {
+   margin-top: 20px;
+   font-weight: bold;
+ }
+ 
+ .signup-link a {
+   color: #00bfff; /* Teal for signup link */
+   font-size: 1.2rem; /* Increased size */
+   text-decoration: none;
+ }
+ 
+ .signup-link a:hover {
+   text-decoration: underline; /* Underline on hover */
+ }
+ 
+   </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="login-form" id="registerForm">
+      <h2>Register</h2>
+      <form action="#" class="form">
+        <div class="input-group">
+          <label>Username: </label>
+          <input type="text" required id="registerUsername">
+
+        </div>
+        <div class="input-group">
+          <label>Password:</label>
+          <input type="password" required id="registerPassword">
+
+        </div>
+        <div class="input-group">
+          <label>NIC No:</label>
+          <input type="text" required id="registerNIC" minlength="10" maxlength="10">
+
+        </div>
+        <div class="input-group">
+          <label>Email: </label>
+          <input type="email" required id="registeremail">
+
+        </div>
+        <div class="input-group">
+          <label>Mobile number:</label>
+          <input type="number" required id="registernumber" minlength="10" maxlength="10">
+
+        </div>
+        <button type="submit" class="btn">Register</button>
+        <div class="signup-link">
+          Already have an Account? <a href="login.html">Sign in</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="login.js"></script>
+
+</body>
+
+</html>

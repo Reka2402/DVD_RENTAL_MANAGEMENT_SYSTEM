@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head -->
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cine Cafe </title>
+    <!--box icon -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- css style -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../forrent-poup.css">
+    <link rel="stylesheet" href="review.css">
+    <style>
+        /* body{
+            background-color: (to bottom, rgba(255, 0, 0, 0), #2980b9);
+        }
+        #label {
+            font-size: 9px;
+        }
+
+        .quan {
+            width: 100px;
+        } */
+    </style>
+</head>
+<!-- BODY -->
+<body>
+    <!-- HEADER(LOGO,NAVBAR) -->
+    <header class="header">
+        <!-- <img src="../pngwing.com.png" alt="logo" class="logo"> -->
+        
+        <img src="../img/logo.png" alt="logo" class="logo">
+
+
+        <!-- navbar -->
+        <nav class="navbar" >
+            <a href="#Rent">Home</a>
+            <a href="#reviews">Review</a>
+            <a href="#Profile" id="userInfo">Profile</a>
+            <a href="#" id="addReviewLink">Add_comments</a>
+            <a href="#logout" id="logoutBtn">Log out</a>
+        </nav>
+    </header>
+
+    <!-- RENT DVDs(FILTER,DVDs) -->
+    <section class="rent" id="Rent" style="display: block;">
+        <h2 class="heading"> <span>Dvd</span></h2>
+        <div class="search-filter">
+            <input type="text" id="searchInput" placeholder="Search for videos...">
+            <select id="genreFilter">
+                <option value="">All Genres</option>
+                <option value="action">Action</option>
+                <option value="comedy">Comedy</option>
+                <option value="drama">Drama</option>
+            </select>
+        </div>
+        <div id="videoList" class="video-list">
+            <!-- Videos will be dynamically inserted here -->
+        </div>
+        <div class="rent-container" id="rent-container">
+            <!-- Cards will be inserted here -->
+        </div>
+    </section>
+
+    <!-- CUSTOMER PROFILE UPDATE FORM -->
+    <section id="Profile" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closebutton">&times;</span>
+            <div class="profile-container">
+                <h2>Profile</h2>
+                <form id="customerForm">
+                    <div class="form-group">
+                        <label for="name">User Name:</label>
+                        <input type="text" id="name" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone:</label>
+                        <input type="text" id="phone" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="nic">NIC:</label>
+                        <input type="text" id="nic" readonly>
+                    </div>
+                    <button type="button" id="updateButton" class="update-btn">Update Details</button>
+                    <div id="msg" class="box"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- POPUP SHOWS WHEN CLICK ON THE RENT BUTTON -->
+    <section id="rentpopup" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closebutton">&times;</span>
+            <div class="profile-container">
+                <!-- Rent Popup Details -->
+                <div id="popup-details">
+                    <img id="popup-image" src="" alt="Item Image">
+                    <h2 id="popup-title"></h2>
+                    <p id="popup-description"></p>
+                    <button class="rent-confirm-btn" id="saveDetails">Confirm Rent</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="reviews" id="reviews">
+        <div class="heading">
+            <h3>Our Customers <span>Review using this web site </span></h3>
+        </div>
+        <div class="reviews-container">
+            <div class="box">
+                <div class="rev-img">
+                    <img src="../img/Avatar/avatar.png" alt="">
+                </div>
+                <h1>Confusius Anushiyan</h1>
+                <div class="stars">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star-half'></i>
+                </div>
+                <p>I love this DVD rental service because it offers a huge selection of movies, including many
+                    hard-to-find classics. The DVDs arrive on time, and they are in good condition. I also appreciate
+                    their excellent customer support. If I ever have a problem, they're quick to resolve it. My only
+                    complaint is that they don’t always have the latest releases right away, but I can usually find
+                    something to watch. Overall, it's still a great service for movie lovers like me.</p>
+            </div>
+
+            <div class="box">
+                <div class="rev-img">
+                    <img src="../img/Avatar/avatar1.png" alt="">
+                </div>
+                <h1>SandraKumar Joel</h1>
+                <div class="stars">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star-half'></i>
+                    <i class='bx bxs-star-half'></i>
+                </div>
+                <p>As someone with a packed schedule, I don’t have time to stream movies online or deal with buffering
+                    issues. Renting DVDs is convenient for me because I can watch them at my own pace. I really like
+                    that this service lets me keep the DVDs for a few days before returning them. The downside is that
+                    the subscription plans are a bit pricey, especially when I don’t always have time to watch every
+                    movie I rent. Still, it’s useful for people who want flexibility.</p>
+            </div>
+
+            <div class="box">
+                <div class="rev-img">
+                    <img src="../img/Avatar/avatar2.jpeg" alt="">
+                </div>
+                <h1>thangam Janushika</h1>
+                <div class="stars">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star-half'></i>
+                </div>
+                <p>I’m not a huge movie fan, but I use the DVD rental service occasionally when I want to have a movie
+                    night with friends or family. The service is easy to use, and they have a decent collection of
+                    popular titles. I wish there were more deals or discounts for casual renters like me, but overall,
+                    it’s a convenient option when I want to rent something. I probably won’t subscribe regularly, but
+                    it’s good for occasional use.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Review Form Modal -->
+    <div id="reviewModal" class="modal1" style="display: none;">
+        <div class="modal-content1">
+            <span class="close1" id="closeModal">&times;</span>
+            <h1>Customer Review Form</h1>
+            <form id="reviewForm">
+                <label for="name">Name:</label>
+                <input type="text" id="reviewname" name="name" placeholder="Enter Your Name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="reviewemail" name="email" required>
+
+                <label for="rating">Rating:</label>
+                <select id="rating" name="rating" required>
+                    <option value="" disabled selected>Select a rating</option>
+                    <option value="1">1 Star</option>
+                    <option value="2">2 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="5">5 Stars</option>
+                </select>
+                <label for="review">Review:</label>
+                <textarea id="review" name="review" rows="5" required></textarea>
+                <button type="submit">Submit Review</button>
+            </form>
+            <div id="message"></div>
+        </div>
+    </div>
+    <!-- <div id="dvd-list"></div>
+    <div id="dvd-details"></div> -->
+
+<!-- FOOTER -->
+    <footer id="Contact" class="footer">
+        <div>
+            <p>Cine_Cafe@gmail.com</p>
+        </div>
+        <div>
+            <p>©All rights Reserved by Cine Cafe 2024</p>
+        </div>
+        <div>
+            <p>0712345678</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="../login.js"></script>
+    <script src="customer.js"></script>
+</body>
+
+</html>

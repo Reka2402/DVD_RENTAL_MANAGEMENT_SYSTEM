@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.15.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Manager Dashboard</title>
+    <link rel="stylesheet" href="manager.css">
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="brand">
+            <div class="img"><img src="../img/Other/logo.jpg" alt=""></div>
+            <h1 class="logo_name">Cine</h1>
+            <h1 class="logo_name">Cafe</h1>
+        </div>
+
+
+        <div class="navbar">
+            <ul>
+                <li><a href="#" onclick="homepage()"><i class="bi bi-house"> </i><span>Home</span></a></li>
+                <li><a href="#" onclick="dashboardshow()"><i class="bi bi-plus-circle"></i></i><span>Add Dvd</span></a>
+                </li>
+                <li><a href="#" onclick="customershow()"><i class="bi bi-people"></i><span>Customer</span></a>
+                </li>
+                <li><a href="#" id="displaydvd"><i class="bi bi-collection"></i><span>Invetory</span> </a></li>
+                <li><a href="#" onclick="loadPendingRentals()"><i
+                            class="bi bi-graph-up-arrow"></i><span>Rental</span></a></li>
+
+                <li><a href="#" onclick="overdueshow()"><i class="bi bi-exclamation-circle"></i><span>Overdue</span></a>
+                </li>
+                <li><a href="#" onclick="returnshow()"><i class="bi bi-arrow-return-left"></i><span>Return</span></a>
+                </li>
+
+                <li><a href="#" onclick="reports()"><i class="bi bi-table"></i><span>Reports</span></a></li>
+        </div>
+    </div>
+
+    <section class="dashboard-container" id="dashboardcontainer" style="display: none;">
+        <h1>Dvd Manage</h1>
+
+        <form id="add-Dvd-form">
+            <!-- <h2>Add Dvd</h2> -->
+
+
+            <input type="text" id="add-Dvd-title" placeholder="Dvd Title" required>
+            <input type="text" id="add-Dvd-Director" placeholder="Film Director" required>
+            <input type="text" id="add-Dvd-category" placeholder="Category" required>
+            <input type="date" id="add-dvd-date" placeholder="" required>
+            <input type="number" id="add-Dvd-Quantity" placeholder="Quantity" required>
+            <input type="file" id="add-Dvd-image" accept="image/*" required>
+            <button type="submit">Add Dvd</button>
+        </form>
+    </section>
+
+
+
+
+    <section class="customer-container" id="customerdcontainer" style="display: none;">
+        <h2 style="margin-left:50px ; color: #0b355f;">Registered Customers</h2>
+        <table id="customer-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>NIC</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody id="customer-body">
+                <!-- Customer details will be displayed here -->
+            </tbody>
+        </table>
+    </section>
+
+
+    <!-- inventory reports -->
+
+    <section style="display: none;" id="display" class="displaycontainer">
+
+        <h2 style="margin-left:50px ;">Inventory Dvds</h2>
+        <table id="Dvds-table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Director</th>
+                    <th>Release Date</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                    <th>status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- dvd will be inserted here by JavaScript dynamically -->
+            </tbody>
+        </table>
+        <section id="edit-Dvd-container" style="display: none;" class="edit-Dvd-container">
+            <h2>Edit Dvd</h2>
+            <form id="edit-Dvd-form" class="edit-Dvd-form">
+                <input type="text" id="edit-Dvd-title" placeholder="Dvd Title" required>
+                <input type="text" id="edit-Dvd-Director" placeholder="Film Director" required>
+                <input type="text" id="edit-Dvd-category" placeholder="Category" required>
+                <input type="date" id="edit-dvd-date" required>
+                <input type="number" id="edit-Dvd-Quantity" placeholder="Quantity" required>
+                <input type="file" id="edit-Dvd-image" accept="image/*">
+                <button type="submit">Update DVD</button>
+            </form>
+        </section>
+    </section>
+
+
+    <!-- Edit DVD Form -->
+
+
+    <!-- for rental details -->
+
+    <section class="rental-container" id="rentaldcontainer" style="display: none;">
+        <h2 style="margin-left:50px ;">Rental</h2>
+        <table id="rental-table">
+            <thead>
+                <tr>
+                    <th>NIC</th>
+                    <th>Name</th>
+                    <th>Title</th>
+                    <th>status</th>
+                    <th>rentDate</th>
+                </tr>
+            </thead>
+            <tbody id="rental-body">
+                <!-- Customer  rental  details will be displayed here -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- overdue list  -->
+
+    <section class="overdue-container" id="overduedcontainer" style="display: none;">
+        <h2 style="margin-left:50px ;">Overdue Alerts</h2>
+        <table id="overdue-table">
+            <thead>
+                <tr>
+                    <th>NIC</th>
+                    <th>Name</th>
+                    <th>retnaldate</th>
+                    <th>returndate</th>
+                    <th>totaltime</th>
+                </tr>
+            </thead>
+            <tbody id="overdue-list">
+                <!-- Overdue alerts will be displayed here -->
+            </tbody>
+
+        </table>
+        <p id="overduelist"></p>
+
+    </section>
+
+
+    <!-- Return dvd Section -->
+
+    <section class="return-container" id="returncontainer" style="display: none;">
+        <h2 style="margin-left:50px ;">Return Dvd</h2>
+        <form id="return-DVD-form">
+            <label for="return-nic">Customer nic:</label>
+            <input type="text" id="return-nic" required>
+
+            <label for="return-title">Dvd-ID:</label>
+            <input type="text" id="return-title" required>
+
+            <button type="button" onclick=" returndvd()">Return DVD</button>
+        </form>
+    </section>
+
+    <!-- reports of the all rental return customer -->
+    <section class="report-container" id="reportcontainer" style="display: none;"  onclick="loadReportCounts()">
+        <div>
+            <div id="pendingCount"></div>
+            <div id="approvedCount"></div>
+            <div id="declinedCount"></div>
+            <div id="returnCount"></div>
+            <div id="totalRentalCount"></div> <!-- Total rental count element -->
+        </div>
+        
+        <button id="rentalReportBtn">Rental Report</button>
+        <button id="returnReportBtn">Return Report</button>
+    
+        <!-- Containers for displaying reports -->
+        <div id="rentalReport" style="display: none;">
+            <h2>Rental Report</h2>
+            <table id="rental-table1">
+                <thead>
+                    <tr>
+                        <th>Rental ID</th>
+                        <th>Customer</th>
+                        <th>DVD Title</th>
+                        <th>Rental Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="rentalReportBody">
+                    <!-- Rental rows will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+    
+        <div id="returnReport" style="display: none;">
+            <h2>Return Report</h2>
+            <table id="return-table">
+                <thead>
+                    <tr>
+                        <th>Rental ID</th>
+                        <th>Customer(NIC)</th>
+                        <th>DVD Title</th>
+                        <th>Rental Date</th>
+                        <th>Return Date</th>
+                        <th>Actual Return Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="returnReportBody">
+                    <!-- Return rows will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+    
+
+
+
+
+
+
+    <script src="manager.js"></script>
+
+</body>
+
+</html>

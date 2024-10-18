@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- HEAD -->
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cine Cafe</title>
+    <!--box icon -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- css style -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+
+
+
+<!-- BODY -->
+
+<body>
+    <!-- <div class="popup"></div> -->
+    <!-- HEADER-->
+    <header class="header">
+        <img src="../img/logo.png" alt="logo" class="logo">
+        <!-- <h1 class="logotext">Cine<br>Cafe</h1> -->
+     
+        <nav class="navbar">
+            <a href="#Home" class="active" id="home">Home</a>
+            <a href="#Rent">Collections</a>
+            <a href="#About">About</a>
+            <a href="#Service">Service</a>
+            <a href="#reviews">Review</a>
+            
+        </nav>
+    </header>
+
+    <!-- HOME -->
+    <div class="home" id="Home">
+        <!-- <div class="home-content"> -->
+        <!-- <h3>Welcome to Film library</h3>
+            <h1><b>C</b>ine <b>C</b>afe</h1>
+            <h3>Welcome to the <span> Movie lovers World</span></h3>
+            <p>Discover a world of entertainment with our vast selection of DVDs. Whether you're looking for the latest blockbuster or a classic favorite, we have something for everyone. Enjoy seamless rentals, unbeatable prices, and exceptional customer service. Your movie night just got better!</p>
+            <div class="social-media">
+                <a href="#"><i class='bx bxl-instagram-alt'></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+                <a href="#"><i class='bx bxl-telegram'></i></a> -->
+        <!-- </div>-->
+        <div class="slider">
+            <div class="slides">
+                <img src="../img/Slider/bg_01.jpg" alt="DVD 1" class="slide active">
+                <img src="../img/Slider/bg_02.jpg" alt="DVD 2" class="slide">
+                <img src="../img/Slider/bg_03.jpg" alt="DVD 3" class="slide">
+                <img src="../img/Slider/bg_04.jpg" alt="DVD 4" class="slide">
+                <img src="../img/Slider/bg_03.jpg" alt="DVD 5" class="slide">
+            </div>
+
+            <div class="pagination">
+                <span class="dot active" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+            </div>
+            <!-- <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(1)">&#10095;</button> -->
+            <div class="description">
+                <h1>Welcome To Cine Cafe</h1>
+                <p>Discover a world of entertainment with our vast selection of DVDs. Whether you're looking for the
+                    latest blockbuster or a classic favorite, we have something for everyone. Enjoy seamless
+                    rentals, unbeatable prices, and exceptional customer service. Your movie night just got better!
+                </p>
+            </div>
+            <!-- Sign Up button inside the slider -->
+            <div class="signup-container">
+                <!-- <button class="signup-btn">Sign Up</button> -->
+                <a href="../login.html" class="btn" id="Signin">Sign In</a>
+                <a href="../register.html" class="btn" id="Signup">Sign Up</a>
+            </div>            
+        </div>
+        <!-- </div> -->
+    </div>
+
+    <!-- RENT -->
+    <section class="rent" id="Rent">
+        <h2 class="heading">Collections</h2>
+        <div class="rent-container" id="rent-container">
+            <!--Add Dvd Cards will be inserted here -->
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="About">
+        <div class="about-img">
+            <img src="../img/about.png" alt="#">
+        </div>
+
+        <div class="about-content">
+            <h2 class="heading">About <span>Us</span></h2>
+            <h3>Cine Cafe</h3>
+            <p>Welcome to CineCafe, your go-to destination for all things entertainment! Founded with a passion for film and community, we offer a unique selection of rental options that cater to movie lovers, gamers, and event planners alike.
+                At CineCafe, we believe that every great story deserves to be experienced in the best way possible. Our carefully curated collection includes classic films, the latest blockbusters, and everything in between. Whether you're hosting a movie night, looking for the perfect game for a gathering, or planning a special event, we have you covered.
+            </p>
+            <a href="" class="btn">Read more</a>
+        </div>
+    </section>
+
+    <!-- SERVICE -->
+    <section class="service" id="Service">
+        <h2 class="heading">Our Services</h2>
+        <div class="service-container">
+            <div class="service-box">
+                <i class='bx bx-code-alt'></i>
+                <h3>Instant Access, Infinite Entertainment</h3>
+                <p> Offering you immediate entry to a vast library of movies at your finger tips with just a click.
+                </p>
+                <a href="#" class="btn">Read More</a>
+            </div>
+
+            <div class="service-box">
+                <i class='bx bx-bar-chart-alt'></i>
+                <h3>24-Hour Movie Magic</h3>
+                <p>Allowing you to indulge in your favorite films and TV shows anytime, day or night.</p>
+                <a href="#" class="btn">Read More</a>
+            </div>
+        </div>
+        <div class="BCard">
+            <h1><u>HOW IT WORKS</u></h1>
+            <div class="banner-image">
+                <div class="banner-card">
+                    <img src="../img/Flow/choose.png" alt="choice">
+                    <h2>CHOOSE</h2>
+                    <p>Create your list of titles online choosing from over 100,000 titles</p>
+                </div>
+                <div class="banner-card">
+                    <img src="../img/Flow/recive.png" alt="rent">
+                    <h2>RECEIVE</h2>
+                    <p>Receive discs at our shop</p>
+                </div>
+                <div class="banner-card">
+                    <img src="../img/Flow/watch.png" alt="watch">
+                    <h2>WATCH</h2>
+                    <p>Keep each disc as long as you want.</p>
+                </div>
+                <div class="banner-card">
+                    <img src="../img/Flow/return.png" alt="return">
+                    <h2>RETURN</h2>
+                    <p>Return a disc in a prepaid envelope to get a replacement</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <div class="card">
+        <img src="movie1.jpg" alt="Movie 1">
+  
+        <div class="card-content">
+          <h2>Name :Round Up</h2>
+          <p>Genre: Action, Adventure, Crime <br>Director: Lee Sang-yong<br>Release Date: 2022-05-18 </p>
+          <a href="https://www.bing.com/ck/a?!&&p=d2848b3ffa9b4d87JmltdHM9MTcyMTE3NDQwMCZpZ3VpZD0yMmUwMWI2MC02NDkzLTYyOTgtMzExOS0wZmUxNjVmMzYzZTkmaW5zaWQ9NTI1Mg&ptn=3&ver=2&hsh=3&fclid=22e01b60-6493-6298-3119-0fe165f363e9&psq=+roundup+donlee+movies+gener&u=a1aHR0cHM6Ly93d3cuaW1kYi5jb20vdGl0bGUvdHQxNTgzODg1MC8&ntb=1"
+            target="_blank">See More</a>
+        </div>
+      </div> -->
+
+    <!-- REVIEWS -->
+    <section class="reviews" id="reviews">
+        <div class="heading">
+            <h3>Our Customers <span>Thoughts</span></h3>
+        </div>
+        <div class="reviews-container">
+            <div class="box">
+                <div class="rev-img">
+                    <img src="../img/Avatar/avatar.png" alt="">
+                </div>
+                <h1>Confusius Anushiyan</h1>
+                <div class="stars">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star-half'></i>
+                </div>
+                <p>I love this DVD rental service because it offers a huge selection of movies, including many
+                    hard-to-find classics. The DVDs arrive on time, and they are in good condition. I also appreciate
+                    their excellent customer support. If I ever have a problem, they're quick to resolve it. My only
+                    complaint is that they don’t always have the latest releases right away, but I can usually find
+                    something to watch. Overall, it's still a great service for movie lovers like me.</p>
+            </div>
+
+            <div class="box">
+                <div class="rev-img">
+                    <img src="../img/Avatar/avatar1.png" alt="">
+                </div>
+                <h1>SandraKumar Joel</h1>
+                <div class="stars">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>9
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star-half'></i>
+                </div>
+                <p>As someone with a packed schedule, I don’t have time to stream movies online or deal with buffering
+                    issues. Renting DVDs is convenient for me because I can watch them at my own pace. I really like
+                    that this service lets me keep the DVDs for a few days before returning them. The downside is that
+                    the subscription plans are a bit pricey, especially when I don’t always have time to watch every
+                    movie I rent. Still, it’s useful for people who want flexibility.</p>
+            </div>
+
+            <div class="box">
+                <div class="rev-img">
+                    <img src="../img/Avatar/avatar2.jpeg" alt="">
+                </div>
+                <h1>John Mike</h1>
+                <div class="stars">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star-half'></i>
+                </div>
+                <p>I’m not a huge movie fan, but I use the DVD rental service occasionally when I want to have a movie
+                    night with friends or family. The service is easy to use, and they have a decent collection of
+                    popular titles. I wish there were more deals or discounts for casual renters like me, but overall,
+                    it’s a convenient option when I want to rent something. I probably won’t subscribe regularly, but
+                    it’s good for occasional use.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="Contact" class="footer">
+        <div>
+            <p>Cine_Cafe@gmail.com</p>
+        </div>
+        <div>
+            <p>©All rights Reserved by Cine_Cafe DVD 2024</p>
+        </div>
+        <div>
+            <p>0712345678</p>
+        </div>
+    </footer>
+    <!-- SCRIPT -->
+    <script src="javascript.js"></script>
+</body>
+
+</html>
