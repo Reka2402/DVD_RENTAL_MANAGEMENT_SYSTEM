@@ -308,3 +308,14 @@ C:\Users\Reka jajeindren\Desktop\test\DVD_Rental_Website-MS2\DVD_Rental_Website\
 C:\Users\Reka jajeindren\Desktop\test\DVD_Rental_Website-MS2\DVD_Rental_Website\DVD_Rental_Website\obj\Debug\net8.0\DVD_Rental_Website.dll
 C:\Users\Reka jajeindren\Desktop\test\DVD_Rental_Website-MS2\DVD_Rental_Website\DVD_Rental_Website\obj\Debug\net8.0\refint\DVD_Rental_Website.dll
 C:\Users\Reka jajeindren\Desktop\test\DVD_Rental_Website-MS2\DVD_Rental_Website\DVD_Rental_Website\obj\Debug\net8.0\DVD_Rental_Website.pdb
+X:\UT01492\Practice\DVD_API\New\DVD_RENTAL_MANAGEMENT_SYSTEM\Backend\DVD_Rental_Website\DVD_Rental_Website\obj\Debug\net8.0\DVD_Rental_Website.csproj.AssemblyReference.cache
+X:\UT01492\Practice\DVD_API\New\DVD_RENTAL_MANAGEMENT_SYSTEM\Backend\DVD_Rental_Website\DVD_Rental_Website\obj\Debug\net8.0\DVD_Rental_Website.GeneratedMSBuildEditorConfig.editorconfig
+X:\UT01492\Practice\DVD_API\New\DVD_RENTAL_MANAGEMENT_SYSTEM\Backend\DVD_Rental_Website\DVD_Rental_Website\obj\Debug\net8.0\DVD_Rental_Website.AssemblyInfoInputs.cache
+X:\UT01492\Practice\DVD_API\New\DVD_RENTAL_MANAGEMENT_SYSTEM\Backend\DVD_Rental_Website\DVD_Rental_Website\obj\Debug\net8.0\DVD_Rental_Website.AssemblyInfo.cs
+X:\UT01492\Practice\DVD_API\New\DVD_RENTAL_MANAGEMENT_SYSTEM\Backend\DVD_Rental_Website\DVD_Rental_Website\obj\Debug\net8.0\DVD_Rental_Website.csproj.CoreCompileInputs.cache
+X:\UT01492\Practice\DVD_API\New\DVD_RENTAL_MANAGEMENT_SYSTEM\Backend\DVD_Rental_Website\DVD_Rental_Website\obj\Debug\net8.0\DVD_Rental_Website.MvcApplicationPartsAssemblyInfo.cs
+X:\UT01492\Practice\DVD_API\New\DVD_RENTAL_MANAGEMENT_SYSTEM\Backend\DVD_Rental_Website\DVD_Rental_Website\obj\Debug\net8.0\DVD_Rental_Website.MvcApplicationPartsAssemblyInfo.cache
+X:\UT01492\Practice\DVD_API\New\DVD_RENTAL_MANAGEMENT_SYSTEM\Backend\DVD_Rental_Website\DVD_Rental_Website\obj\Debug\net8.0\DVD_Rental_Website.sourcelink.json
+X:\UT01492\Practice\DVD_API\New\DVD_RENTAL_MANAGEMENT_SYSTEM\Backend\DVD_Rental_Website\DVD_Rental_Website\obj\Debug\net8.0\DVD_Rental_Website.dll
+X:\UT01492\Practice\DVD_API\New\DVD_RENTAL_MANAGEMENT_SYSTEM\Backend\DVD_Rental_Website\DVD_Rental_Website\obj\Debug\net8.0\refint\DVD_Rental_Website.dll
+X:\UT01492\Practice\DVD_API\New\DVD_RENTAL_MANAGEMENT_SYSTEM\Backend\DVD_Rental_Website\DVD_Rental_Website\obj\Debug\net8.0\DVD_Rental_Website.pdb
