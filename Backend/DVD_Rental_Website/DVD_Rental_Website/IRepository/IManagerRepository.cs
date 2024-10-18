@@ -11,6 +11,7 @@ namespace DVD_Rental_Website.IRepository
 
         Task<DVD> UpdateDVD(DVD updatedDVD);
 
-        Task<DVD> DeleteDVD(DVD DVDToDelete);
+        Task<DVD> DeleteDVD(Guid id);
+        
     }
 }

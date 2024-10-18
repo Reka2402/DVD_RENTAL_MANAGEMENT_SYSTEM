@@ -8,5 +8,7 @@
         public string Director { get; set; }
         public DateTime ReleaseDate { get; set; }
         public int CopiesAvailable { get; set; }
+        public IFormFile ImageFile { get; set; }
+
     }
 }

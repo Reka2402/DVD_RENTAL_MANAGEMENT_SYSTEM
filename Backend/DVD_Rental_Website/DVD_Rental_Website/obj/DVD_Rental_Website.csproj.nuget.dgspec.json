@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\UT01336\\Desktop\\DVD_RENTAL\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj": {}
+    "C:\\Users\\UT01336\\Desktop\\test2\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj": {}
   },
   "projects": {
-    "C:\\Users\\UT01336\\Desktop\\DVD_RENTAL\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj": {
+    "C:\\Users\\UT01336\\Desktop\\test2\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\UT01336\\Desktop\\DVD_RENTAL\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj",
+        "projectUniqueName": "C:\\Users\\UT01336\\Desktop\\test2\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj",
         "projectName": "DVD_Rental_Website",
-        "projectPath": "C:\\Users\\UT01336\\Desktop\\DVD_RENTAL\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj",
+        "projectPath": "C:\\Users\\UT01336\\Desktop\\test2\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj",
         "packagesPath": "C:\\Users\\UT01336\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\UT01336\\Desktop\\DVD_RENTAL\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\obj\\",
+        "outputPath": "C:\\Users\\UT01336\\Desktop\\test2\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\UT01336\\AppData\\Roaming\\NuGet\\NuGet.Config",

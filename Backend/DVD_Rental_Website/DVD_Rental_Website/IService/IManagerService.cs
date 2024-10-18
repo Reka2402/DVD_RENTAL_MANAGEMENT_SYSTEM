@@ -12,6 +12,6 @@ namespace DVD_Rental_Website.IService
         Task<List<ManagerResponseModel>> GetAllDVDs();
         Task<ManagerResponseModel> EditDVDAsync(Guid dvdId, ManagerRequestModel dvdRequest);
 
-        Task<ManagerResponseModel> Delete(Guid Id);
+        Task<bool> Delete(Guid Id);
     }
 }

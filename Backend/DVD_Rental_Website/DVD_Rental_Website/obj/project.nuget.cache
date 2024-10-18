@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VIke+Jxgsr4=",
+  "dgSpecHash": "fqkIBfG75Mo=",
   "success": true,
-  "projectFilePath": "C:\\Users\\UT01336\\Desktop\\DVD_RENTAL\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj",
+  "projectFilePath": "C:\\Users\\UT01336\\Desktop\\test2\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\UT01336\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\UT01336\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

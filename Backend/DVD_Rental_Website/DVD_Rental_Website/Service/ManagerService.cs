@@ -4,16 +4,21 @@ using DVD_Rental_Website.IService;
 using DVD_Rental_Website.Model.RequestModels;
 using DVD_Rental_Website.Model.Response_Models;
 using DVD_Rental_Website.Repository;
+using Microsoft.AspNetCore.Hosting;
 
 namespace DVD_Rental_Website.Service
 {
     public class ManagerService : IManagerService
     {
         private readonly IManagerRepository _managerRepository;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ManagerService(IManagerRepository managerRepository)
+
+        public ManagerService(IManagerRepository managerRepository, IWebHostEnvironment webHostEnvironment)
         {
             _managerRepository = managerRepository;
+            _webHostEnvironment = webHostEnvironment;
+
         }
 
         public async Task<ManagerResponseModel> AddDVD(ManagerRequestModel managerRequestModel)
@@ -25,15 +30,13 @@ namespace DVD_Rental_Website.Service
                 Director = managerRequestModel.Director,
                 ReleaseDate = managerRequestModel.ReleaseDate,
                 CopiesAvailable = managerRequestModel.CopiesAvailable,
-                ImagePath = managerRequestModel.ImagePath,
-                IsAvailable = managerRequestModel.IsAvailale
             };
 
             if (managerRequestModel.ImageFile != null && managerRequestModel.ImageFile.Length > 0)
             {
                 if (string.IsNullOrEmpty(_webHostEnvironment.WebRootPath))
                 {
-                    throw new ArgumentNullException(nameof(__webHostEnvironment.WebRootPath)),"WebRootPath is not set.")
+                    throw new ArgumentNullException(nameof(_webHostEnvironment.WebRootPath), "WebRootPath is not set.");
                 }
                 var dvdImagePath = Path.Combine(_webHostEnvironment.WebRootPath, "dvdimages");
 
@@ -60,7 +63,7 @@ namespace DVD_Rental_Website.Service
                 Director = createdDVD.Director,
                 ReleaseDate = createdDVD.ReleaseDate,
                 CopiesAvailable = createdDVD.CopiesAvailable,
-                ImagePath = createdDVD.ImagePath,
+                ImageUrl = createdDVD.ImagePath,
                 IsAvailable = createdDVD.IsAvailable,
                 };
         }
@@ -94,7 +97,7 @@ namespace DVD_Rental_Website.Service
                     Director = dvd.Director,
                     ReleaseDate = dvd.ReleaseDate,
                     CopiesAvailable = dvd.CopiesAvailable,
-                    ImagePath = dvd.ImagePath,
+                    ImageUrl = dvd.ImagePath,
                     IsAvailable = dvd.IsAvailable
 
                 });
@@ -156,28 +159,29 @@ namespace DVD_Rental_Website.Service
                     ReleaseDate = dvd.ReleaseDate,
                     CopiesAvailable = dvd.CopiesAvailable,
                     IsAvailable = dvd.IsAvailable,
-                    ImagePath = dvd.ImagePath,
+                    ImageUrl = dvd.ImagePath,
                 };
             }
 
-        public async Task<ManagerResponseModel> Delete(Guid Id)
+        public async Task<bool> Delete(Guid Id)
         {
             var dvdData = await _managerRepository.GetDVDById(Id);
-            var deletedDVD = await _managerRepository.DeleteDVD(dvdData);
+            if (dvdData == null) return false;
 
-            return new ManagerResponseModel
+
+            if (!string.IsNullOrWhiteSpace(dvdData.ImagePath))
             {
-                Id = Id,
-                Title = deletedDVD.Title,
-                Genre = deletedDVD.Genre,
-                Director = deletedDVD.Director,
-                ReleaseDate = deletedDVD.ReleaseDate,
-                CopiesAvailable = deletedDVD.CopiesAvailable,
-                ImagePath = deletedDVD.ImagePath,
-                IsAvailable = deletedDVD.IsAvailable,
-
-
-            };
+                var fullpath = Path.Combine(_webHostEnvironment.WebRootPath, dvdData.ImagePath.TrimStart('/'));
+                
+                if(File.Exists(fullpath))
+                {
+                    File.Delete(fullpath);
+                }
+            
+            }
+            await _managerRepository.DeleteDVD(Id);
+            return true;
+          
         }
 
     }
