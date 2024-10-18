@@ -18,7 +18,7 @@ namespace DVD_Rental_Website.Controllers
         }
 
         [HttpPost("Add DVD")]
-        public async Task<IActionResult> AddDVD(ManagerRequestModel managerRequestmodal)
+        public async Task<IActionResult> AddDVD([FromForm] ManagerRequestModel managerRequestmodal)
         {
             try
             {
@@ -62,11 +62,11 @@ namespace DVD_Rental_Website.Controllers
         }
 
         [HttpPut("UpdateDVDById")]
-        public async Task<IActionResult> UpdateDVDByID(Guid Id, ManagerRequestModel managerRequestDTO)
+        public async Task<IActionResult> UpdateDVDByID(Guid Id, [FromForm] ManagerRequestModel managerRequestDTO)
         {
             try
             {
-                var result = await _managerService.UpdateDVD(Id, managerRequestDTO);
+                var result = await _managerService.EditDVDAsync(Id, managerRequestDTO);
                 if (result == null)
                     return NotFound("DVD not found");
                 return Ok(result);

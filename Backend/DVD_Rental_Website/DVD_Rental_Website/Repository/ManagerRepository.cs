@@ -61,7 +61,7 @@ namespace DVD_Rental_Website.Repository
                             Director = reader.GetString(reader.GetOrdinal("Director")),
                             ReleaseDate = reader.GetDateTime(reader.GetOrdinal("ReleaseDate")),
                             CopiesAvailable = reader.GetInt32(reader.GetOrdinal("CopiesAvailable")),
-                             ImagePath = reader.GetString(reader.GetOrdinal("ImagePath")),
+                            ImagePath = reader.GetString(reader.GetOrdinal("ImagePath")),
                             IsAvailable = reader.GetBoolean(reader.GetOrdinal("IsAvailable")),
 
                         };
