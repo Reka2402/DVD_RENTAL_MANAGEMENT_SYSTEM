@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "X:\\backend\\DVD_Rental_Website-MS2-\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj": {}
+    "X:\\practise\\newcode\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj": {}
   },
   "projects": {
-    "X:\\backend\\DVD_Rental_Website-MS2-\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj": {
+    "X:\\practise\\newcode\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "X:\\backend\\DVD_Rental_Website-MS2-\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj",
+        "projectUniqueName": "X:\\practise\\newcode\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj",
         "projectName": "DVD_Rental_Website",
-        "projectPath": "X:\\backend\\DVD_Rental_Website-MS2-\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj",
-        "packagesPath": "C:\\Users\\UT01336\\.nuget\\packages\\",
-        "outputPath": "X:\\backend\\DVD_Rental_Website-MS2-\\DVD_Rental_Website\\DVD_Rental_Website\\obj\\",
+        "projectPath": "X:\\practise\\newcode\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj",
+        "packagesPath": "C:\\Users\\ut01210\\.nuget\\packages\\",
+        "outputPath": "X:\\practise\\newcode\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\UT01336\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ut01210\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

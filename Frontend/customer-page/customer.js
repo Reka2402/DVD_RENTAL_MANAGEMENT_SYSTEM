@@ -5,7 +5,7 @@ function showdvd() {
 
   async function fetchdvd() {
     try{
-      const response = await fetch('https://api.example.com/dvd');
+      const response = await fetch('http://localhost:5272/api/Manager/Get All DVDs');
       Dvds = await response.json();
       displayDvd();
     }catch(error){
