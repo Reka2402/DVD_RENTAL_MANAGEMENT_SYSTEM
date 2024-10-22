@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to delete a DVD (using fetch)
   function deleteDvd(id) {
-    fetch(`/api/dvds/${id}`, {
+    fetch(`http://localhost:5272/api/Manager/${id}`, {
       method: "DELETE",
     })
       .then((response) => {
