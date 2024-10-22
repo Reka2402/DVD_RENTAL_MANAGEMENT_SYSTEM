@@ -92,7 +92,6 @@ function saveUpdatedDvd(index, updatedDvd) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  const addDvdForm = document.getElementById("add-Dvd-form");
   const DvdsTableBody = document
     .getElementById("Dvds-table")
     .querySelector("tbody");
@@ -109,22 +108,22 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("reportcontainer").style.display = "none";
 
     // Fetch all DVDs from the server
-    fetch("http://localhost:5272/api/Manager/Add DVD")
+    fetch("http://localhost:5272/api/Manager/Get All DVDs")
       .then((response) => response.json())
       .then((Dvds) => {
+        console.log("Array Of The Dvd: ", Dvds)
         DvdsTableBody.innerHTML = ""; // Clear existing rows
 
-        Dvds.forEach((Dvd, index) => {
+        Dvds.forEach((Dvd) => {
           const row = document.createElement("tr");
           row.innerHTML = `
-                <td><img src="${Dvd.image}" alt="Dvd Image" style="width: 100px; height: auto;"></td>
                 <td>${Dvd.title}</td>
-                <td>${Dvd.Director}</td>
-                <td>${Dvd.Date}</td>
-                <td>${Dvd.category}</td>
-                <td>${Dvd.quantity}</td>
-                <td colspan="2"><button class="editBtn" data-index="${Dvd.id}">Edit </button>
-                <button class="delete-button" data-index="${Dvd.id}">Delete</button></td>
+                <td>${Dvd.director}</td>
+                <td>${Dvd.releaseDate}</td>
+                <td>${Dvd.genre}</td>
+                <td>${Dvd.copiesAvailable}</td>
+                <td colspan="2"><button class="editBtn" >Edit </button>
+                <button class="delete-button">Delete</button></td>
             `;
           DvdsTableBody.appendChild(row);
         });
@@ -162,56 +161,53 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => console.error("Error deleting DVD:", error));
   }
 
-  // Add DVD to the server
-  addDvdForm.addEventListener("submit", function (event) {
-    event.preventDefault();
 
+
+  document.getElementById("add-Dvd-form").addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Gather form data
     const title = document.getElementById("add-Dvd-title").value.trim();
-    const Director = document.getElementById("add-Dvd-Director").value.trim();
-    const id = Number(Math.floor(Math.random() * 1000)); // Random ID for now
-    const category = document.getElementById("add-Dvd-category").value.trim();
-    const Date = document.getElementById("add-dvd-date").value.trim();
+    const director = document.getElementById("add-Dvd-Director").value.trim();
+    const genre = document.getElementById("add-Dvd-category").value.trim();
+    const releaseDate = document.getElementById("add-dvd-date").value.trim();
     const quantity = document.getElementById("add-Dvd-Quantity").value.trim();
-    //const imageInput = document.getElementById("add-Dvd-image");
 
-    if (!title || !Director || !category || !Date || !quantity || !id) {
-      alert("All fields are required.");
-      return;
-    }
+    // Create a DVD object
+    const dvdData = {
+      title: title,
+      director: director,
+      genre: genre,
+      releaseDate: releaseDate,
+      copiesAvailable: quantity
+    };
 
-    // Create FormData object
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("Director", Director);
-    formData.append("category", category);
-    formData.append("Date", Date);
-    formData.append("quantity", quantity);
-   // formData.append("image", imageInput.files[0]); // Add the image file to FormData
-
-   console.log(formData)
-
-    // Send the new DVD to the server using FormData
-    fetch("http://localhost:5272/api/Manager/Add DVD", {
+    // Send the DVD data to the server
+    fetch("http://localhost:5272/api/Manager/AddDVD", {
       method: "POST",
-      body: formData, // Use FormData directly as the body of the request
+      headers: {
+        "Content-Type": "application/json", // Set the content type to JSON
+      },
+      body: JSON.stringify(dvdData), // Convert the object to a JSON string
     })
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to add DVD");
         }
-        return response.json();
+        return response.json(); // Parse the JSON response
       })
-      .then(() => {
-        alert(`Success! New Movie ${title} has been added to your inventory! 🎉`);
-        addDvdForm.reset();
-        displayDvd(); // Refresh the table
+      .then((data) => {
+        alert(`Success! New Movie "${data.title}" has been added to your inventory! 🎉`);
+        document.getElementById("add-Dvd-form").reset(); // Reset the form
+        displayDvd(); // Call your function to refresh the displayed DVDs
       })
       .catch((error) => console.error("Error adding DVD:", error));
   });
-
-  // Initialize DVD and display them
-  displayDvd();
 });
+
+
+
+
 
 // customer show
 
@@ -230,7 +226,7 @@ async function displayCustomers() {
     const customerResponse = await fetch('http://localhost:5272/api/Customer/Get All Customers');
     const customers = await customerResponse.json();
 
-    console.log(customers);
+    console.log("Dvd Customers: ", customers);
 
 
     const customerTable = document.getElementById('customer-body');
@@ -398,20 +394,20 @@ function displayRentalRequest(rentalRequest) {
 
 async function acceptRental(rentalId) {
   try {
-      const response = await fetch(`http://localhost:5000/api/Customer/Rental-Accept/${rentalId}`, {
-          method: 'PUT',
-          headers: {
-              'Content-Type': 'application/json',
-          }
-      });
-
-      if (response.ok) {
-          displayRentals(); // Refresh the rentals table
-      } else {
-          console.error('Error accepting rental:', await response.text());
+    const response = await fetch(`http://localhost:5000/api/Customer/Rental-Accept/${rentalId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
       }
+    });
+
+    if (response.ok) {
+      displayRentals(); // Refresh the rentals table
+    } else {
+      console.error('Error accepting rental:', await response.text());
+    }
   } catch (error) {
-      console.error('Network error:', error);
+    console.error('Network error:', error);
   }
 }
 
@@ -420,18 +416,18 @@ async function rejectRental(rentalId) {
 
 
   try {
-      const response = await fetch(`http://localhost:5000/api/Customer/RejectRental/${rentalId}`, {
-          method: 'DELETE', // Assuming DELETE is used for rejection
-      });
+    const response = await fetch(`http://localhost:5000/api/Customer/RejectRental/${rentalId}`, {
+      method: 'DELETE', // Assuming DELETE is used for rejection
+    });
 
-      if (response.ok) {
+    if (response.ok) {
 
-          displayRentals(); // Refresh the rentals table
-      } else {
-          console.error('Error rejecting rental:', await response.text());
-      }
+      displayRentals(); // Refresh the rentals table
+    } else {
+      console.error('Error rejecting rental:', await response.text());
+    }
   } catch (error) {
-      console.error('Network error:', error);
+    console.error('Network error:', error);
   }
 }
 
@@ -464,64 +460,64 @@ async function returnMotordvd() {
   const registrationNumber = document.getElementById('return-registration').value;
 
   try {
-      // Fetch all customers, dvd, and rentals
-      let [customersResponse, motordvdsResponse, rentalsResponse] = await Promise.all([
-          fetch('http://localhost:5000/api/Customer/all'),
-          fetch('http://localhost:5000/api/Manager/Alldvd'),
-          fetch('http://localhost:5000/api/Customer/GetAllRentals')
-      ]);
+    // Fetch all customers, dvd, and rentals
+    let [customersResponse, motordvdsResponse, rentalsResponse] = await Promise.all([
+      fetch('http://localhost:5000/api/Customer/all'),
+      fetch('http://localhost:5000/api/Manager/Alldvd'),
+      fetch('http://localhost:5000/api/Customer/GetAllRentals')
+    ]);
 
-      const customers = await customersResponse.json();
-      const dvds = await dvdsResponse.json();
-      const rentals = await rentalsResponse.json();
-      console.log(dvds);
-      console.log(customers);
+    const customers = await customersResponse.json();
+    const dvds = await dvdsResponse.json();
+    const rentals = await rentalsResponse.json();
+    console.log(dvds);
+    console.log(customers);
 
-      // Find the customer by NIC
-      const customer = customers.find(c => c.nic == nic);
-      console.log(rentals);
+    // Find the customer by NIC
+    const customer = customers.find(c => c.nic == nic);
+    console.log(rentals);
 
 
-      if (!customer) {
-          alert('Customer not found');
-          return;
+    if (!customer) {
+      alert('Customer not found');
+      return;
+    }
+
+    // Find the  by registration number
+    const dvd = dvds.find(b => b.regnumber == registrationNumber);
+    if (!dvd) {
+      alert('dvd not found');
+      return;
+    }
+
+    // Find the rental associated with the customer and dvd
+    const rental = rentals.find(r => r.customerID === customer.id && r.dvdid === dvd.id);
+
+
+
+    if (!rental) {
+      alert('Rental record not found or already processed');
+      return;
+    }
+
+    const returndvdResponse = await fetch(`http://localhost:5000/api/customer/dvd-return/${rental.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
       }
+    });
 
-      // Find the  by registration number
-      const dvd = dvds.find(b => b.regnumber == registrationNumber);
-      if (!dvd) {
-          alert('dvd not found');
-          return;
-      }
+    if (!returndvdResponse.ok) {
+      alert('Failed to process dvd return');
+      return;
+    }
 
-      // Find the rental associated with the customer and dvd
-      const rental = rentals.find(r => r.customerID === customer.id && r.dvdid === dvd.id);
-
-
-
-      if (!rental) {
-          alert('Rental record not found or already processed');
-          return;
-      }
-
-      const returndvdResponse = await fetch(`http://localhost:5000/api/customer/dvd-return/${rental.id}`, {
-          method: 'PUT',
-          headers: {
-              'Content-Type': 'application/json',
-          }
-      });
-
-      if (!returndvdResponse.ok) {
-          alert('Failed to process dvd return');
-          return;
-      }
-
-      alert('dvd returned successfully!');
-      document.getElementById('return-dvd-form').reset();
+    alert('dvd returned successfully!');
+    document.getElementById('return-dvd-form').reset();
 
   } catch (error) {
-      console.error('Error during dvd return:', error);
-      alert('An error occurred while processing the return.');
+    console.error('Error during dvd return:', error);
+    alert('An error occurred while processing the return.');
   }
 }
 
@@ -555,29 +551,29 @@ function returnQuantity(dvdid, quantity) {
 // Function to generate the rental report
 async function displayRentals() {
   try {
-      const rentalResponse = await fetch('http://localhost:5000/api/Customer/GetAllRentals');
-      const rentals = await rentalResponse.json();
-      //   console.log(rentals);
+    const rentalResponse = await fetch('http://localhost:5000/api/Customer/GetAllRentals');
+    const rentals = await rentalResponse.json();
+    //   console.log(rentals);
 
-      const customerResponse = await fetch('http://localhost:5000/api/Customer/all');
-      const customers = await customerResponse.json();
-      // console.log(customers);
+    const customerResponse = await fetch('http://localhost:5000/api/Customer/all');
+    const customers = await customerResponse.json();
+    // console.log(customers);
 
-      const dvdResponse = await fetch('http://localhost:5000/api/Manager/Alldvd');
-      const dvds = await dvdResponse.json();
-      // console.log(dvds);
+    const dvdResponse = await fetch('http://localhost:5000/api/Manager/Alldvd');
+    const dvds = await dvdResponse.json();
+    // console.log(dvds);
 
-      const rentalTable = document.getElementById('rental-body');
-      rentalTable.innerHTML = ''; 
+    const rentalTable = document.getElementById('rental-body');
+    rentalTable.innerHTML = '';
 
-      rentals.forEach((rental) => {
+    rentals.forEach((rental) => {
 
 
-          const customer = customers.find(c => c.id === rental.customerID) || { firstName: 'Unknown', nic: 'Unknown', mobilenumber: 'Unknown' };
-          const dvd = dvds.find(b => b.id === rental.motordvdID) || { regNumber: 'Unknown' };
+      const customer = customers.find(c => c.id === rental.customerID) || { firstName: 'Unknown', nic: 'Unknown', mobilenumber: 'Unknown' };
+      const dvd = dvds.find(b => b.id === rental.motordvdID) || { regNumber: 'Unknown' };
 
-          const row = document.createElement('tr');
-          row.innerHTML = `
+      const row = document.createElement('tr');
+      row.innerHTML = `
               <td>${customer.nic}</td>
               <td>${customer.firstName}</td>
               <td>${customer.mobilenumber}</td>
@@ -589,20 +585,20 @@ async function displayRentals() {
                   <button class="btn btn-danger btn-sm" onclick="rejectRental('${rental.id}')">Reject</button>
               </td>
           `;
-          rentalTable.appendChild(row);
-      });
-
-      if (rentals.length === 0) {
-          const row = document.createElement('tr');
-          row.innerHTML = '<td colspan="7">No rentals found.</td>';
-          rentalTable.appendChild(row);
-      }
-  } catch (error) {
-      console.error('Error fetching rentals:', error);
-      const rentalTable = document.getElementById('rental-body');
-      const row = document.createElement('tr');
-      row.innerHTML = '<td colspan="7">Error fetching rentals.</td>';
       rentalTable.appendChild(row);
+    });
+
+    if (rentals.length === 0) {
+      const row = document.createElement('tr');
+      row.innerHTML = '<td colspan="7">No rentals found.</td>';
+      rentalTable.appendChild(row);
+    }
+  } catch (error) {
+    console.error('Error fetching rentals:', error);
+    const rentalTable = document.getElementById('rental-body');
+    const row = document.createElement('tr');
+    row.innerHTML = '<td colspan="7">Error fetching rentals.</td>';
+    rentalTable.appendChild(row);
   }
 }
 
@@ -638,7 +634,8 @@ function displayReturnReport() {
 }
 
 // Event listeners for buttons
-document.getElementById("rentalReportBtn").addEventListener("click", displayRentalReport);
+// document.getElementById("rentalReportBtn").addEventListener("click", displayRentalReport);
+
 document.getElementById("returnReportBtn").addEventListener("click", displayReturnReport);
 
 

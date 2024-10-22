@@ -19,6 +19,9 @@ namespace DVD_Rental_Website.Repository
             {
                 await connection.OpenAsync();
 
+                // Do not set the Id before the insert
+                newCustomer.Id = Guid.NewGuid();
+
                 var sqlCommand = new SqlCommand(
                     "INSERT INTO Customers (Id, UserName, Mobilenumber, Email, Nic, Password, IsActive) " +
                     "VALUES (@Id, @UserName, @Mobilenumber, @Email, @Nic, @Password, @IsActive);",
@@ -31,6 +34,11 @@ namespace DVD_Rental_Website.Repository
                 sqlCommand.Parameters.AddWithValue("@Nic", newCustomer.Nic);
                 sqlCommand.Parameters.AddWithValue("@Password", newCustomer.Password);
                 sqlCommand.Parameters.AddWithValue("@IsActive", newCustomer.IsActive);
+
+
+       
+
+
 
                 await sqlCommand.ExecuteNonQueryAsync();
 

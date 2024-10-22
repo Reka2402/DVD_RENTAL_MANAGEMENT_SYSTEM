@@ -16,6 +16,8 @@ namespace DVD_Rental_Website.Repository
 
         public async Task<DVD> AddDVD(DVD newDVD)
         {
+            newDVD.Id = Guid.NewGuid(); // Automatically generate a new ID
+
             using (var connection = new SqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
@@ -26,16 +28,16 @@ namespace DVD_Rental_Website.Repository
                     connection);
 
                 sqlCommand.Parameters.AddWithValue("@Id", newDVD.Id);
-                sqlCommand.Parameters.AddWithValue("Title", newDVD.Title);
+                sqlCommand.Parameters.AddWithValue("@Title", newDVD.Title);
                 sqlCommand.Parameters.AddWithValue("@Genre", newDVD.Genre);
                 sqlCommand.Parameters.AddWithValue("@Director", newDVD.Director);
                 sqlCommand.Parameters.AddWithValue("@ReleaseDate", newDVD.ReleaseDate);
                 sqlCommand.Parameters.AddWithValue("@CopiesAvailable", newDVD.CopiesAvailable);
 
                 await sqlCommand.ExecuteNonQueryAsync();
-
-                return newDVD;
             }
+
+            return newDVD;
         }
 
         public async Task<DVD> GetDVDById(Guid id)

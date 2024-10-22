@@ -17,19 +17,26 @@ namespace DVD_Rental_Website.Controllers
             _managerService = managerService;
         }
 
-        [HttpPost("Add DVD")]
-        public async Task<IActionResult> AddDVD(ManagerRequestModel managerRequestmodal)
+        [HttpPost("AddDVD")]
+        public async Task<IActionResult> AddDVD([FromBody] ManagerRequestModel managerRequestModel)
         {
+            if (managerRequestModel == null)
+            {
+                return BadRequest("Invalid request.");
+            }
+
             try
             {
-                var result = await _managerService.AddDVD(managerRequestmodal);
-                return Ok(result); ;
+                var result = await _managerService.AddDVD(managerRequestModel);
+                return CreatedAtAction(nameof(AddDVD), new { id = result.Id }, result);
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
+    
+
 
         [HttpGet("GetDVDById")]
         public async Task<IActionResult> GetDVDById(Guid Id)
