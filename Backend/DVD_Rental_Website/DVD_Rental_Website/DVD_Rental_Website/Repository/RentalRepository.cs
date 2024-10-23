@@ -82,7 +82,7 @@ namespace DVD_Rental_Website.Repository
                 await connection.OpenAsync();
                 var command = new SqlCommand(
                     "INSERT INTO Rent (RentalId, CustomerID, DVDId,RentalDate,Returndate,Isoverdue, Status) VALUES (@Id, @CustomerID, @DVDId,@RentalDate,@RentalDate,@Isoverdue, @Status); SELECT SCOPE_IDENTITY();", connection);
-                command.Parameters.AddWithValue("@RentalId", rental.RentalId);
+                command.Parameters.AddWithValue("@Id", rental.RentalId);
                 command.Parameters.AddWithValue("@CustomerID", rental.CustomerID);
                 command.Parameters.AddWithValue("@DVDId", rental.DVDId);
                 command.Parameters.AddWithValue("@RentalDate", DateTime.Now);
@@ -173,7 +173,7 @@ namespace DVD_Rental_Website.Repository
             using (var connection = new SqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
-                var command = new SqlCommand("SELECT * FROM Rentals", connection);
+                var command = new SqlCommand("SELECT * FROM Rent", connection);
 
                 var reader = await command.ExecuteReaderAsync();
                 while (await reader.ReadAsync())
