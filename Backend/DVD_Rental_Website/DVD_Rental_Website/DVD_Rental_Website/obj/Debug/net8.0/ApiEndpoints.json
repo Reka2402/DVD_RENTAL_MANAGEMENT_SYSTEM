@@ -1,0 +1,276 @@
+[
+  {
+    "ContainingType": "DVD_Rental_Website.Controllers.CustomerController",
+    "Method": "SoftDelete",
+    "RelativePath": "api/Customer/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DVD_Rental_Website.Controllers.CustomerController",
+    "Method": "AddCustomer",
+    "RelativePath": "api/Customer/Add Customer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "customerRequestmodal",
+        "Type": "DVD_Rental_Website.Model.RequestModels.CustomerRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DVD_Rental_Website.Controllers.CustomerController",
+    "Method": "GetAllCustomer",
+    "RelativePath": "api/Customer/Get All Customers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DVD_Rental_Website.Controllers.CustomerController",
+    "Method": "GetCustomerById",
+    "RelativePath": "api/Customer/GetCustomerById",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DVD_Rental_Website.Controllers.CustomerController",
+    "Method": "UpdateCustomerByID",
+    "RelativePath": "api/Customer/UpdateCustomerById",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "customerRequestDTO",
+        "Type": "DVD_Rental_Website.Model.RequestModels.CustomerRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DVD_Rental_Website.Controllers.ManagerController",
+    "Method": "SoftDelete",
+    "RelativePath": "api/Manager/{Id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DVD_Rental_Website.Controllers.ManagerController",
+    "Method": "AddDVD",
+    "RelativePath": "api/Manager/AddDVD",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "managerRequestModel",
+        "Type": "DVD_Rental_Website.Model.RequestModels.ManagerRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DVD_Rental_Website.Controllers.ManagerController",
+    "Method": "GetAllDVD",
+    "RelativePath": "api/Manager/Get All DVDs",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DVD_Rental_Website.Controllers.ManagerController",
+    "Method": "GetDVDById",
+    "RelativePath": "api/Manager/GetDVDById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DVD_Rental_Website.Controllers.ManagerController",
+    "Method": "UpdateDVDByID",
+    "RelativePath": "api/Manager/UpdateDVDById",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "managerRequestDTO",
+        "Type": "DVD_Rental_Website.Model.RequestModels.ManagerRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DVD_Rental_Website.Controllers.RentalController",
+    "Method": "RentalAccept",
+    "RelativePath": "api/Rental/Accept RentalById",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DVD_Rental_Website.Controllers.RentalController",
+    "Method": "AddRental",
+    "RelativePath": "api/Rental/Add Rental",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "rentalRequestDTO",
+        "Type": "DVD_Rental_Website.Model.Response_Models.RentalResponseModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DVD_Rental_Website.Controllers.RentalController",
+    "Method": "CheckAndUpdateOverdueRentals",
+    "RelativePath": "api/Rental/CheckAndUpdateOverdueRentals",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DVD_Rental_Website.Controllers.RentalController",
+    "Method": "GetAllRentalByCustomerId",
+    "RelativePath": "api/Rental/GetAllRentalCustomers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "customerId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DVD_Rental_Website.Controllers.RentalController",
+    "Method": "GetAllRentals",
+    "RelativePath": "api/Rental/GetAllRentals",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DVD_Rental_Website.Controllers.RentalController",
+    "Method": "GetRentalById",
+    "RelativePath": "api/Rental/GetRentalbyId",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DVD_Rental_Website.Controllers.RentalController",
+    "Method": "RejectRenatal",
+    "RelativePath": "api/Rental/RejectRentalById",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "rentalid",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DVD_Rental_Website.Controllers.RentalController",
+    "Method": "UpdateRentToReturn",
+    "RelativePath": "api/Rental/returnDVDById",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

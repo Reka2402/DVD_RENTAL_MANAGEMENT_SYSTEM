@@ -40,9 +40,29 @@ namespace DVD_Rental_Website.Service
             };
         }
 
-        public async Task<ManagerResponseModel> GetDVDById(Guid Id)
+        //public async Task<ManagerResponseModel> GetDVDById(Guid Id)
+        //{
+        //    var dvdData = await _managerRepository.GetDVDById(Id);
+
+        //    return new ManagerResponseModel
+        //    {
+        //        Id = dvdData.Id,
+        //        Title = dvdData.Title,
+        //        Genre = dvdData.Genre,
+        //        Director = dvdData.Director,
+        //        ReleaseDate = dvdData.ReleaseDate,
+        //        CopiesAvailable = dvdData.CopiesAvailable
+        //    };
+        //}
+
+        public async Task<ManagerResponseModel> GetDVDById(Guid id)
         {
-            var dvdData = await _managerRepository.GetDVDById(Id);
+            var dvdData = await _managerRepository.GetDVDById(id);
+
+            if (dvdData == null) // Check if dvdData is null
+            {
+                return null; // Handle this appropriately in the controller
+            }
 
             return new ManagerResponseModel
             {
@@ -54,6 +74,7 @@ namespace DVD_Rental_Website.Service
                 CopiesAvailable = dvdData.CopiesAvailable
             };
         }
+
 
         public async Task<List<ManagerResponseModel>> GetAllDVDs()
         {

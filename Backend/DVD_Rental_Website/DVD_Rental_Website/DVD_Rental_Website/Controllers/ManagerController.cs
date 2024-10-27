@@ -35,17 +35,38 @@ namespace DVD_Rental_Website.Controllers
                 return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
-    
 
 
-        [HttpGet("GetDVDById")]
-        public async Task<IActionResult> GetDVDById(Guid Id)
+
+        //[HttpGet("GetDVDById")]
+        //public async Task<IActionResult> GetDVDById(Guid Id)
+        //{
+        //    try
+        //    {
+        //        var result = await _managerService.GetDVDById(Id);
+        //        if (result == null)
+        //            return NotFound("DVD not found");
+        //        return Ok(result);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(500, $"Internal server error: {ex.Message}");
+        //    }
+        //}
+
+
+        [HttpGet("GetDVDById/{id}")]
+        public async Task<IActionResult> GetDVDById(Guid id)
         {
             try
             {
-                var result = await _managerService.GetDVDById(Id);
-                if (result == null)
+                var result = await _managerService.GetDVDById(id);
+
+                if (result == null) // Check if the result is null
+                {
                     return NotFound("DVD not found");
+                }
+
                 return Ok(result);
             }
             catch (Exception ex)
@@ -53,6 +74,7 @@ namespace DVD_Rental_Website.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
 
         [HttpGet("Get All DVDs")]
         public async Task<IActionResult> GetAllDVD()

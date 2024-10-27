@@ -29,40 +29,48 @@ document.addEventListener('DOMContentLoaded', function () {
   // window.onload=showdvd()
 
 
-  fetch("http://localhost:5272/api/Manager/GetAllDVDs")
-  .then((response) => response.json())
-  .then((Dvds) => {
-    console.log("Array Of The Dvd: ", Dvds);
-    const rentContainer = document.getElementById("rent-container");
-    rentContainer.innerHTML = ""; // Clear existing content
-
-    Dvds.forEach((Dvd) => {
-      // Create a card for each DVD
-      const dvdCard = document.createElement("div");
-      dvdCard.classList.add("card");
-      dvdCard.id = Dvd.id; // Set the ID for the card
-
-      dvdCard.innerHTML = `
-        <img src="${Dvd.image || 'default-image.jpg'}" alt="${Dvd.title}" class="item-image">
-        <div class="card-content">
-          <h2 class="item-title">Movie Name: ${Dvd.title}</h2>
-          <p class="item-description">
-            Genre: ${Dvd.genre} <br>
-            Release Date: ${Dvd.releaseDate} <br>
-            Director: ${Dvd.director}
-          </p>
-          <label>Quantity:</label><br>
-          <input type="number" class="item-quantity" value="${Dvd.copiesAvailable}" min="1" readonly> <br>
-          <button class="rent-button" onclick="toggleRentButton(this)">Rent</button>
-        </div>
-      `;
-
-      rentContainer.appendChild(dvdCard); // Append the card to the container
-    });
+  fetch("http://localhost:5272/api/Manager/Get All DVDs", {
+    method: "GET",
   })
-  .catch((error) => {
-    console.error("Error fetching DVDs:", error);
-  });
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((Dvds) => {
+      console.log("Array Of The DVD: ", Dvds);
+      const rentContainer = document.getElementById("rent-container");
+      rentContainer.innerHTML = ""; // Clear existing content
+  
+      Dvds.forEach((Dvd) => {
+        // Create a card for each DVD
+        const dvdCard = document.createElement("div");
+        dvdCard.classList.add("card");
+        dvdCard.id = Dvd.id; // Set the ID for the card
+  
+        dvdCard.innerHTML = `
+          <img src="${Dvd.image || 'default-image.jpg'}" alt="${Dvd.title}" class="item-image">
+          <div class="card-content">
+            <h2 class="item-title">Movie Name: ${Dvd.title}</h2>
+            <p class="item-description">
+              Genre: ${Dvd.genre} <br>
+              Release Date: ${Dvd.releaseDate} <br>
+              Director: ${Dvd.director}
+            </p>
+            <label>Quantity:</label><br>
+            <input type="number" class="item-quantity" value="${Dvd.copiesAvailable}" min="1" readonly> <br>
+            <button class="rent-button" onclick="toggleRentButton(this)">Rent</button>
+          </div>
+        `;
+  
+        rentContainer.appendChild(dvdCard); // Append the card to the container
+      });
+    })
+    .catch((error) => {
+      console.error("Error fetching DVDs:", error);
+    });
+  
 
 
 
