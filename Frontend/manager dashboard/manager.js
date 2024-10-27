@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <td>${Dvd.genre}</td>
                 <td>${Dvd.copiesAvailable}</td>
                 <td colspan="2"><button class="editBtn" >Edit </button>
-                <button class="delete-button">Delete</button></td>
+                <button class="delete-button" onclick="deleteDvd(Dvd.id)">Delete</button></td>
             `;
           DvdsTableBody.appendChild(row);
         });

@@ -1,7 +1,10 @@
-﻿namespace DVD_Rental_Website.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace DVD_Rental_Website.Entities
 {
     public class Customer
     {
+        [Key]
         public Guid Id { get; set; }
         public string UserName { get; set; }
         public string Mobilenumber { get; set; }

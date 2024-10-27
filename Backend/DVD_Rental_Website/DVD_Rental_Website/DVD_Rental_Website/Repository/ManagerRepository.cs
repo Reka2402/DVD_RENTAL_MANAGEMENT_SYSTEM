@@ -16,11 +16,12 @@ namespace DVD_Rental_Website.Repository
 
         public async Task<DVD> AddDVD(DVD newDVD)
         {
-            newDVD.Id = Guid.NewGuid(); // Automatically generate a new ID
-
             using (var connection = new SqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
+
+                // Dynamically generate a new Id for the DVD if not already set
+                newDVD.Id = Guid.NewGuid();
 
                 var sqlCommand = new SqlCommand(
                     "INSERT INTO DVDs (Id, Title, Genre, Director, ReleaseDate, CopiesAvailable) " +
@@ -39,6 +40,35 @@ namespace DVD_Rental_Website.Repository
 
             return newDVD;
         }
+
+        //public async Task<DVD> GetDVDById(Guid id)
+        //{
+        //    using (var connection = new SqlConnection(_connectionString))
+        //    {
+        //        await connection.OpenAsync();
+
+        //        var sqlCommand = new SqlCommand("SELECT * FROM DVDs WHERE Id = @Id", connection);
+        //        sqlCommand.Parameters.AddWithValue("@Id", id);
+
+        //        using (var reader = await sqlCommand.ExecuteReaderAsync(CommandBehavior.SingleRow))
+        //        {
+        //            if (await reader.ReadAsync())
+        //            {
+        //                return new DVD
+        //                {
+        //                    Id = reader.GetGuid(reader.GetOrdinal("Id")),
+        //                    Title = reader.GetString(reader.GetOrdinal("Title")),
+        //                    Genre = reader.GetString(reader.GetOrdinal("Genre")),
+        //                    Director = reader.GetString(reader.GetOrdinal("Director")),
+        //                    ReleaseDate = reader.GetDateTime(reader.GetOrdinal("ReleaseDate")),
+        //                    CopiesAvailable = reader.GetInt32(reader.GetOrdinal("CopiesAvailable"))
+        //                };
+        //            }
+        //        }
+        //        return null;
+        //    }
+        //}
+
 
         public async Task<DVD> GetDVDById(Guid id)
         {
@@ -63,8 +93,11 @@ namespace DVD_Rental_Website.Repository
                             CopiesAvailable = reader.GetInt32(reader.GetOrdinal("CopiesAvailable"))
                         };
                     }
+                    else
+                    {
+                        return null; // No record found
+                    }
                 }
-                return null;
             }
         }
 

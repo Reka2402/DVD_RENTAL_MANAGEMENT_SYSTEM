@@ -3,42 +3,90 @@ function showdvd() {
 
 
 
-  async function fetchdvd() {
-    try{
-      const response = await fetch('http://localhost:5272/api/Manager/Get All DVDs');
-      Dvds = await response.json();
-      displayDvd();
-    }catch(error){
-      console.error('error fetching dvd',error)
-    }
-  }
+  // async function fetchdvd() {
+  //   try{
+  //     const response = await fetch('http://localhost:5272/api/Manager/Get All DVDs');
+  //     Dvds = await response.json();
+  //     displayDvd();
+  //   }catch(error){
+  //     console.error('error fetching dvd',error)
+  //   }
+  // }
 
-  function createDvdCard(Dvd) {
-    const Dvdcard = document.createElement("div");
-    Dvdcard.classList.add("rent-box");
-    Dvdcard.innerHTML = `      <div class="card" id=${Dvd.id}>
-            <img src="${Dvd.image}" alt="${Dvd.title}" class="item-image">
-            <div class="card-content">
-                <h2 class="item-title">Movie Name: ${Dvd.title}</h2>
-                <p class="item-description">Genre: ${Dvd.category} <br> Release date: ${Dvd.Date} <br> Director: ${Dvd.Director}</p>
-                <label>Quantity:</label><br>
-                <input type="number" class="item-quantity" value="${Dvd.quantity}" min="1" readonly>  <br>
-                <button class="rent-button" onclick="toggleRentButton(this)">Rent</button>
+  // function createDvdCard(Dvd) {
+  //   const Dvdcard = document.createElement("div");
+  //   Dvdcard.classList.add("rent-box");
+  //   Dvdcard.innerHTML = `      <div class="card" id=${Dvd.id}>
+  //           <img src="${Dvd.image}" alt="${Dvd.title}" class="item-image">
+  //           <div class="card-content">
+  //               <h2 class="item-title">Movie Name: ${Dvd.title}</h2>
+  //               <p class="item-description">Genre: ${Dvd.category} <br> Release date: ${Dvd.Date} <br> Director: ${Dvd.Director}</p>
+  //               <label>Quantity:</label><br>
+  //               <input type="number" class="item-quantity" value="${Dvd.quantity}" min="1" readonly>  <br>
+  //               <button class="rent-button" onclick="toggleRentButton(this)">Rent</button>
             
-            </div>
-        </div>
-    `;
+  //           </div>
+  //       </div>
+  //   `;
 
-    return Dvdcard;
-  }
+  //   return Dvdcard;
+  // }
 
-  async function displayDvd() {
-    const  Dvds = await fetchdvd();
-    Dvds.forEach((Dvd) => {
-      const dvdCard = createDvdCard(Dvd);
-      rentContainer.appendChild(dvdCard);
+  // async function displayDvd() {
+  //   const  Dvds = await fetchdvd();
+  //   console.log(Dvds)
+  //   Dvds.forEach((Dvd) => {
+  //     const dvdCard = createDvdCard(Dvd);
+  //     rentContainer.appendChild(dvdCard);
+  //   });
+  // }
+
+
+
+
+
+
+  fetch("http://localhost:5272/api/Manager/Get All DVDs", {
+    method: "GET",
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((Dvds) => {
+      console.log("Array Of The DVD: ", Dvds);
+      const rentContainer = document.getElementById("rent-container");
+      rentContainer.innerHTML = ""; // Clear existing content
+  
+      Dvds.forEach((Dvd) => {
+        // Create a card for each DVD
+        const dvdCard = document.createElement("div");
+        dvdCard.classList.add("card");
+        dvdCard.id = Dvd.id; // Set the ID for the card
+  
+        dvdCard.innerHTML = `
+          <img src="${Dvd.image || 'default-image.jpg'}" alt="${Dvd.title}" class="item-image">
+          <div class="card-content">
+            <h2 class="item-title">Movie Name: ${Dvd.title}</h2>
+            <p class="item-description">
+              Genre: ${Dvd.genre} <br>
+              Release Date: ${Dvd.releaseDate} <br>
+              Director: ${Dvd.director}
+            </p>
+            <label>Quantity:</label><br>
+            <input type="number" class="item-quantity" value="${Dvd.copiesAvailable}" min="1" readonly> <br>
+            <button class="rent-button" onclick="toggleRentButton(this)">Rent</button>
+          </div>
+        `;
+  
+        rentContainer.appendChild(dvdCard); // Append the card to the container
+      });
+    })
+    .catch((error) => {
+      console.error("Error fetching DVDs:", error);
     });
-  }
 
   displayDvd();
 }
@@ -58,79 +106,94 @@ function toggleRentButton(buttonElement) {
 
 function storeItemDetails(buttonElement) {
   try {
-    var card = buttonElement.closest(".card");
+      var card = buttonElement.closest(".card");
 
-    if (!card) {
-      console.error("Card not found!");
-      return;
-    }
-
-    const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
-    if (!currentUser) {
-      alert("Please log in to rent a DVD.");
-      return;
-    }
-
-    var dvdId = card.id;
-
-    fetch(`/api/dvds/${dvdId}`)
-      .then((response) => response.json())
-      .then((dvd) => {
-        if (!dvd) {
-          console.error("DVD not found!");
+      if (!card) {
+          console.error("Card not found!");
           return;
-        }
+      }
 
-        // Check DVD availability
-        if (dvd.quantity === 0) {
-          alert("Sorry, this DVD is out of stock.");
+      const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
+      if (!currentUser) {
+          alert("Please log in to rent a DVD.");
           return;
-        }
+      }
 
-        // Proceed with the rental process
-        if (buttonElement.textContent === "Confirm Rent") {
-          const rentalDetails = {
-            rentalId: Math.floor(Math.random() * 1000), // Example rental ID
-            dvdId: dvd.id,
-            title: dvd.title,
-            user: currentUser.username,
-            NIC: currentUser.nic,
-            rentDate: new Date(),
-            status: "pending",
-            quantity: 1, // Assuming 1 DVD is rented
-            customerId: currentUser.id,
-          };
+      var dvdId = card.id; // Ensure this is a valid GUID
+      console.log("Fetching DVD with ID:", dvdId); // Log the DVD ID being fetched
 
-          // POST rental data to the server
-          fetch("/api/rentals", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(rentalDetails),
-          })
-            .then((response) => {
+      // Fetch DVD details by ID
+      fetch(`http://localhost:5272/api/DVD/GetDVDById/FA91C2C3-F53D-40A1-B52D-810DE6F81045`)
+          .then((response) => {
+              // Log the status and any other info
+              console.log("Response status:", response.status);
+              console.log("Response headers:", response.headers);
+
               if (!response.ok) {
-                throw new Error("Failed to create rental");
+                  if (response.status === 404) {
+                      throw new Error("DVD not found");
+                  } else {
+                      throw new Error("Error fetching DVD");
+                  }
               }
               return response.json();
-            })
-            .then(() => {
-              alert(`Rental for "${dvd.title}" has been confirmed!`);
-              buttonElement.textContent = "Rent";
-            })
-            .catch((error) => {
-              console.error("Error creating rental:", error);
-            });
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching DVD:", error);
-      });
+          })
+          .then((dvd) => {
+              console.log("Fetched DVD:", dvd); // Log the fetched DVD
+
+              // Check DVD availability
+              if (dvd.copiesAvailable === 0) {
+                  alert("Sorry, this DVD is out of stock.");
+                  return;
+              }
+
+              // Example rental confirmation logic
+              if (buttonElement.textContent === "Confirm Rent") {
+                  const rentalDetails = {
+                      rentalId: Math.floor(Math.random() * 1000), // Example rental ID
+                      dvdId: dvd.id,
+                      title: dvd.title,
+                      user: currentUser.username,
+                      NIC: currentUser.nic,
+                      rentDate: new Date(),
+                      status: "pending",
+                      quantity: 1,
+                      customerId: currentUser.id,
+                  };
+
+                  // POST rental data to the server
+                  fetch("http://localhost:5272/api/Rental/AddRental", {
+                      method: "POST",
+                      headers: {
+                          "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify(rentalDetails),
+                  })
+                      .then((response) => {
+                          if (!response.ok) {
+                              throw new Error("Failed to create rental");
+                          }
+                          return response.json();
+                      })
+                      .then(() => {
+                          alert(`Rental for "${dvd.title}" has been confirmed!`);
+                          buttonElement.textContent = "Rent";
+                      })
+                      .catch((error) => {
+                          console.error("Error creating rental:", error);
+                      });
+              }
+          })
+          .catch((error) => {
+              console.error("Error fetching DVD:", error);
+          });
   } catch (err) {
-    console.error("An error occurred: " + err);
+      console.error("An error occurred: " + err);
   }
 }
+
+
+
 
 function getAllCustomers() {
   fetch("/api/customers")
