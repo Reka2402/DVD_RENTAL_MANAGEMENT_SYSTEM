@@ -90,7 +90,7 @@ namespace DVD_Rental_Website.Controllers
             }
         }
 
-        [HttpPut("UpdateDVDById")]
+        [HttpPut("UpdateDVDById/{Id}")]
         public async Task<IActionResult> UpdateDVDByID(Guid Id, ManagerRequestModel managerRequestDTO)
         {
             try

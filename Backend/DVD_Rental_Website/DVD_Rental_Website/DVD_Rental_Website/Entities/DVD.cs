@@ -4,7 +4,7 @@ namespace DVD_Rental_Website.Entities
 {
     public class DVD
     {
-        [Key]
+       
         public Guid Id { get; set; }
         public string Title { get; set; }
         public string Director { get; set; }
