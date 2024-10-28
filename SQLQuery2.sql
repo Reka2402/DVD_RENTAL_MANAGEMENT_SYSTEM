@@ -1,7 +1,0 @@
-SELECT TOP (1000) [Id]
-      ,[Title]
-      ,[Genre]
-      ,[Director]
-      ,[ReleaseDate]
-      ,[CopiesAvailable]
-  FROM [DVDdb].[dbo].[DVDs]

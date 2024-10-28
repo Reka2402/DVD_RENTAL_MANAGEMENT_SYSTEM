@@ -17,18 +17,31 @@ namespace DVD_Rental_Website.Controllers
             _managerService = managerService;
         }
 
-        [HttpPost("AddDVD")]
-        public async Task<IActionResult> AddDVD([FromBody] ManagerRequestModel managerRequestModel)
-        {
-            if (managerRequestModel == null)
-            {
-                return BadRequest("Invalid request.");
-            }
+        //[HttpPost("AddDVD")]
+        //public async Task<IActionResult> AddDVD([FromBody] ManagerRequestModel managerRequestModel)
+        //{
+        //    if (managerRequestModel == null)
+        //    {
+        //        return BadRequest("Invalid request.");
+        //    }
 
+        //    try
+        //    {
+        //        var result = await _managerService.AddDVD(managerRequestModel);
+        //        return CreatedAtAction(nameof(AddDVD), new { id = result.Id }, result);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(500, $"An error occurred: {ex.Message}");
+        //    }
+        //}
+        [HttpPost("Add DVD")]
+        public async Task<IActionResult> AddDVD(ManagerRequestModel managerRequestmodal)
+        {
             try
             {
-                var result = await _managerService.AddDVD(managerRequestModel);
-                return CreatedAtAction(nameof(AddDVD), new { id = result.Id }, result);
+                var result = await _managerService.AddDVDAsync(managerRequestmodal);
+                return Ok(result); ;
             }
             catch (Exception ex)
             {
@@ -90,12 +103,27 @@ namespace DVD_Rental_Website.Controllers
             }
         }
 
-        [HttpPut("UpdateDVDById/{Id}")]
+        //[HttpPut("UpdateDVDById/{Id}")]
+        //public async Task<IActionResult> UpdateDVDByID(Guid Id, ManagerRequestModel managerRequestDTO)
+        //{
+        //    try
+        //    {
+        //        var result = await _managerService.UpdateDVD(Id, managerRequestDTO);
+        //        if (result == null)
+        //            return NotFound("DVD not found");
+        //        return Ok(result);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(500, $"Internal server error: {ex.Message}");
+        //    }
+        //}
+        [HttpPut("UpdateDVDById")]
         public async Task<IActionResult> UpdateDVDByID(Guid Id, ManagerRequestModel managerRequestDTO)
         {
             try
             {
-                var result = await _managerService.UpdateDVD(Id, managerRequestDTO);
+                var result = await _managerService.EditDVDAsync(Id, managerRequestDTO);
                 if (result == null)
                     return NotFound("DVD not found");
                 return Ok(result);

@@ -14,8 +14,9 @@ namespace DVD_Rental_Website
 
             // Add services to the container.
 
+            builder.WebHost.UseWebRoot("wwwroot");
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 

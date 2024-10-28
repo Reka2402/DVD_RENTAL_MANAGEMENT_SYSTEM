@@ -1,8 +1,0 @@
-SELECT TOP (1000) [Id]
-      ,[UserName]
-      ,[Mobilenumber]
-      ,[Email]
-      ,[Nic]
-      ,[Password]
-      ,[IsActive]
-  FROM [DVDdb].[dbo].[Customers]

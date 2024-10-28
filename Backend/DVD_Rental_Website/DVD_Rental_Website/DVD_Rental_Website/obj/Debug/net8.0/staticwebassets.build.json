@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "rTYy5v782amLl+A9Eou4uCWg5mHoQm6CpeSXrluKJSQ=",
+  "Hash": "keXK/eDqDF1P4EWGQddwoDrJ4+UznfcuDKyAoPYVRGM=",
   "Source": "DVD_Rental_Website",
   "BasePath": "_content/DVD_Rental_Website",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "DVD_Rental_Website\\wwwroot",
+      "Source": "DVD_Rental_Website",
+      "ContentRoot": "C:\\Users\\UT01336\\Desktop\\New folder\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\wwwroot\\",
+      "BasePath": "_content/DVD_Rental_Website",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }
