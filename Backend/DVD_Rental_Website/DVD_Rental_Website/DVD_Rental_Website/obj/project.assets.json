@@ -2539,19 +2539,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mrpsy\\.nuget\\packages\\": {}
+    "C:\\Users\\ut01210\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mrpsy\\OneDrive\\Desktop\\rental\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj",
+      "projectUniqueName": "C:\\Users\\ut01210\\Desktop\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj",
       "projectName": "DVD_Rental_Website",
-      "projectPath": "C:\\Users\\mrpsy\\OneDrive\\Desktop\\rental\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj",
-      "packagesPath": "C:\\Users\\mrpsy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mrpsy\\OneDrive\\Desktop\\rental\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\obj\\",
+      "projectPath": "C:\\Users\\ut01210\\Desktop\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj",
+      "packagesPath": "C:\\Users\\ut01210\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ut01210\\Desktop\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\mrpsy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ut01210\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2615,7 +2615,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

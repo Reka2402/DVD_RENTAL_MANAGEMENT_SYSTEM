@@ -85,6 +85,7 @@ namespace DVD_Rental_Website.Service
             {
                 responseList.Add(new ManagerResponseModel
                 {
+                    Id= dvd.Id,
                     Title = dvd.Title,
                     Genre = dvd.Genre,
                     Director = dvd.Director,
