@@ -54,7 +54,7 @@
             <input type="date" id="add-dvd-date" placeholder="" required>
             <label>Quantity :</label>
             <input type="number" id="add-Dvd-Quantity" placeholder="Quantity" required>
-            <!-- <input type="file" id="add-Dvd-image" accept="image/*" required> -->
+            <input type="file" id="add-Dvd-image"  required>
             <button type="submit">Add Dvd</button>
         </form>
     </section>
@@ -88,6 +88,7 @@
         <table id="Dvds-table">
             <thead>
                 <tr>
+                    <th>Image</th>
                     <th>Title</th>
                     <th>Director</th>
                     <th>Release Date</th>
@@ -108,7 +109,7 @@
                 <input type="text" id="edit-Dvd-category" placeholder="Category" required>
                 <input type="date" id="edit-dvd-date" required>
                 <input type="number" id="edit-Dvd-Quantity" placeholder="Quantity" required>
-                <input type="file" id="edit-Dvd-image" accept="image/*">
+                <<input type="file" id="add-Dvd-Image" name="ImageFile" accept="image/*" multiple>
                 <button type="submit">Update DVD</button>
             </form>
         </section>

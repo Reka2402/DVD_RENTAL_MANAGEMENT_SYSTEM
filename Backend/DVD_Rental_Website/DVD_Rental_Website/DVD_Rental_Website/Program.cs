@@ -65,7 +65,7 @@ namespace DVD_Rental_Website
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
+            app.UseStaticFiles();
 
             app.MapControllers();
 

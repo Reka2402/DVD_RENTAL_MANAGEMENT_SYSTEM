@@ -2,7 +2,7 @@
 {
     public class RentalResponseModel
     {
-        public Guid Id { get; set; }
+    
         public Guid RentalId { get; set; }
         public Guid CustomerID { get; set; }
         public Guid DVDId { get; set; }

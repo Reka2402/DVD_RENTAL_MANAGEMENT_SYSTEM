@@ -8,6 +8,7 @@ namespace DVD_Rental_Website.IRepository
         Task<DVD> GetDVDById(Guid Id);
 
         Task<List<DVD>> GetAllDVDs();
+        
         Task<DVD> UpdateDVD(DVD dvd);
         Task<DVD> DeleteDVD(DVD DVDToDelete);
 

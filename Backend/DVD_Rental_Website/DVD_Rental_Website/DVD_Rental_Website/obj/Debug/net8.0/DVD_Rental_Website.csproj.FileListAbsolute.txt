@@ -297,8 +297,6 @@ X:\backend\DVD_Rental_Website-MS2-\DVD_Rental_Website\DVD_Rental_Website\obj\Deb
 X:\backend\DVD_Rental_Website-MS2-\DVD_Rental_Website\DVD_Rental_Website\obj\Debug\net8.0\DVD_Rental_Website.pdb
 X:\backend\DVD_Rental_Website-MS2-\DVD_Rental_Website\DVD_Rental_Website\obj\Debug\net8.0\DVD_Rental_Website.genruntimeconfig.cache
 X:\backend\DVD_Rental_Website-MS2-\DVD_Rental_Website\DVD_Rental_Website\obj\Debug\net8.0\ref\DVD_Rental_Website.dll
-X:\practise\newcode\DVD_RENTAL_MANAGEMENT_SYSTEM\Backend\DVD_Rental_Website\DVD_Rental_Website\DVD_Rental_Website\bin\Debug\net8.0\appsettings.Development.json
-X:\practise\newcode\DVD_RENTAL_MANAGEMENT_SYSTEM\Backend\DVD_Rental_Website\DVD_Rental_Website\DVD_Rental_Website\bin\Debug\net8.0\appsettings.json
 X:\practise\newcode\DVD_RENTAL_MANAGEMENT_SYSTEM\Backend\DVD_Rental_Website\DVD_Rental_Website\DVD_Rental_Website\bin\Debug\net8.0\DVD_Rental_Website.exe
 X:\practise\newcode\DVD_RENTAL_MANAGEMENT_SYSTEM\Backend\DVD_Rental_Website\DVD_Rental_Website\DVD_Rental_Website\bin\Debug\net8.0\DVD_Rental_Website.deps.json
 X:\practise\newcode\DVD_RENTAL_MANAGEMENT_SYSTEM\Backend\DVD_Rental_Website\DVD_Rental_Website\DVD_Rental_Website\bin\Debug\net8.0\DVD_Rental_Website.runtimeconfig.json
@@ -673,3 +671,6 @@ C:\Users\UT01336\Desktop\New folder\DVD_RENTAL_MANAGEMENT_SYSTEM\Backend\DVD_Ren
 C:\Users\UT01336\Desktop\New folder\DVD_RENTAL_MANAGEMENT_SYSTEM\Backend\DVD_Rental_Website\DVD_Rental_Website\DVD_Rental_Website\obj\Debug\net8.0\DVD_Rental_Website.pdb
 C:\Users\UT01336\Desktop\New folder\DVD_RENTAL_MANAGEMENT_SYSTEM\Backend\DVD_Rental_Website\DVD_Rental_Website\DVD_Rental_Website\obj\Debug\net8.0\DVD_Rental_Website.genruntimeconfig.cache
 C:\Users\UT01336\Desktop\New folder\DVD_RENTAL_MANAGEMENT_SYSTEM\Backend\DVD_Rental_Website\DVD_Rental_Website\DVD_Rental_Website\obj\Debug\net8.0\ref\DVD_Rental_Website.dll
+X:\practise\newcode\DVD_RENTAL_MANAGEMENT_SYSTEM\Backend\DVD_Rental_Website\DVD_Rental_Website\DVD_Rental_Website\bin\Debug\net8.0\DVD_Rental_Website.staticwebassets.runtime.json
+X:\practise\newcode\DVD_RENTAL_MANAGEMENT_SYSTEM\Backend\DVD_Rental_Website\DVD_Rental_Website\DVD_Rental_Website\bin\Debug\net8.0\appsettings.Development.json
+X:\practise\newcode\DVD_RENTAL_MANAGEMENT_SYSTEM\Backend\DVD_Rental_Website\DVD_Rental_Website\DVD_Rental_Website\bin\Debug\net8.0\appsettings.json

@@ -80,13 +80,18 @@ namespace DVD_Rental_Website.Repository
             using (var connection = new SqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
+
+                // Calculate the return date as 7 days from now
+                DateTime returnDate = DateTime.Now.AddDays(7);
+
+
                 var command = new SqlCommand(
                     "INSERT INTO Rent (RentalId, CustomerID, DVDId,RentalDate,Returndate,Isoverdue, Status) VALUES (@Id, @CustomerID, @DVDId,@RentalDate,@RentalDate,@Isoverdue, @Status); SELECT SCOPE_IDENTITY();", connection);
                 command.Parameters.AddWithValue("@Id", rental.RentalId);
                 command.Parameters.AddWithValue("@CustomerID", rental.CustomerID);
                 command.Parameters.AddWithValue("@DVDId", rental.DVDId);
                 command.Parameters.AddWithValue("@RentalDate", DateTime.Now);
-                command.Parameters.AddWithValue("@Returndate", DBNull.Value);
+                command.Parameters.AddWithValue("@Returndate", returnDate);
                 command.Parameters.AddWithValue("@Isoverdue", rental.Isoverdue);
                 command.Parameters.AddWithValue("@status", rental.status);
 

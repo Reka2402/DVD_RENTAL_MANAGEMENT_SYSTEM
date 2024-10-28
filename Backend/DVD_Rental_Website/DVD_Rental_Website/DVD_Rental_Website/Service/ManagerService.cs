@@ -130,7 +130,9 @@ namespace DVD_Rental_Website.Service
                 Genre = dvdData.Genre,
                 Director = dvdData.Director,
                 ReleaseDate = dvdData.ReleaseDate,
-                CopiesAvailable = dvdData.CopiesAvailable
+                CopiesAvailable = dvdData.CopiesAvailable,
+                ImageUrl= dvdData.ImagePath,
+
             };
         }
 
@@ -157,88 +159,94 @@ namespace DVD_Rental_Website.Service
             return responseList;
         }
 
-        //public async Task<ManagerResponseModel> UpdateDVD(Guid Id, ManagerRequestModel managerRequestModel)
-        //{
-        //    var dvd = new DVD
-        //    {
-        //        Id = Id,
-        //        Title = managerRequestModel.Title,
-        //        Genre = managerRequestModel.Genre,
-        //        Director = managerRequestModel.Director,
-        //        ReleaseDate = managerRequestModel.ReleaseDate,
-        //        CopiesAvailable = managerRequestModel.CopiesAvailable
-        //    };
+        public async Task<ManagerResponseModel> UpdateDVD(Guid Id, ManagerRequestModel managerRequestModel)
+        {
+            var dvd = new DVD
+            {
+                Id = Id,
+                Title = managerRequestModel.Title,
+                Genre = managerRequestModel.Genre,
+                Director = managerRequestModel.Director,
+                ReleaseDate = managerRequestModel.ReleaseDate,
+                CopiesAvailable = managerRequestModel.CopiesAvailable,
+                ImagePath=null
 
-        //    var updatedDVD = await _managerRepository.UpdateDVD(dvd);
+            };
 
-        //    return new ManagerResponseModel
-        //    {
-        //        Id = Id,
-        //        Title = managerRequestModel.Title,
-        //        Genre = managerRequestModel.Genre,
-        //        Director = managerRequestModel.Director,
-        //        ReleaseDate = managerRequestModel.ReleaseDate,
-        //        CopiesAvailable = managerRequestModel.CopiesAvailable
-        //    };
-        //}
+            var updatedDVD = await _managerRepository.UpdateDVD(dvd);
+
+            return new ManagerResponseModel
+            {
+                Id = updatedDVD.Id,
+                Title = updatedDVD.Title,
+                Genre = updatedDVD.Genre,
+                Director = updatedDVD.Director,
+                ReleaseDate = updatedDVD.ReleaseDate,
+                CopiesAvailable = updatedDVD.CopiesAvailable,
+                ImageUrl = updatedDVD.ImagePath,
+                
+            };
+        }
 
 
         //UPDATE DVDS
-        public async Task<ManagerResponseModel> EditDVDAsync(Guid dvdId, ManagerRequestModel dvdRequest)
-        {
-            // Get the dvd by ID
-            var dvd = await _managerRepository.GetDVDById(dvdId);
-            if (dvd == null) return null;
+        //public async Task<ManagerResponseModel> EditDVDAsync(Guid dvdId, ManagerRequestModel dvdRequest)
+        //{
+        //    // Get the dvd by ID
+        //    var dvd = await _managerRepository.GetDVDById(dvdId);
+        //    if (dvd == null) return null;
 
-            // Update the dvd's basic information
-            dvd.Title = dvdRequest.Title;
-            dvd.Genre = dvdRequest.Genre;
-            dvd.Director = dvdRequest.Director;
-            dvd.ReleaseDate = dvdRequest.ReleaseDate;
-            dvd.CopiesAvailable = dvdRequest.CopiesAvailable;
+        //    // Update the dvd's basic information
+        //    dvd.Title = dvdRequest.Title;
+        //    dvd.Genre = dvdRequest.Genre;
+        //    dvd.Director = dvdRequest.Director;
+        //    dvd.ReleaseDate = dvdRequest.ReleaseDate;
+        //    dvd.CopiesAvailable = dvdRequest.CopiesAvailable;
 
-            // Handle the image upload if a new image is provided
-            if (dvdRequest.ImageFile != null && dvdRequest.ImageFile.Length > 0)
-            {
-                // Delete the old image if it exists
-                if (!string.IsNullOrEmpty(dvd.ImagePath))
-                {
-                    var oldImagePath = Path.Combine(_webHostEnvironment.WebRootPath, dvd.ImagePath.TrimStart('/'));
-                    if (File.Exists(oldImagePath))
-                    {
-                        File.Delete(oldImagePath);
-                    }
-                }
 
-                // Save the new image
-                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(dvdRequest.ImageFile.FileName);
-                var newImagePath = Path.Combine(_webHostEnvironment.WebRootPath, "dvdimages", fileName);
+        //    // Handle the image upload if a new image is provided
+        //    if (dvdRequest.ImageFile != null && dvdRequest.ImageFile.Length > 0)
+        //    {
+        //        // Delete the old image if it exists
+        //        if (!string.IsNullOrEmpty(dvd.ImagePath))
+        //        {
+        //            var oldImagePath = Path.Combine(_webHostEnvironment.WebRootPath, dvd.ImagePath.TrimStart('/'));
+        //            if (File.Exists(oldImagePath))
+        //            {
+        //                File.Delete(oldImagePath);
+        //            }
+        //        }
 
-                using (var stream = new FileStream(newImagePath, FileMode.Create))
-                {
-                    await dvdRequest.ImageFile.CopyToAsync(stream);
-                }
+        //        // Save the new image
+        //        var fileName = Guid.NewGuid().ToString() + Path.GetExtension(dvdRequest.ImageFile.FileName);
+        //        var newImagePath = Path.Combine(_webHostEnvironment.WebRootPath, "dvdimages", fileName);
 
-                // Update the image path
-                dvd.ImagePath = "/dvdimages/" + fileName;
-            }
+        //        using (var stream = new FileStream(newImagePath, FileMode.Create))
+        //        {
+        //            await dvdRequest.ImageFile.CopyToAsync(stream);
+        //        }
 
-            // Update the dvd in the database
-            await _managerRepository.UpdateDVD(dvd);
+        //        // Update the image path
+        //        dvd.ImagePath = "/dvdimages/" + fileName;
+        //    }
 
-            // Return the updated dvd as a response DTO
-            return new ManagerResponseModel
-            {
-                Id = dvd.Id,
-                Title = dvd.Title,
-                ImageUrl = dvd.ImagePath,
-                Genre = dvd.Genre,
-                Director = dvd.Director,
-                ReleaseDate = dvd.ReleaseDate,
-                CopiesAvailable = dvd.CopiesAvailable,
+        //    // Update the dvd in the database
+        //    await _managerRepository.UpdateDVD(dvd);
 
-            };
-        }
+        //    // Return the updated dvd as a response DTO
+        //    return new ManagerResponseModel
+        //    {
+        //        Id = dvd.Id,
+        //        Title = dvd.Title,
+        //        ImageUrl = dvd.ImagePath,
+        //        Genre = dvd.Genre,
+        //        Director = dvd.Director,
+        //        ReleaseDate = dvd.ReleaseDate,
+        //        CopiesAvailable = dvd.CopiesAvailable,
+        //        ImageUrl=dvd.
+
+        //    };
+        //}
         public async Task<ManagerResponseModel> Delete(Guid Id)
         {
             var dvdData = await _managerRepository.GetDVDById(Id);
@@ -251,7 +259,8 @@ namespace DVD_Rental_Website.Service
                 Genre = deletedDVD.Genre,
                 Director = deletedDVD.Director,
                 ReleaseDate = deletedDVD.ReleaseDate,
-                CopiesAvailable = deletedDVD.CopiesAvailable
+                CopiesAvailable = deletedDVD.CopiesAvailable,
+
             };
         }
 

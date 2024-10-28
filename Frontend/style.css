@@ -130,14 +130,14 @@ body {
 .btn:hover {
     background-color: #2980b9; /* Darker shade on hover */
 }
-.rent {
+.rent { 
     /* background-color: var(--second-bg-color); */
     /* background-image: url(img/upcoming-bg.png); */
     /* background-image: linear-gradient(to bottom, rgba(255,0,0,0), #2980b9); */
-    height: 70vh;
-}
+     height: 70vh; 
+ } 
 
-.rent h2 {
+ .rent h2 {
     margin-bottom: 4rem;
     text-align: center;
     color: #0056b3;
@@ -148,7 +148,7 @@ body {
    display: flex;
    justify-content: space-around;
    height: 100%;
-}
+} 
 
 .card img {
     width: 100%;
@@ -463,3 +463,4 @@ body {
     color: #3498db; /* Change color on hover */
     transition: color 0.3s ease; /* Smooth transition */
 }
+
