@@ -11,5 +11,6 @@ namespace DVD_Rental_Website.Entities
         public string Genre { get; set; }
         public DateTime ReleaseDate { get; set; }
         public int CopiesAvailable { get; set; }
+        public string ImagePath { get; set; }
     }
 }
