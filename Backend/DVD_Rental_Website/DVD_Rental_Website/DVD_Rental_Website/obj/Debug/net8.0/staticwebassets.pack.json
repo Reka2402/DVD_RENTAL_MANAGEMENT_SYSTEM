@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "X:\\practise\\newcode\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\wwwroot\\dvdimages\\16380bdc-36f9-4833-981f-1c29879f710e.jpg",
+      "PackagePath": "staticwebassets\\dvdimages\\16380bdc-36f9-4833-981f-1c29879f710e.jpg"
+    },
+    {
+      "Id": "X:\\practise\\newcode\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\wwwroot\\dvdimages\\4ec29f95-1fb1-440b-af23-3aed826584a6.jpg",
+      "PackagePath": "staticwebassets\\dvdimages\\4ec29f95-1fb1-440b-af23-3aed826584a6.jpg"
+    },
+    {
+      "Id": "X:\\practise\\newcode\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\wwwroot\\dvdimages\\bfeae32b-8dde-44b5-ada4-3c7a645fe6d2.jpg",
+      "PackagePath": "staticwebassets\\dvdimages\\bfeae32b-8dde-44b5-ada4-3c7a645fe6d2.jpg"
+    },
+    {
+      "Id": "X:\\practise\\newcode\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\wwwroot\\dvdimages\\d3ebf1b6-0817-4902-acab-c002fa615c94.jpg",
+      "PackagePath": "staticwebassets\\dvdimages\\d3ebf1b6-0817-4902-acab-c002fa615c94.jpg"
+    },
+    {
+      "Id": "X:\\practise\\newcode\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\wwwroot\\dvdimages\\f8563143-5b0a-4c0b-b274-5570b7c46e9b.jpg",
+      "PackagePath": "staticwebassets\\dvdimages\\f8563143-5b0a-4c0b-b274-5570b7c46e9b.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.DVD_Rental_Website.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.DVD_Rental_Website.props",
+      "PackagePath": "build\\DVD_Rental_Website.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.DVD_Rental_Website.props",
+      "PackagePath": "buildMultiTargeting\\DVD_Rental_Website.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.DVD_Rental_Website.props",
+      "PackagePath": "buildTransitive\\DVD_Rental_Website.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

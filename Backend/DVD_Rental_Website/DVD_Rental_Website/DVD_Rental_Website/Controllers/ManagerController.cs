@@ -103,27 +103,12 @@ namespace DVD_Rental_Website.Controllers
             }
         }
 
-        //[HttpPut("UpdateDVDById/{Id}")]
-        //public async Task<IActionResult> UpdateDVDByID(Guid Id, ManagerRequestModel managerRequestDTO)
-        //{
-        //    try
-        //    {
-        //        var result = await _managerService.UpdateDVD(Id, managerRequestDTO);
-        //        if (result == null)
-        //            return NotFound("DVD not found");
-        //        return Ok(result);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return StatusCode(500, $"Internal server error: {ex.Message}");
-        //    }
-        //}
-        [HttpPut("UpdateDVDById")]
+        [HttpPut("UpdateDVDById/{Id}")]
         public async Task<IActionResult> UpdateDVDByID(Guid Id, ManagerRequestModel managerRequestDTO)
         {
             try
             {
-                var result = await _managerService.EditDVDAsync(Id, managerRequestDTO);
+                var result = await _managerService.UpdateDVD(Id, managerRequestDTO);
                 if (result == null)
                     return NotFound("DVD not found");
                 return Ok(result);
@@ -133,6 +118,21 @@ namespace DVD_Rental_Website.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+        //[HttpPut("UpdateDVDById")]
+        //public async Task<IActionResult> UpdateDVDByID(Guid Id, ManagerRequestModel managerRequestDTO)
+        //{
+        //    try
+        //    {
+        //        var result = await _managerService.EditDVDAsync(Id, managerRequestDTO);
+        //        if (result == null)
+        //            return NotFound("DVD not found");
+        //        return Ok(result);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(500, $"Internal server error: {ex.Message}");
+        //    }
+        //}
 
         [HttpDelete("{Id}")]
         public async Task<IActionResult> SoftDelete(Guid Id)

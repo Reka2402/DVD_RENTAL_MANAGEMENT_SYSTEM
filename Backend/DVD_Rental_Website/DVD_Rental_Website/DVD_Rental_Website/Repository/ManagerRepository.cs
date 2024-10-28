@@ -96,7 +96,8 @@ namespace DVD_Rental_Website.Repository
                             Genre = reader.GetString(reader.GetOrdinal("Genre")),
                             Director = reader.GetString(reader.GetOrdinal("Director")),
                             ReleaseDate = reader.GetDateTime(reader.GetOrdinal("ReleaseDate")),
-                            CopiesAvailable = reader.GetInt32(reader.GetOrdinal("CopiesAvailable"))
+                            CopiesAvailable = reader.GetInt32(reader.GetOrdinal("CopiesAvailable")),
+                            ImagePath=reader.GetString(reader.GetOrdinal("ImagePath"))
                         });
                     }
                 }
@@ -108,63 +109,87 @@ namespace DVD_Rental_Website.Repository
 
 
         //UPDATE DVDS
-        public async Task<DVD> UpdateDVD(DVD dvd)
+        //public async Task<DVD> UpdateDVD(DVD dvd)
+        //{
+        //    DVD existingDVD = null;
+        //    using (var connection = new SqlConnection(_connectionString))
+        //    {
+
+        //        var selectQuery = "SELECT * FROM DVDs WHERE Id = @Id";
+        //        using (var selectCommand = new SqlCommand(selectQuery, connection))
+        //        {
+        //            selectCommand.Parameters.AddWithValue("@Id", dvd.Id);
+
+        //            connection.Open();
+        //            using (var reader = await selectCommand.ExecuteReaderAsync())
+        //            {
+        //                if (await reader.ReadAsync())
+        //                {
+        //                    existingDVD = new DVD
+        //                    {
+        //                        Id = reader.GetGuid(reader.GetOrdinal("Id")),
+        //                        Title = reader.GetString(reader.GetOrdinal("Title")),
+        //                        Genre = reader.GetString(reader.GetOrdinal("Genre")),
+        //                        Director = reader.GetString(reader.GetOrdinal("Director")),
+        //                        ReleaseDate = reader.GetDateTime(reader.GetOrdinal("ReleaseDate")),
+        //                        CopiesAvailable = reader.GetInt32(reader.GetOrdinal("CopiesAvailable")),
+        //                        ImagePath = reader.GetString(reader.GetOrdinal("ImagePath")),
+
+        //                    };
+        //                }
+        //                connection.Close();
+        //            }
+        //        }
+
+
+        //        if (existingDVD != null)
+        //        {
+        //            var updateQuery = "UPDATE DVDs SET Title=@Title,Genre=@Genre, Director = @Director,  ReleaseDate = @ReleaseDate,CopiesAvailable = @CopiesAvailable,ImagePath=@ImagePath WHERE Id = @Id";
+        //            using (var updateCommand = new SqlCommand(updateQuery, connection))
+        //            {
+
+        //                updateCommand.Parameters.AddWithValue("@Id", dvd.Id);
+        //                updateCommand.Parameters.AddWithValue("@Title", dvd.Title);
+        //                updateCommand.Parameters.AddWithValue("@Genre", dvd.Genre);
+        //                updateCommand.Parameters.AddWithValue("@Director", dvd.Director);
+        //                updateCommand.Parameters.AddWithValue("@ReleaseDate", dvd.ReleaseDate);
+        //                updateCommand.Parameters.AddWithValue("@CopiesAvailable", dvd.CopiesAvailable);
+        //                updateCommand.Parameters.AddWithValue("@ImagePath", dvd.ImagePath);
+
+
+        //                connection.Open();
+        //                await updateCommand.ExecuteNonQueryAsync();
+        //                connection.Close();
+        //            }
+        //        }
+        //    }
+        //    return existingDVD;
+        //}
+
+
+        public async Task<DVD> UpdateDVD(DVD updatedDVD)
         {
-            DVD existingDVD = null;
             using (var connection = new SqlConnection(_connectionString))
             {
+                await connection.OpenAsync();
 
-                var selectQuery = "SELECT * FROM DVDs WHERE Id = @Id";
-                using (var selectCommand = new SqlCommand(selectQuery, connection))
-                {
-                    selectCommand.Parameters.AddWithValue("@Id", dvd.Id);
+                var sqlCommand = new SqlCommand(
+                    "UPDATE DVDs SET Title = @Title, Genre = @Genre, Director  = @Director , " +
+                    "ReleaseDate = @ReleaseDate, CopiesAvailable = @CopiesAvailable,ImagePath=@ImagePath WHERE Id = @Id", connection);
 
-                    connection.Open();
-                    using (var reader = await selectCommand.ExecuteReaderAsync())
-                    {
-                        if (await reader.ReadAsync())
-                        {
-                            existingDVD = new DVD
-                            {
-                                Id = reader.GetGuid(reader.GetOrdinal("Id")),
-                                Title = reader.GetString(reader.GetOrdinal("Title")),
-                                Genre = reader.GetString(reader.GetOrdinal("Genre")),
-                                Director = reader.GetString(reader.GetOrdinal("Director")),
-                                ReleaseDate = reader.GetDateTime(reader.GetOrdinal("ReleaseDate")),
-                                CopiesAvailable = reader.GetInt32(reader.GetOrdinal("CopiesAvailable")),
-                                ImagePath = reader.GetString(reader.GetOrdinal("ImagePath")),
-
-                            };
-                        }
-                        connection.Close();
-                    }
-                }
+                sqlCommand.Parameters.AddWithValue("@Id", updatedDVD.Id);
+                sqlCommand.Parameters.AddWithValue("@Title", updatedDVD.Title);
+                sqlCommand.Parameters.AddWithValue("@Genre", updatedDVD.Genre);
+                sqlCommand.Parameters.AddWithValue("@Director", updatedDVD.Director);
+                sqlCommand.Parameters.AddWithValue("@ReleaseDate", updatedDVD.ReleaseDate);
+                sqlCommand.Parameters.AddWithValue("@CopiesAvailable", updatedDVD.CopiesAvailable);
+                sqlCommand.Parameters.AddWithValue("@ImagePath",updatedDVD.ImagePath);
 
 
-                if (existingDVD != null)
-                {
-                    var updateQuery = "UPDATE DVDs SET Title=@Title,Genre=@Genre, Director = @Director,  ReleaseDate = @ReleaseDate,Description=@Description,CopiesAvailable = @CopiesAvailable,ImagePath=@ImagePath WHERE Id = @Id";
-                    using (var updateCommand = new SqlCommand(updateQuery, connection))
-                    {
-
-                        updateCommand.Parameters.AddWithValue("@Id", dvd.Id);
-                        updateCommand.Parameters.AddWithValue("@Title", dvd.Title);
-                        updateCommand.Parameters.AddWithValue("@Genre", dvd.Genre);
-                        updateCommand.Parameters.AddWithValue("@Director", dvd.Director);
-                        updateCommand.Parameters.AddWithValue("@ReleaseDate", dvd.ReleaseDate);
-                        updateCommand.Parameters.AddWithValue("@CopiesAvailable", dvd.CopiesAvailable);
-                        updateCommand.Parameters.AddWithValue("@ImagePath", dvd.ImagePath);
-
-
-                        connection.Open();
-                        await updateCommand.ExecuteNonQueryAsync();
-                        connection.Close();
-                    }
-                }
+                await sqlCommand.ExecuteNonQueryAsync();
+                return updatedDVD;
             }
-            return existingDVD;
         }
-
 
 
         public async Task<DVD> DeleteDVD(DVD DVDToDelete)
