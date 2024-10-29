@@ -15,8 +15,44 @@ namespace DVD_Rental_Website.Service
         {
             _customerRepository = customerRepository;
         }
+        //public async Task<CustomerResponseModel> AddCustomer(CustomerRequestModel customerRequestModel)
+        //{
+        //    var customer = new Customer
+        //    {
+        //        UserName = customerRequestModel.UserName,
+        //        Email = customerRequestModel.Email,
+        //        Nic = customerRequestModel.Nic,
+        //        Mobilenumber = customerRequestModel.Mobilenumber,
+        //        Password = customerRequestModel.Password
+        //    };
+
+        //    var createdCustomer = await _customerRepository.AddCustomer(customer);
+
+        //    return new CustomerResponseModel
+        //    {
+        //        Id = createdCustomer.Id,
+        //        UserName = createdCustomer.UserName,
+        //        Email = createdCustomer.Email,
+        //        Nic = createdCustomer.Nic,
+        //        Mobilenumber = createdCustomer.Mobilenumber,
+        //        Password = createdCustomer.Password
+        //    };
+        //}
         public async Task<CustomerResponseModel> AddCustomer(CustomerRequestModel customerRequestModel)
         {
+            // Check if the UserName or Nic already exists
+            var existingCustomerByUsername = await _customerRepository.GetCustomerByUserName(customerRequestModel.UserName);
+            if (existingCustomerByUsername != null)
+            {
+                throw new Exception("Username already exists.");
+            }
+
+            var existingCustomerByNic = await _customerRepository.GetCustomerByNic(customerRequestModel.Nic);
+            if (existingCustomerByNic != null)
+            {
+                throw new Exception("NIC already exists.");
+            }
+
             var customer = new Customer
             {
                 UserName = customerRequestModel.UserName,

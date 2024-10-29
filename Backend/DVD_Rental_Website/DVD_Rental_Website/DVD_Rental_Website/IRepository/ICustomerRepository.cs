@@ -8,6 +8,8 @@ namespace DVD_Rental_Website.IRepository
         Task<Customer> AddCustomer(Customer newCustomer);
         Task<Customer> GetCustomerById(Guid id);
         Task<List<Customer>> GetAllCustomers();
+        Task<Customer> GetCustomerByNic(int nic);
+        Task<Customer> GetCustomerByUserName(string userName);
         Task<Customer> UpdateCustomer(Customer updatedCustomer);
         Task<Customer> SoftDeleteCustomer(Customer customerToDelete);
     }

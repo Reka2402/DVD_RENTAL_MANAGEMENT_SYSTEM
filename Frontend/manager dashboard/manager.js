@@ -315,15 +315,6 @@ async function displayCustomers() {
     customers.forEach(async (customer) => {
       const row = document.createElement('tr');
 
-      // const rentalResponse = await fetch(`http://localhost:5000/api/Customer/rentals/customer/${customer.id}`);
-      // const customerRentals = await rentalResponse.json();
-
-      // let rentalHistory = '<ul>';
-      // customerRentals.forEach(rental => {
-      //   rentalHistory += `<li>Reg: ${rental.motordvdID}, Date: ${rental.rentalDate}</li>`;
-      // });
-      // rentalHistory += '</ul>';
-
       row.innerHTML = `
               <td>${customer.userName}</td>
               <td>${customer.nic}</td>
@@ -348,12 +339,6 @@ async function displayCustomers() {
 }
 
 displayCustomers();
-
-
-
-
-
-
 
 
 
@@ -421,60 +406,128 @@ function returnshow() {
 
 //overdueshow();
 
-// Function to load pending rental requests from localStorage
-function loadPendingRentals() {
-  const keys = Object.keys(localStorage);
-  const pendingRentals = keys.filter((key) => key.startsWith("rentItem"));
-  let foundPendingRental = false;
-  pendingRentals.forEach((keys) => {
-    const rentalRequest = JSON.parse(localStorage.getItem(keys));
-    // console.log(rentalRequest)
+// // Function to load pending rental requests from localStorage
+// function loadPendingRentals() {
+//   const keys = Object.keys(localStorage);
+//   const pendingRentals = keys.filter((key) => key.startsWith("rentItem"));
+//   let foundPendingRental = false;
+//   pendingRentals.forEach((keys) => {
+//     const rentalRequest = JSON.parse(localStorage.getItem(keys));
+//     // console.log(rentalRequest)
 
-    rentalRequest.forEach((e) => {
-      if (e.status === "pending") {
-        displayRentalRequest(e);
-        console.log("Displaying Rental Request:", e);
-        foundPendingRental = true;
-      }
-    }); //in the rental of the all array should assign in the rental request
-  });
-  // Check if no rental requests were found and display a message
-  const rentalBody = document.getElementById("rental-body");
-  if (!foundPendingRental) {
-    rentalBody.innerHTML =
-      '<tr><td colspan="6">No rental requests found.</td></tr>'; // Update table body to show the message
-  }
+//     rentalRequest.forEach((e) => {
+//       if (e.status === "pending") {
+//         displayRentalRequest(e);
+//         console.log("Displaying Rental Request:", e);
+//         foundPendingRental = true;
+//       }
+//     }); //in the rental of the all array should assign in the rental request
+//   });
+//   // Check if no rental requests were found and display a message
+//   const rentalBody = document.getElementById("rental-body");
+//   if (!foundPendingRental) {
+//     rentalBody.innerHTML =
+//       '<tr><td colspan="6">No rental requests found.</td></tr>'; // Update table body to show the message
+//   }
+//   // Show the rental section and hide other sections
+//   document.getElementById("dashboardcontainer").style.display = "none";
+//   document.getElementById("customerdcontainer").style.display = "none";
+//   document.getElementById("rentaldcontainer").style.display = "block";
+//   document.getElementById("overduedcontainer").style.display = "none";
+//   document.getElementById("returncontainer").style.display = "none";
+//   document.getElementById("reportcontainer").style.display = "none";
+//   document.getElementById("display").style.display = "none";
+// }
+// // Function to display each pending rental request in the manager's dashboard
+// function displayRentalRequest(rentalRequest) {
+//   console.log(rentalRequest);
+
+//   const rentalBody = document.getElementById("rental-body");
+
+//   rentalBody.innerHTML += `<tr>
+//         <td>${rentalRequest.NIC}</td>
+//         <td>${rentalRequest.user}</td>
+//         <td>${rentalRequest.title}</td>
+//         <td>${rentalRequest.status}</td>
+//         <td>${rentalRequest.rentdate}</td>
+//         <td> <button onclick="approveRental('${rentalRequest.dvdid}')">Approve</button>
+//         <button onclick="declineRental('${rentalRequest.dvdid}')">Decline</button></td>
+//         </tr>
+
+//     `;
+// }
+// Function to generate the rental report
+async function displayRentals() {
+  try {
+    const rentalResponse = await fetch('http://localhost:5272/api/Rental/GetAllRentals');
+    const rentals = await rentalResponse.json();
+       console.log("All rental details: ",rentals);
+
+    const customerResponse = await fetch('http://localhost:5272/api/Customer/Get All Customers');
+    const customers = await customerResponse.json();
+    console.log("All Customer Details: ",customers);
+
+    const dvdResponse = await fetch('http://localhost:5272/api/Manager/Get All DVDs');
+    const dvds = await dvdResponse.json();
+     console.log("Get all Dvd:  ",dvds);
   // Show the rental section and hide other sections
-  document.getElementById("dashboardcontainer").style.display = "none";
-  document.getElementById("customerdcontainer").style.display = "none";
-  document.getElementById("rentaldcontainer").style.display = "block";
-  document.getElementById("overduedcontainer").style.display = "none";
-  document.getElementById("returncontainer").style.display = "none";
-  document.getElementById("reportcontainer").style.display = "none";
-  document.getElementById("display").style.display = "none";
+      document.getElementById("dashboardcontainer").style.display = "none";
+      document.getElementById("customerdcontainer").style.display = "none";
+    document.getElementById("rentaldcontainer").style.display = "block"; 
+      document.getElementById("overduedcontainer").style.display = "none";
+      document.getElementById("returncontainer").style.display = "none";
+      document.getElementById("reportcontainer").style.display = "none";
+      document.getElementById("display").style.display = "none";
+
+
+    const rentalTable = document.getElementById('rental-body');
+    rentalTable.innerHTML = '';
+
+    rentals.forEach((rental) => {
+
+
+      const customer = customers.find(c => c.id === rental.customerID) || {};
+      const dvd = dvds.find(b => b.id === rental.dvdId) || { title: 'rental.title' };
+
+      if(rental.status === "Pending"){
+        const row = document.createElement('tr');
+        row.innerHTML = `
+                <td>${customer.userName}</td>
+                <td>${dvd.title}</td>
+                <td>${rental.rentalDate}</td>
+                <td>${rental.returndate}</td>
+                <td>${rental.status}</td>
+                <td>
+                    <button class="btn btn-success btn-sm" onclick="acceptRental('${rental.rentalId}')">Accept</button>
+                    <button class="btn btn-danger btn-sm" onclick="rejectRental('${rental.rentalId}')">Reject</button>
+                </td>
+            `;
+        rentalTable.appendChild(row);
+      }
+    });
+
+    if (rentals.length === 0) {
+      const row = document.createElement('tr');
+      row.innerHTML = '<td colspan="7">No rentals found.</td>';
+      rentalTable.appendChild(row);
+    }
+  } catch (error) {
+    console.error('Error fetching rentals:', error);
+    const rentalTable = document.getElementById('rental-body');
+    const row = document.createElement('tr');
+    row.innerHTML = '<td colspan="7">Error fetching rentals.</td>';
+    rentalTable.appendChild(row);
+  }
 }
-// Function to display each pending rental request in the manager's dashboard
-function displayRentalRequest(rentalRequest) {
-  console.log(rentalRequest);
 
-  const rentalBody = document.getElementById("rental-body");
 
-  rentalBody.innerHTML += `<tr>
-        <td>${rentalRequest.NIC}</td>
-        <td>${rentalRequest.user}</td>
-        <td>${rentalRequest.title}</td>
-        <td>${rentalRequest.status}</td>
-        <td>${rentalRequest.rentdate}</td>
-        <td> <button onclick="approveRental('${rentalRequest.dvdid}')">Approve</button>
-        <button onclick="declineRental('${rentalRequest.dvdid}')">Decline</button></td>
-        </tr>
 
-    `;
-}
+
+
 
 async function acceptRental(rentalId) {
   try {
-    const response = await fetch(`http://localhost:5000/api/Customer/Rental-Accept/${rentalId}`, {
+    const response = await fetch(`http://localhost:5272/api/Rental/Accept RentalById?id=${rentalId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -496,7 +549,7 @@ async function rejectRental(rentalId) {
 
 
   try {
-    const response = await fetch(`http://localhost:5000/api/Customer/RejectRental/${rentalId}`, {
+    const response = await fetch(`http://localhost:5272/api/Rental/RejectRentalById?rentalid=${rentalId}`, {
       method: 'DELETE', // Assuming DELETE is used for rejection
     });
 
@@ -511,95 +564,51 @@ async function rejectRental(rentalId) {
   }
 }
 
-function mainquantity(dvdid, quantity) {
-  const Dvds = JSON.parse(localStorage.getItem("Dvds")) || [];
 
-  // Find the DVD to update
-  const dvdToUpdate = Dvds.find((dvd) => dvd.id === dvdid);
 
-  if (dvdToUpdate) {
-    dvdToUpdate.quantity -= quantity;
-
-    // Ensure quantity doesn't go below zero
-    if (dvdToUpdate.quantity < 0) {
-      alert("Quantity cannot be negative");
-      dvdToUpdate.quantity = 0; // Set to zero or handle it as you see fit
-    }
-
-    // Save the updated DVD list back to local storage
-    localStorage.setItem("Dvds", JSON.stringify(Dvds));
-
-    console.log(`Updated Dvds after renting:`, Dvds);
-  } else {
-    console.log("Could not find DVD in the list.");
-  }
-}
-
-async function returnMotordvd() {
-  const nic = document.getElementById('return-nic').value;
-  const registrationNumber = document.getElementById('return-registration').value;
+async function returndvd() {
+  const customerid = document.getElementById('return-customer').value; // Trim whitespace
 
   try {
-    // Fetch all customers, dvd, and rentals
-    let [customersResponse, motordvdsResponse, rentalsResponse] = await Promise.all([
-      fetch('http://localhost:5000/api/Customer/all'),
-      fetch('http://localhost:5000/api/Manager/Alldvd'),
-      fetch('http://localhost:5000/api/Customer/GetAllRentals')
-    ]);
+    // Fetch all rentals for the specific customer
+    const rentalResponse = await fetch(`http://localhost:5272/api/Rental/GetAllRentalCustomers?customerId=${customerid}`);
+    const rentals = await rentalResponse.json();
+    console.log("Customer rental details: ", rentals);
 
-    const customers = await customersResponse.json();
-    const dvds = await dvdsResponse.json();
-    const rentals = await rentalsResponse.json();
-    console.log(dvds);
-    console.log(customers);
-
-    // Find the customer by NIC
-    const customer = customers.find(c => c.nic == nic);
-    console.log(rentals);
-
-
-    if (!customer) {
-      alert('Customer not found');
+    // Check if any rentals were found
+    if (!Array.isArray(rentals) || rentals.length === 0) {
+      alert('No rentals found for this customer.');
       return;
     }
 
-    // Find the  by registration number
-    const dvd = dvds.find(b => b.regnumber == registrationNumber);
-    if (!dvd) {
-      alert('dvd not found');
-      return;
-    }
+    // Loop through each rental and process the return
+    for (const rental of rentals) {
+      console.log(rental.rentalId)
+      // Ensure rentalId is properly accessed based on your response structure
+      const returndvdResponse = await fetch(`http://localhost:5272/api/Rental/returnDVDById/${rental.rentalId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
 
-    // Find the rental associated with the customer and dvd
-    const rental = rentals.find(r => r.customerID === customer.id && r.dvdid === dvd.id);
-
-
-
-    if (!rental) {
-      alert('Rental record not found or already processed');
-      return;
-    }
-
-    const returndvdResponse = await fetch(`http://localhost:5000/api/customer/dvd-return/${rental.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
+      if (!returndvdResponse.ok) {
+        alert(`Failed to process return for rental ID: ${rental.rentalId}`);
+        continue; // Skip to the next rental
       }
-    });
 
-    if (!returndvdResponse.ok) {
-      alert('Failed to process dvd return');
-      return;
+      alert(`DVD with rental ID: ${rental.rentalId} returned successfully!`);
     }
 
-    alert('dvd returned successfully!');
+    // Reset the form after processing
     document.getElementById('return-dvd-form').reset();
 
   } catch (error) {
-    console.error('Error during dvd return:', error);
+    console.error('Error during DVD return:', error);
     alert('An error occurred while processing the return.');
   }
 }
+
 
 function returnQuantity(dvdid, quantity) {
   const Dvds = JSON.parse(localStorage.getItem("Dvds")) || [];
@@ -628,106 +637,139 @@ function returnQuantity(dvdid, quantity) {
 }
 
 
-// Function to generate the rental report
-async function displayRentals() {
-  try {
-    const rentalResponse = await fetch('http://localhost:5000/api/Customer/GetAllRentals');
-    const rentals = await rentalResponse.json();
-    //   console.log(rentals);
-
-    const customerResponse = await fetch('http://localhost:5000/api/Customer/all');
-    const customers = await customerResponse.json();
-    // console.log(customers);
-
-    const dvdResponse = await fetch('http://localhost:5000/api/Manager/Alldvd');
-    const dvds = await dvdResponse.json();
-    // console.log(dvds);
-
-    const rentalTable = document.getElementById('rental-body');
-    rentalTable.innerHTML = '';
-
-    rentals.forEach((rental) => {
-
-
-      const customer = customers.find(c => c.id === rental.customerID) || { firstName: 'Unknown', nic: 'Unknown', mobilenumber: 'Unknown' };
-      const dvd = dvds.find(b => b.id === rental.motordvdID) || { regNumber: 'Unknown' };
-
-      const row = document.createElement('tr');
-      row.innerHTML = `
-              <td>${customer.nic}</td>
-              <td>${customer.firstName}</td>
-              <td>${customer.mobilenumber}</td>
-              <td>${dvd.regnumber}</td>
-              <td>${rental.rentalDate}</td>
-              <td>${rental.status}</td>
-              <td>
-                  <button class="btn btn-success btn-sm" onclick="acceptRental('${rental.id}')">Accept</button>
-                  <button class="btn btn-danger btn-sm" onclick="rejectRental('${rental.id}')">Reject</button>
-              </td>
-          `;
-      rentalTable.appendChild(row);
-    });
-
-    if (rentals.length === 0) {
-      const row = document.createElement('tr');
-      row.innerHTML = '<td colspan="7">No rentals found.</td>';
-      rentalTable.appendChild(row);
-    }
-  } catch (error) {
-    console.error('Error fetching rentals:', error);
-    const rentalTable = document.getElementById('rental-body');
-    const row = document.createElement('tr');
-    row.innerHTML = '<td colspan="7">Error fetching rentals.</td>';
-    rentalTable.appendChild(row);
-  }
-}
 
 // Function to generate the return report
-function displayReturnReport() {
-  const rentals = JSON.parse(localStorage.getItem("rentItem")) || [];
+async function displayReturnReport() {
+  try {
+    const rentalResponse = await fetch('http://localhost:5272/api/Rental/GetAllRentals');
+    const rentals = await rentalResponse.json();
+       console.log("All rental details: ",rentals);
+
+       const customerResponse = await fetch('http://localhost:5272/api/Customer/Get All Customers');
+       const customers = await customerResponse.json();
+       console.log("All Customer Details: ",customers);
+
+
+       
+    const dvdResponse = await fetch('http://localhost:5272/api/Manager/Get All DVDs');
+    const dvds = await dvdResponse.json();
+     console.log("Get all Dvd:  ",dvds);
+``   
+      
+
+
+
   const returnReportBody = document.getElementById("returnReportBody");
   returnReportBody.innerHTML = ""; // Clear previous entries
 
   rentals.forEach((rental) => {
-    if (rental.status === "Returned") {
-      const rentalDate = new Date(rental.rentdate);
-      const returnDate = new Date(rental.returnDate);
-      const actualReturnDate = new Date(rental.actualReturnDate);
 
+    const customer = customers.find(c => c.id === rental.customerID) || {};
+      const dvd = dvds.find(b => b.id === rental.dvdId) || { title: 'rental.title' };
+
+
+    if (rental.status === "Return") {
       returnReportBody.innerHTML += `
         <tr>
-          <td>${rental.rentalid}</td>
-          <td>${rental.user} (${rental.NIC})</td>
-          <td>${rental.title}</td>
-          <td>${rentalDate.toLocaleDateString()}</td>
-          <td>${returnDate.toLocaleDateString()}</td>
-          <td>${actualReturnDate.toLocaleDateString()}</td>
+          <td>${customer.userName}</td>
+          <td>${dvd.title}</td>
+          <td>${rental.rentalDate})</td>
+          <td>${rental.returndate}</td>
           <td>${rental.status}</td>
         </tr>
       `;
     }
   });
+}catch(error){
+  console.error('Error fetching rentals:', error);
+  const returnReportBody = document.getElementById('returnReportBody');
+  const row = document.createElement('tr');
+  row.innerHTML = '<td colspan="7">Error fetching rentals reports.</td>';
+  returnReportBody.appendChild(row);
+}
 
   // Hide rental report and show return report
   document.getElementById("returnReport").style.display = "block";
   document.getElementById("rentalReport").style.display = "none";
 }
 
-// Event listeners for buttons
-// document.getElementById("rentalReportBtn").addEventListener("click", displayRentalReport);
 
+async function displayrentalReport() {
+  try {
+    const rentalResponse = await fetch('http://localhost:5272/api/Rental/GetAllRentals');
+    const rentals = await rentalResponse.json();
+       console.log("All rental details: ",rentals);
+
+       const customerResponse = await fetch('http://localhost:5272/api/Customer/Get All Customers');
+       const customers = await customerResponse.json();
+       console.log("All Customer Details: ",customers);
+
+
+       
+    const dvdResponse = await fetch('http://localhost:5272/api/Manager/Get All DVDs');
+    const dvds = await dvdResponse.json();
+     console.log("Get all Dvd:  ",dvds);
+``   
+      
+
+
+
+  const rentalReportBody = document.getElementById("rentalReportBody");
+  rentalReportBody.innerHTML = ""; // Clear previous entries
+
+  rentals.forEach((rental) => {
+
+    const customer = customers.find(c => c.id === rental.customerID) || {};
+      const dvd = dvds.find(b => b.id === rental.dvdId) || {};
+
+
+    if (rental.status === "Rent") {
+      rentalReportBody.innerHTML += `
+        <tr>
+          <td>${customer.userName}</td>
+          <td>${dvd.title}</td>
+          <td>${rental.rentalDate})</td>
+          <td>${rental.returndate}</td>
+          <td>${rental.status}</td>
+        </tr>
+      `;
+    }
+  });
+}catch(error){
+  console.error('Error fetching rentals:', error);
+  const rentalReportBody = document.getElementById('rentalReportBody');
+  const row = document.createElement('tr');
+  row.innerHTML = '<td colspan="7">Error fetching rentals reports.</td>';
+  rentalReportBody.appendChild(row);
+}
+
+  // Hide rental report and show return report
+  document.getElementById("returnReport").style.display = "none";
+  document.getElementById("rentalReport").style.display = "block";
+}
+
+
+// Event listeners for buttons
+
+//For rental report
+document.getElementById("rentalReportBtn").addEventListener("click",  displayrentalReport);
+
+
+//for return report 
 document.getElementById("returnReportBtn").addEventListener("click", displayReturnReport);
 
 
 
 
-function loadReportCounts() {
-  const rentals = JSON.parse(localStorage.getItem("rentItem")) || [];
+async function loadReportCounts() {
+  const rentalResponse = await fetch('http://localhost:5272/api/Rental/GetAllRentals');
+  const rentals = await rentalResponse.json();
+     console.log("All rental details: ",rentals);
+
 
   // Initialize counters for different rental statuses
   let totalPending = 0;
   let totalApproved = 0;
-  let totalDeclined = 0;
   let totalReturned = 0;
   let totalRentals = rentals.length; // Total rental count
 
@@ -735,11 +777,10 @@ function loadReportCounts() {
   rentals.forEach(rental => {
     if (rental.status === "Pending") {
       totalPending++;
-    } else if (rental.status === "Approved") {
+    } else if (rental.status === "Rent") {
       totalApproved++;
-    } else if (rental.status === "Declined") {
-      totalDeclined++;
-    } else if (rental.status === "Returned") {
+    } 
+     else if (rental.status === "Return") {
       totalReturned++;
     }
   });
@@ -747,7 +788,6 @@ function loadReportCounts() {
   // Display the counts in the respective HTML elements
   document.getElementById("pendingCount").innerHTML = `Total Pending Rentals: ${totalPending}`;
   document.getElementById("approvedCount").innerHTML = `Total Approved Rentals: ${totalApproved}`;
-  document.getElementById("declinedCount").innerHTML = `Total Declined Rentals: ${totalDeclined}`;
   document.getElementById("returnCount").innerHTML = `Total Returns: ${totalReturned}`;
   document.getElementById("totalRentalCount").innerHTML = `Total Rentals: ${totalRentals}`; // Display total rental count
 }
