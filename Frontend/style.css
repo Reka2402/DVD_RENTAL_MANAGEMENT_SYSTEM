@@ -161,7 +161,7 @@ body {
 }
 
 .rent h2 {
-    margin-bottom: 5rem;
+    /* margin-bottom: 5rem; */
     color: #850e0e;
     text-shadow: 2px 2px 4px white;
     text-align: center;
@@ -172,62 +172,9 @@ body {
     display: flex;
     justify-content: space-around;
     height: 100%;
+    
 }
 
-.card img {
-    width: 100%;
-    height: 60%;
-    border-bottom: 1px solid #ddd;
-    /* padding: 16px; */
-}
-
-.card {
-    height: 50%;
-
-}
-
-.card-content {
-    font-size: 1em;
-    /* Slightly larger text */
-    color: #555;
-    /* Darker text color for readability */
-    text-align: center;
-    /* Center-align text and button */
-}
-
-
-.card-content h2 {
-    font-size: 18px;
-    /* margin-top: 0; */
-    color: #1f242d;
-    text-align: center;
-    margin-bottom: 0.5rem;
-    /* Adjusted margin */
-
-}
-
-.card-content p {
-    font-size: 14px;
-    color: #1e1616;
-    text-align: center;
-    line-height: 1.5rem;
-    margin-top: 0;
-    /* Ensure no top margin */
-
-}
-
-.card {
-    width: 250px;
-    background-color: #f0f0f0;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(207, 36, 36, 0.1);
-    margin-bottom: 10px;
-    margin-top: 10px;
-    display: inline-block;
-    border: #850e0e solid 0.5px;
-    margin-left: 10px;
-    padding: 15px;
-}
 
 .request-btn {
     background-color: #850e0e;
@@ -698,3 +645,116 @@ body {
     transition: color 0.3s ease;
     /* Smooth transition */
 }
+
+/* card........................ */
+/* .card img {
+    width: 100%;
+    height: 60%;
+
+    border-bottom: 1px solid #ddd;
+    
+}
+
+.card {
+    height: 50%;
+
+}
+
+.card-content {
+    font-size: 1em;
+    
+    color: #555;
+   
+    text-align: center;
+    
+}
+
+
+.card-content h2 {
+    
+    color: #1f242d;
+    text-align: center;
+    margin-bottom: 0.5rem;
+   
+
+}
+
+.card-content p {
+    font-size: 14px;
+    color: #1e1616;
+    text-align: center;
+    line-height: 1.5rem;
+    margin-top: 0;
+   
+
+}
+
+.card {
+    width: 250px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(207, 36, 36, 0.1);
+    margin-bottom: 10px;
+    margin-top: 10px;
+    display: inline-block;
+    border: #850e0e solid 0.5px;
+    margin-left: 10px;
+    padding: 15px;
+} */
+
+
+.card-content1 {
+    background-color: #f8f9fa; /* Light background for contrast */
+    border: 1px solid #ced4da; /* Subtle border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Spacing inside the card */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    max-width: 300px; /* Limit the width */
+    margin: 15px; /* Margin around the card */
+    transition: transform 0.2s; /* Smooth scaling effect */
+}
+
+.card-content1:hover{
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.image-container1 {
+    text-align: center; /* Center the image */
+    margin-bottom: 15px; /* Space below the image */
+}
+
+.item-image1 {
+    max-width: 100%; /* Responsive image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Rounded image corners */
+    
+}
+
+.item-title1 {
+    font-size: 1.5em; /* Larger font size */
+    color: black; /* Darker text color */
+    /* margin: 50px 0; Reduced margin above and below */
+}
+
+.item-description1 {
+    font-size: 0.9em; /* Slightly smaller font size */
+    color: black; /* Gray text color */
+    margin: 5px 0; /* Reduced margin above and below */
+}
+
+.rent-button1 {
+    background-color:#850e0e; /* Bootstrap primary color */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Spacing inside the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1em; /* Font size */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.rent-button1:hover {
+    background-color:black; /* Darker shade on hover */
+}
+
+

@@ -52,7 +52,7 @@ function showdvd() {
     Dvds.forEach((Dvd) => {
       // Create a card for each DVD
       const dvdCard = document.createElement("div");
-      dvdCard.classList.add("card");
+      dvdCard.classList.add("card1");
       dvdCard.id = Dvd.id; // Set the ID for the card
       console.log("card id :" ,Dvd.id)
 
@@ -66,16 +66,17 @@ function showdvd() {
 
       // Set the inner HTML for the card
       dvdCard.innerHTML = `
-        <div class="image-container">${imagesHtml || '<img src="default-image.jpg" alt="Default Image" class="item-image" />'}</div>
-        <div class="card-content">
-          <h2 class="item-title">Movie Name: ${Dvd.title}</h2>
-          <p class="item-description">
+        
+        <div class="card-content1">
+        <div class="image-container1">${imagesHtml}</div>
+          <h2 class="item-title1">Movie Name: ${Dvd.title}</h2>
+          <p class="item-description1">
             Genre: ${Dvd.genre} <br>
             Release Date: ${Dvd.releaseDate} <br>
             Director: ${Dvd.director}<br>
             Quantity:${Dvd.copiesAvailable}
           </p>
-          <button class="rent-button" onclick="toggleRentButton(this)">Rent</button>
+          <button class="rent-button1" onclick="toggleRentButton(this)">Rent</button>
         </div>
       `;
 
