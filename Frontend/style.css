@@ -1,154 +1,178 @@
 body {
-    margin: 0; /* Remove default body margin */
-    padding: 0; /* Remove default body padding */
-    font-family: Arial, sans-serif; /* Set a default font for the page */
+    margin: 0;
+    /* Remove default body margin */
+    padding: 0;
+    /* Remove default body padding */
+    font-family: Arial, sans-serif;
+    /* Set a default font for the page */
 }
+
 .header {
-    display: flex; /* Use flexbox for layout */
-    align-items: center; /* Center items vertically */
-    justify-content: space-between; /* Space between logo and navbar */
-    background-color: #000000; /* Header background color */
-    padding: 20px 30px; /* Padding around the header */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
+    display: flex;
+    /* Use flexbox for layout */
+    align-items: center;
+    /* Center items vertically */
+    justify-content: space-between;
+    /* Space between logo and navbar */
+    background-color: #850e0e;
+    /* Header background color */
+    padding: 20px 30px;
+    /* Padding around the header */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Add a subtle shadow for depth */
 }
 
 .logo {
-    height: 60px; /* Adjust logo height */
-    width: auto; /* Maintain aspect ratio */
+    /* height: 60px; 
+    width: auto;  */
+    color: white;
+    font-family: cursive;
 }
 
 .navbar {
-    display: flex; /* Use flexbox for navbar items */
-    gap: 30px; /* Space between navbar links */
+    display: flex;
+    /* Use flexbox for navbar items */
+    gap: 30px;
+    /* Space between navbar links */
 }
 
 .navbar a {
-    color: #ecf0f1; /* Light text color */
-    text-decoration: none; /* Remove underline */
-    font-size: 18px; /* Font size for navbar links */
-    font-weight: 500; /* Slightly bolder text for emphasis */
-    transition: color 0.3s ease; /* Smooth color transition */
+    color: #ecf0f1;
+    /* Light text color */
+    text-decoration: none;
+    /* Remove underline */
+    font-size: 18px;
+    /* Font size for navbar links */
+    font-weight: 500;
+    /* Slightly bolder text for emphasis */
+    transition: color 0.3s ease;
+    /* Smooth color transition */
 }
 
 .navbar a:hover,
 .navbar a.active {
-    color: #3498db; /* Change color on hover and for active link */
+    color: #ffffff;
+    /* Change color on hover and for active link */
 }
 
 #menu-icon {
-    font-size: 26px; /* Icon size */
-    color: #ecf0f1; /* Icon color */
-    cursor: pointer; /* Change cursor to pointer on hover */
+    font-size: 26px;
+    /* Icon size */
+    color: #ecf0f1;
+    /* Icon color */
+    cursor: pointer;
+    /* Change cursor to pointer on hover */
 }
 
 /* Slider */
 .home {
-    position: relative; /* Positioning for the slider */
+    position: relative;
+    /* Positioning for the slider */
     /*padding: 50px 20px;  Padding for the section */
-    text-align: center; /* Center-align text */
-    background-color: #f9f9f9; /* Light background color */
+    text-align: center;
+    /* Center-align text */
+    background-color: #f9f9f9;
+    /* Light background color */
 }
 
 .slider {
-    position: relative; /* Positioning for the slider */
-    overflow: hidden; /* Hide overflow for sliding effect */
-    height: 500px; /* Set a specific height for the slider */
+    background-image: url("./img/Movie/bg.jpg");
+    position: relative;
+    /* Positioning for the slider */
+    overflow: hidden;
+    /* Hide overflow for sliding effect */
+    height: 500px;
+    /* Set a specific height for the slider */
+
 }
 
-.slides {
-    display: flex; /* Use flexbox for horizontal layout */
-    transition: transform 0.5s ease; /* Smooth transition for sliding */
-    opacity: 10;
-}
-
-.slide {
-    min-width: 100%; /* Each slide takes full width */
-    height: auto; /* Maintain aspect ratio */
-}
-
-.pagination {
-    position: absolute; /* Position dots over the slider */
-    bottom: 20px; /* Position at the bottom */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Center alignment */
-    display: flex; /* Flexbox for dots */
-    gap: 10px; /* Space between dots */
-}
-
-.dot {
-    height: 10px; /* Height of dots */
-    width: 10px; /* Width of dots */
-    background-color: #bbb; /* Gray color for inactive dots */
-    border-radius: 50%; /* Circular dots */
-    display: inline-block; /* Inline block for spacing */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s; /* Transition for background color */
-}
-
-.dot.active {
-    background-color: #3498db; /* Blue color for active dot */
-}
 
 .description {
-    position: absolute; /* Positioning for text overlay */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Center alignment */
-    color: white; /* White text color */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Text shadow for readability */
+    position: absolute;
+    /* Positioning for text overlay */
+    top: 50%;
+    /* Center vertically */
+    left: 50%;
+    /* Center horizontally */
+    transform: translate(-50%, -50%);
+    /* Center alignment */
+    color: white;
+    /* White text color */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    /* Text shadow for readability */
 }
 
 .description h1 {
-    font-size: 60px; /* Font size for title */
-    margin-bottom: 15px; /* Space below the title */
+    font-size: 60px;
+    /* Font size for title */
+    font-family: cursive;
+    margin-bottom: 15px;
+    /* Space below the title */
 }
 
 .description p {
-    font-size: 30px; /* Font size for description */
-    color:#3498db; /* White text color */
-    line-height: 1.6; /* Improved line height for readability */
+    font-size: 25px;
+    /* Font size for description */
+    color: white;
+    /* White text color */
+    line-height: 1.6;
+    /* Improved line height for readability */
+    text-align: justify;
 }
 
 .signup-container {
-    position: absolute; /* Positioning for buttons */
-    bottom: 20px; /* Position near the bottom of the slider */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Center alignment */
-    display: flex; /* Flexbox for button layout */
-    gap: 20px; /* Space between buttons */
+    position: absolute;
+    /* Positioning for buttons */
+    bottom: 20px;
+    /* Position near the bottom of the slider */
+    left: 50%;
+    /* Center horizontally */
+    transform: translateX(-50%);
+    /* Center alignment */
+    display: flex;
+    /* Flexbox for button layout */
+    gap: 20px;
+    /* Space between buttons */
 }
 
 .btn {
-    background-color: #3498db; /* Button background color */
-    color: #fff; /* Button text color */
-    padding: 10px 20px; /* Button padding */
-    border-radius: 5px; /* Rounded corners for button */
-    text-decoration: none; /* Remove underline */
-    transition: background-color 0.3s; /* Transition for background color */
+    background-color: #850e0e;
+    /* Button background color */
+    color: #fff;
+    /* Button text color */
+    padding: 10px 20px;
+    /* Button padding */
+    border-radius: 5px;
+    /* Rounded corners for button */
+    text-decoration: none;
+    /* Remove underline */
+    transition: background-color 0.3s;
+    /* Transition for background color */
 }
 
 .btn:hover {
-    background-color: #2980b9; /* Darker shade on hover */
+    background-color: #850e0e;
+    /* Darker shade on hover */
 }
-.rent { 
-    /* background-color: var(--second-bg-color); */
-    /* background-image: url(img/upcoming-bg.png); */
-    /* background-image: linear-gradient(to bottom, rgba(255,0,0,0), #2980b9); */
-     height: 70vh; 
- } 
 
- .rent h2 {
-    margin-bottom: 4rem;
+.rent {
+    background-color: white;
+    height: 70vh;
+}
+
+.rent h2 {
+    margin-bottom: 5rem;
+    color: #850e0e;
+    text-shadow: 2px 2px 4px white;
     text-align: center;
-    color: #0056b3;
-    text-shadow: 2px 2px 4px #000000;
+    padding: 15px;
 }
 
 .rent-container {
-   display: flex;
-   justify-content: space-around;
-   height: 100%;
-} 
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+}
 
 .card img {
     width: 100%;
@@ -157,14 +181,18 @@ body {
     /* padding: 16px; */
 }
 
-.card{
+.card {
     height: 50%;
+
 }
 
 .card-content {
-   font-size: 1em; /* Slightly larger text */
-   color: #555; /* Darker text color for readability */
-   text-align: center; /* Center-align text and button */
+    font-size: 1em;
+    /* Slightly larger text */
+    color: #555;
+    /* Darker text color for readability */
+    text-align: center;
+    /* Center-align text and button */
 }
 
 
@@ -173,15 +201,18 @@ body {
     /* margin-top: 0; */
     color: #1f242d;
     text-align: center;
-    margin-bottom: 0.5rem; /* Adjusted margin */
-    
+    margin-bottom: 0.5rem;
+    /* Adjusted margin */
+
 }
 
 .card-content p {
     font-size: 14px;
     color: #1e1616;
     text-align: center;
-    margin-top: 0; /* Ensure no top margin */
+    line-height: 1.5rem;
+    margin-top: 0;
+    /* Ensure no top margin */
 
 }
 
@@ -189,278 +220,481 @@ body {
     width: 250px;
     background-color: #f0f0f0;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(207, 36, 36, 0.1);
     margin-bottom: 10px;
     margin-top: 10px;
     display: inline-block;
-    border: black solid 0.5px;
+    border: #850e0e solid 0.5px;
     margin-left: 10px;
+    padding: 15px;
 }
 
 .request-btn {
-    background-color: #0056b3; /* Button color */
-    color: white; /* Text color */
-    border: none; /* Remove border */
-    border-radius: 5px; /* Rounded corners */
-    padding: 10px 20px; /* Padding for size */
-    font-size: 16px; /* Font size */
-    cursor: pointer; /* Pointer on hover */
-    transition: background-color 0.3s ease; /* Smooth transition */
-    text-align: center; /* Center text */
-    display: inline-block; /* Align button correctly */
-    text-decoration: none; /* Remove underline */
-    margin-top: 1rem; /* Add some space above the button */
+    background-color: #850e0e;
+    /* Button color */
+    color: white;
+    /* Text color */
+    border: none;
+    /* Remove border */
+    border-radius: 5px;
+    /* Rounded corners */
+    padding: 10px 20px;
+    /* Padding for size */
+    font-size: 16px;
+    /* Font size */
+    cursor: pointer;
+    /* Pointer on hover */
+    transition: background-color 0.3s ease;
+    /* Smooth transition */
+    text-align: center;
+    /* Center text */
+    display: inline-block;
+    /* Align button correctly */
+    text-decoration: none;
+    /* Remove underline */
+    margin-top: 1rem;
+    /* Add some space above the button */
     margin-bottom: 2rem
-
 }
 
 .request-btn:hover {
-    background-color: #004494; /* Darker shade on hover */
+    background-color: #850e0e;
+    /* Darker shade on hover */
 }
 
 .request-btn:active {
-    background-color: #003366; /* Even darker shade on click */
+    background-color: #000000;
+    /* Even darker shade on click */
 }
 
 
 
 .about {
-    display: flex; /* Use flexbox for layout */
-    align-items: center; /* Center items vertically */
-    background-color: #f9f9f9; /* Light background color */
+    display: flex;
+    /* Use flexbox for layout */
+    align-items: center;
+    /* Center items vertically */
+    background-color: #f9f9f9;
+    /* Light background color */
+    background-image: url(./img/about.jpg);
+    background-size: cover;
 }
 
 .about-img {
-    flex: 1; /* Allow image section to take equal space */
-    text-align: center; /* Center the image */
+    flex: 1;
+    /* Allow image section to take equal space */
+    text-align: center;
+    /* Center the image */
 }
 
 .about-img img {
-    max-width: 100%; /* Responsive image */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 10px; /* Rounded corners for the image */
+    max-width: 100%;
+    /* Responsive image */
+    height: auto;
+    /* Maintain aspect ratio */
+    border-radius: 10px;
+    /* Rounded corners for the image */
 }
 
 .about-content {
-    flex: 1; /* Allow content section to take equal space */
-    padding: 20px; /* Padding inside content */
-    text-align: left; /* Left-align text */
+    flex: 1;
+    /* Allow content section to take equal space */
+    padding: 20px;
+    /* Padding inside content */
+    text-align: left;
+    /* Left-align text */
+    background-color: #000000;
+    text-align: justify;
+
 }
 
 .heading {
-    font-size: 32px; /* Font size for the heading */
-    margin-bottom: 20px; /* Space below the heading */
-    color: #333; /* Dark color for the heading */
+    font-size: 32px;
+    /* Font size for the heading */
+    margin-bottom: 20px;
+    /* Space below the heading */
+    color: white;
+    /* Dark color for the heading */
 }
 
 .heading span {
-    color: #3498db; /* Highlighted color for the span */
+    color: white;
+    /* Highlighted color for the span */
 }
 
 .about-content h3 {
-    font-size: 24px; /* Font size for subheading */
-    margin: 15px 0; /* Space around the subheading */
-    color: #555; /* Darker gray for subheading */
+    font-size: 30px;
+    /* Font size for subheading */
+    margin: 15px 0;
+    /* Space around the subheading */
+    color: white;
+    /* Darker gray for subheading */
 }
 
 .about-content p {
-    color: #666; /* Gray color for paragraph text */
-    line-height: 1.6; /* Improved line height for readability */
-    margin-bottom: 20px; /* Space below the paragraph */
+    color: white;
+    /* Gray color for paragraph text */
+    line-height: 1.6;
+    /* Improved line height for readability */
+    margin-bottom: 20px;
+    /* Space below the paragraph */
 }
 
 .btn {
-    display: inline-block; /* Make button inline */
-    background-color: #3498db; /* Button background color */
-    color: #fff; /* Button text color */
-    padding: 10px 20px; /* Button padding */
-    border-radius: 5px; /* Rounded corners for button */
-    text-decoration: none; /* Remove underline */
-    transition: background-color 0.3s; /* Transition for background color */
+    display: inline-block;
+    /* Make button inline */
+    background-color: #0f0f0f;
+    /* Button background color */
+    color: #fff;
+    /* Button text color */
+    padding: 10px 20px;
+    /* Button padding */
+    border-radius: 5px;
+    /* Rounded corners for button */
+    text-decoration: none;
+    /* Remove underline */
+    transition: background-color 0.3s;
+    /* Transition for background color */
 }
 
 .btn:hover {
-    background-color: #2980b9; /* Darker shade on hover */
+    background-color: black;
+    /* Darker shade on hover */
 }
 
 
 .service {
-    background-color: #f4f4f4; /* Light gray background */
-    padding: 50px 20px; /* Padding for the section */
-    text-align: center; /* Center-align text */
+    background-color: #f4f4f4;
+    /* Light gray background */
+    padding: 50px 20px;
+    /* Padding for the section */
+    text-align: center;
+    /* Center-align text */
 }
 
 .heading {
-    font-size: 32px; /* Font size for the heading */
-    margin-bottom: 40px; /* Space below the heading */
-    color: #333; /* Dark color for the heading */
+    font-size: 32px;
+    /* Font size for the heading */
+    margin-bottom: 40px;
+    /* Space below the heading */
+    color: #850e0e;
+    text-shadow: 2px 2px 4px white;
+    text-align: center;
 }
 
 .service-container {
-    display: flex; /* Use flexbox for layout */
-    justify-content: center; /* Center the service boxes */
-    gap: 30px; /* Space between service boxes */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+
+    display: flex;
+    /* Use flexbox for layout */
+    justify-content: center;
+    /* Center the service boxes */
+    gap: 30px;
+    /* Space between service boxes */
+    flex-wrap: wrap;
+    /* Allow wrapping on smaller screens */
 }
 
-.service-box {
-    background-color: #fff; /* White background for service box */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    padding: 30px; /* Padding inside the box */
-    width: 300px; /* Fixed width for boxes */
-    transition: transform 0.3s; /* Transition effect */
+.service-box1 {
+    background-image: url(img/Other/service2.jpg);
+    background-size: cover;
+    background-color: #fff;
+    /* White background for service box */
+    border-radius: 10px;
+    /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+    padding: 30px;
+    /* Padding inside the box */
+    width: 500px;
+    /* Fixed width for boxes */
+    transition: transform 0.3s;
+    /* Transition effect */
+
+}
+
+.service-box2 {
+    background-image: url(img/Other/service11.jpg);
+    background-size: cover;
+    background-color: #fff;
+    /* White background for service box */
+    border-radius: 10px;
+    /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+    padding: 30px;
+    /* Padding inside the box */
+    width: 500px;
+    /* Fixed width for boxes */
+    transition: transform 0.3s;
+    /* Transition effect */
+
 }
 
 .service-box:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
+    transform: translateY(-5px);
+    /* Lift effect on hover */
 }
 
-.service-box i {
-    font-size: 40px; /* Icon size */
-    color: #3498db; /* Icon color */
-    margin-bottom: 15px; /* Space below the icon */
+.service-box1 i {
+    font-size: 40px;
+    /* Icon size */
+    color: #850e0e;
+    /* Icon color */
+    text-shadow: 2px 2px 4px white;
+    margin-bottom: 15px;
+    /* Space below the icon */
 }
 
-.service-box h3 {
-    font-size: 20px; /* Font size for service title */
-    margin: 15px 0; /* Space around the title */
+.service-box2 i {
+    font-size: 40px;
+    /* Icon size */
+    color: black;
+    /* Icon color */
+    text-shadow: 2px 2px 4px white;
+    margin-bottom: 15px;
+    /* Space below the icon */
 }
 
-.service-box p {
-    color: #555; /* Dark gray color for text */
-    margin-bottom: 20px; /* Space below the paragraph */
+.service-box1 h3 {
+    font-size: 20px;
+    /* Font size for service title */
+    margin: 15px 0;
+    /* Space around the title */
+    color: white;
+    text-shadow: 2px 2px 4px #850e0e;
+    font-family: cursive;
+}
+
+.service-box2 h3 {
+    font-size: 20px;
+    /* Font size for service title */
+    margin: 15px 0;
+    /* Space around the title */
+    color: white;
+    text-shadow: 2px 2px 4px white;
+    font-family: cursive;
+}
+
+.service-box1 p {
+    color: white;
+    /* Dark gray color for text */
+    text-shadow: 2px 2px 4px #850e0e;
+    line-height: 1.6rem;
+    margin-bottom: 20px;
+    /* Space below the paragraph */
+    text-align: justify;
+    font-size: larger;
+}
+
+.service-box2 p {
+    color: white;
+    /* Dark gray color for text */
+    text-shadow: 2px 2px 4px white;
+    line-height: 1.6rem;
+    text-align: justify;
+    margin-bottom: 20px;
+    /* Space below the paragraph */
+    font-size: larger;
 }
 
 .btn {
-    display: inline-block; /* Make button inline */
-    background-color: #3498db; /* Button background color */
-    color: #fff; /* Button text color */
-    padding: 10px 20px; /* Button padding */
-    border-radius: 5px; /* Rounded corners for button */
-    text-decoration: none; /* Remove underline */
-    transition: background-color 0.3s; /* Transition for background color */
+    display: inline-block;
+    /* Make button inline */
+    background-color: #850e0e;
+    /* Button background color */
+    color: #fff;
+    /* Button text color */
+    padding: 10px 20px;
+    /* Button padding */
+    border-radius: 5px;
+    /* Rounded corners for button */
+    text-decoration: none;
+    /* Remove underline */
+    transition: background-color 0.3s;
+    /* Transition for background color */
 }
 
 .btn:hover {
-    background-color: #2980b9; /* Darker shade on hover */
+    background-color: black
+        /* Darker shade on hover */
 }
 
 .BCard {
-    margin-top: 50px; /* Space above how it works section */
+    margin-top: 50px;
+    /* Space above how it works section */
+
 }
 
 .BCard h1 {
-    font-size: 28px; /* Font size for the HOW IT WORKS title */
-    margin-bottom: 30px; /* Space below the title */
+    font-size: 28px;
+    /* Font size for the HOW IT WORKS title */
+    margin-bottom: 30px;
+    /* Space below the title */
 }
 
 .banner-image {
-    display: flex; /* Use flexbox for layout */
-    justify-content: center; /* Center the banner cards */
-    gap: 30px; /* Space between banner cards */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    display: flex;
+    /* Use flexbox for layout */
+    justify-content: center;
+    /* Center the banner cards */
+    gap: 30px;
+    /* Space between banner cards */
+    flex-wrap: wrap;
+    /* Allow wrapping on smaller screens */
 }
 
 .banner-card {
-    background-color: #2980b9; /* White background for banner card */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    padding: 20px; /* Padding inside the card */
-    text-align: center; /* Center-align text */
-    width: 200px; /* Fixed width for cards */
+    background-color: #850e0e;
+    /* White background for banner card */
+    border-radius: 10px;
+    /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+    padding: 20px;
+    /* Padding inside the card */
+    text-align: center;
+    /* Center-align text */
+    width: 200px;
+    /* Fixed width for cards */
 }
 
 .banner-card img {
-    width: 80px; /* Fixed width for images */
-    height: auto; /* Maintain aspect ratio */
-    margin-bottom: 15px; /* Space below the image */
+    width: 80px;
+    /* Fixed width for images */
+    height: auto;
+    /* Maintain aspect ratio */
+    margin-bottom: 15px;
+    /* Space below the image */
 }
 
 .banner-card h2 {
-    font-size: 18px; /* Font size for step title */
-    margin: 10px 0; /* Space around the title */
+    font-size: 18px;
+    /* Font size for step title */
+    margin: 10px 0;
+    /* Space around the title */
+    color: white;
 }
 
 .banner-card p {
-    color: black; /* Dark gray for text */
+    color: white;
+    /* Dark gray for text */
 }
 
 
 
 .reviews {
-    background-color: #f9f9f9; /* Light background color */
-    padding: 50px 20px; /* Padding for the section */
-    text-align: center; /* Center-align text */
+    background-color: #f9f9f9;
+    /* Light background color */
+    padding: 50px 20px;
+    /* Padding for the section */
+    text-align: center;
+    /* Center-align text */
 }
 
 .heading h3 {
-    font-size: 28px; /* Font size for the heading */
-    margin-bottom: 20px; /* Space below the heading */
+    font-size: 28px;
+    /* Font size for the heading */
+    margin-bottom: 20px;
+    /* Space below the heading */
 }
 
 .heading span {
-    color: #3498db; /* Highlighted color for the span */
+    color: rgb(0, 0, 0);
+    /* Highlighted color for the span */
 }
 
 .reviews-container {
-    display: flex; /* Use flexbox for layout */
-    flex-wrap: wrap; /* Allow wrapping of boxes */
-    justify-content: center; /* Center the boxes */
-    gap: 30px; /* Space between boxes */
+    display: flex;
+    /* Use flexbox for layout */
+    flex-wrap: wrap;
+    /* Allow wrapping of boxes */
+    justify-content: center;
+    /* Center the boxes */
+    gap: 30px;
+    /* Space between boxes */
+
 }
 
 .box {
-    background-color: #fff; /* White background for each review box */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    padding: 20px; /* Padding inside the box */
-    width: 300px; /* Fixed width for boxes */
-    text-align: left; /* Left-align text within the box */
+    background-color: #fff;
+    /* White background for each review box */
+    border-radius: 10px;
+    /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+    padding: 40px;
+    /* Padding inside the box */
+    width: 300px;
+    /* Fixed width for boxes */
+    text-align: justify;
+    /* Left-align text within the box */
 }
 
 .rev-img img {
-    width: 60px; /* Fixed width for the avatar */
-    height: 60px; /* Fixed height for the avatar */
-    border-radius: 50%; /* Circular avatar */
-    margin-bottom: 15px; /* Space below the image */
+    width: 60px;
+    /* Fixed width for the avatar */
+    height: 60px;
+    /* Fixed height for the avatar */
+    border-radius: 50%;
+    /* Circular avatar */
+    margin-bottom: 15px;
+    /* Space below the image */
 }
 
 .box h1 {
-    font-size: 18px; /* Font size for customer name */
-    margin-bottom: 10px; /* Space below the name */
+    font-size: 18px;
+    /* Font size for customer name */
+    margin-bottom: 10px;
+    /* Space below the name */
 }
 
 .stars {
-    color: #f39c12; /* Gold color for stars */
-    margin-bottom: 10px; /* Space below the stars */
+    color: #f39c12;
+    /* Gold color for stars */
+    margin-bottom: 10px;
+    /* Space below the stars */
 }
 
+ 
+
 .box p {
-    line-height: 1.6; /* Improved line height for readability */
-    font-size: 14px; /* Font size for the review text */
-    color: #555; /* Dark gray color for the text */
+    line-height: 1.6;
+    /* Improved line height for readability */
+    font-size: 14px;
+    /* Font size for the review text */
+    color: #555;
+    /* Dark gray color for the text */
 }
 
 
 .footer {
-    background-color: #000000; /* Header background color */
-    color: #ecf0f1; /* Light text color */
-    text-align: center; /* Center the text */
-    padding: 20px; /* Add some padding */
-    font-family: Arial, sans-serif; /* Set a clean font */
+    background-image: url("./img/Movie/bg.jpg");
+    color: #ecf0f1;
+    /* Light text color */
+    text-align: center;
+    /* Center the text */
+    padding: 40px;
+    /* Add some padding */
+    font-family: Arial, sans-serif;
+    /* Set a clean font */
+    display: flex;
+    justify-content: space-around;
+    font-weight: bolder;
 }
 
 .footer div {
-    margin: 10px 0; /* Space between divs */
+    margin: 10px 0;
+    /* Space between divs */
 }
 
 .footer p {
-    margin: 0; /* Remove default margin from paragraphs */
+    margin: 0;
+    /* Remove default margin from paragraphs */
 }
 
 .footer p:hover {
-    color: #3498db; /* Change color on hover */
-    transition: color 0.3s ease; /* Smooth transition */
+    color: #850e0e;
+    /* Change color on hover */
+    transition: color 0.3s ease;
+    /* Smooth transition */
 }
-

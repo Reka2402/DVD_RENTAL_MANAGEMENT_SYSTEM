@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- Head -->
+
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="x-icon" href="logo.png">
@@ -15,16 +16,17 @@
 
 </head>
 <!-- BODY -->
+
 <body>
     <!-- HEADER(LOGO,NAVBAR) -->
     <header class="header">
         <!-- <img src="../pngwing.com.png" alt="logo" class="logo"> -->
-        
-        <img src="../img/logo.png" alt="logo" class="logo">
 
+        <!-- <img src="../img/logo.png" alt="logo" class="logo"> -->
+        <h1 class="logo">CineWorld</h1>
 
         <!-- navbar -->
-        <nav class="navbar" >
+        <nav class="navbar">
             <a href="#Rent">Home</a>
             <a href="#reviews">Review</a>
             <a href="#Profile" id="userInfo">Profile</a>
@@ -79,6 +81,22 @@
                     <button type="button" id="updateButton" class="update-btn">Update Details</button>
                     <div id="msg" class="box"></div>
                 </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- POPUP SHOWS WHEN CLICK ON THE RENT BUTTON -->
+    <section id="rentpopup" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closebutton">&times;</span>
+            <div class="profile-container">
+                <!-- Rent Popup Details -->
+                <div id="popup-details">
+                    <img id="popup-image" src="" alt="Item Image">
+                    <h2 id="popup-title"></h2>
+                    <p id="popup-description"></p>
+                    <button class="rent-confirm-btn" id="saveDetails">Confirm Rent</button>
+                </div>
             </div>
         </div>
     </section>
@@ -175,8 +193,10 @@
             <div id="message"></div>
         </div>
     </div>
+    <!-- <div id="dvd-list"></div>
+    <div id="dvd-details"></div> -->
 
-<!-- FOOTER -->
+    <!-- FOOTER -->
     <footer id="Contact" class="footer">
         <div>
             <p>Cine_Cafe@gmail.com</p>
