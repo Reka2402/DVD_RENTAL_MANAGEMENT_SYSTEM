@@ -161,19 +161,27 @@ namespace DVD_Rental_Website.Service
 
         public async Task<ManagerResponseModel> UpdateDVD(Guid Id, ManagerRequestModel managerRequestModel)
         {
-            var dvd = new DVD
-            {
-                Id = Id,
-                Title = managerRequestModel.Title,
-                Genre = managerRequestModel.Genre,
-                Director = managerRequestModel.Director,
-                ReleaseDate = managerRequestModel.ReleaseDate,
-                CopiesAvailable = managerRequestModel.CopiesAvailable,
-                ImagePath=null
+            var existingDVD = await _managerRepository.GetDVDById(Id); // Fetch existing DVD details
 
-            };
+            if (existingDVD == null) return null;
 
-            var updatedDVD = await _managerRepository.UpdateDVD(dvd);
+            // Update only the fields that are provided
+            if (managerRequestModel.Title != null)
+                existingDVD.Title = managerRequestModel.Title;
+
+            if (managerRequestModel.Genre != null)
+                existingDVD.Genre = managerRequestModel.Genre;
+
+            if (managerRequestModel.Director != null)
+                existingDVD.Director = managerRequestModel.Director;
+
+            if (managerRequestModel.ReleaseDate != null)
+                existingDVD.ReleaseDate = managerRequestModel.ReleaseDate;
+
+            if (managerRequestModel.CopiesAvailable != null)
+                existingDVD.CopiesAvailable = managerRequestModel.CopiesAvailable;
+
+            var updatedDVD = await _managerRepository.UpdateDVD(existingDVD);
 
             return new ManagerResponseModel
             {
@@ -184,9 +192,9 @@ namespace DVD_Rental_Website.Service
                 ReleaseDate = updatedDVD.ReleaseDate,
                 CopiesAvailable = updatedDVD.CopiesAvailable,
                 ImageUrl = updatedDVD.ImagePath,
-                
             };
         }
+
 
 
         //UPDATE DVDS

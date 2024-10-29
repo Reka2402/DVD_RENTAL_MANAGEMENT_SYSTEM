@@ -32,53 +32,6 @@ function reports() {
   loadReportCounts();
 }
 
-// edit dvd function
-// function editDvd(index) {
-//   const dvdToEdit = Dvd[index];
-
-//   // Populate the edit form with existing DVD data
-//   document.getElementById("edit-Dvd-title").value = dvdToEdit.title;
-//   document.getElementById("edit-Dvd-Director").value = dvdToEdit.Director;
-//   document.getElementById("edit-Dvd-category").value = dvdToEdit.category;
-//   document.getElementById("edit-dvd-date").value = dvdToEdit.Date;
-//   document.getElementById("edit-Dvd-Quantity").value = dvdToEdit.quantity;
-
-//   // Show the edit form
-//   document.getElementById("edit-Dvd-container").style.display = "block";
-//   document.getElementById("dashboardcontainer").style.display = "none";
-
-//   const editForm = document.getElementById("edit-Dvd-form");
-//   editForm.onsubmit = function (event) {
-//     event.preventDefault();
-//     updateDvd(index);
-//   };
-// }
-
-// function updateDvd(index) {
-//   const Dvd = JSON.parse(localStorage.getItem("Dvds")) || [];
-//   const updatedDvd = {
-//     title: document.getElementById("edit-Dvd-title").value.trim(),
-//     Director: document.getElementById("edit-Dvd-Director").value.trim(),
-//     category: document.getElementById("edit-Dvd-category").value.trim(),
-//     Date: document.getElementById("edit-dvd-date").value.trim(),
-//     quantity: document.getElementById("edit-Dvd-Quantity").value.trim(),
-//     //image: Dvd[index].image // Keep the original image unless updated
-//   };
-
-
-// //   // Check if a new image was uploaded
-// //   const imageInput = document.getElementById("edit-Dvd-image");
-// //   if (imageInput.files[0]) {
-// //     const reader = new FileReader();
-// //     reader.onloadend = function () {
-// //       updatedDvd.image = reader.result; // Update with new image
-// //       saveUpdatedDvd(index, updatedDvd);
-// //     };
-// //     reader.readAsDataURL(imageInput.files[0]);
-// //   } else {
-// //     saveUpdatedDvd(index, updatedDvd); // Save without image change
-// //   }
-// }
 
 function editDvd(id) {
   console.log(`Fetching DVD with ID: ${id}`);
@@ -111,109 +64,6 @@ function editDvd(id) {
     })
     .catch((error) => console.error("Error fetching DVD details:", error));
 }
-
-
-
-// function updateDvd(id) {
-//   const updatedDvd = {
-//       title: document.getElementById("edit-Dvd-title").value.trim(),
-//       director: document.getElementById("edit-Dvd-Director").value.trim(),
-//       genre: document.getElementById("edit-Dvd-category").value.trim(),
-//       releaseDate: document.getElementById("edit-dvd-date").value.trim(),
-//       copiesAvailable: document.getElementById("edit-Dvd-Quantity").value.trim(),
-
-//       // Optionally include image if you're handling it
-//   };
-
-//   fetch(`http://localhost:5272/api/Manager/UpdateDVDById/${id}`, {
-//       method: "PUT",
-//       headers: {
-//           "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(updatedDvd),
-//   })
-//   .then((response) => {
-//       if (!response.ok) {
-//           throw new Error("Failed to update DVD");
-//       }
-//       return response.json();
-//   })
-//   .then((data) => {
-//       alert(`DVD "${data.title}" updated successfully!`);
-//       displayDvd(); // Refresh the list
-//       document.getElementById("edit-Dvd-form").reset(); // Reset the form
-//       document.getElementById("edit-Dvd-container").style.display = "none"; // Hide the form
-//   })
-//   .catch((error) => console.error("Error updating DVD:", error));
-// }
-
-
-
-
-
-// function updateDvd(id) {
-//   const updatedDvd = {
-//       title: document.getElementById("edit-Dvd-title").value.trim(),
-//       director: document.getElementById("edit-Dvd-Director").value.trim(),
-//       genre: document.getElementById("edit-Dvd-category").value.trim(),
-//       releaseDate: document.getElementById("edit-dvd-date").value.trim(),
-//       copiesAvailable: document.getElementById("edit-Dvd-Quantity").value.trim(),
-//   };
-
-//   // Check if there is a new image uploaded
-//   const imageInput = document.getElementById("edit-Dvd-Image").files;
-//   if (imageInput.length > 0) {
-//       const formData = new FormData();
-//       // Append updated DVD fields to FormData
-//       for (const key in updatedDvd) {
-//           formData.append(key, updatedDvd[key]);
-//       }
-//       // Append the new image file
-//       formData.append("ImageFile", imageInput[0]); // Use the first file only
-
-//       // Send the FormData to the server
-//       fetch(`http://localhost:5272/api/Manager/UpdateDVDById/${id}`, {
-//           method: "PUT",
-//           body: formData, // Send FormData instead of JSON
-//       })
-//       .then((response) => {
-//           if (!response.ok) {
-//               throw new Error("Failed to update DVD");
-//           }
-//           return response.json();
-//       })
-//       .then((data) => {
-//           alert(`DVD "${data.title}" updated successfully!`);
-//           displayDvd(); // Refresh the list
-//           document.getElementById("edit-Dvd-form").reset(); // Reset the form
-//           document.getElementById("edit-Dvd-container").style.display = "none"; // Hide the form
-//       })
-//       .catch((error) => console.error("Error updating DVD:", error));
-//   } else {
-//       // If no new image is provided, send the updated fields as JSON
-//       fetch(`http://localhost:5272/api/Manager/UpdateDVDById/${id}`, {
-//           method: "PUT",
-//           headers: {
-//               "Content-Type": "application/json",
-//           },
-//           body: JSON.stringify(updatedDvd),
-//       })
-//       .then((response) => {
-//           if (!response.ok) {
-//               throw new Error("Failed to update DVD");
-//           }
-//           return response.json();
-//       })
-//       .then((data) => {
-//           alert(`DVD "${data.title}" updated successfully!`);
-//           displayDvd(); // Refresh the list
-//           document.getElementById("edit-Dvd-form").reset(); // Reset the form
-//           document.getElementById("edit-Dvd-container").style.display = "none"; // Hide the form
-//       })
-//       .catch((error) => console.error("Error updating DVD:", error));
-//   }
-// }
-
 
 function updateDvd(id) {
   const updatedDvd = {
@@ -285,19 +135,6 @@ function updateDvd(id) {
   }
 }
 
-
-
-
-// function saveUpdatedDvd(index, updatedDvd) {
-//   const Dvd = JSON.parse(localStorage.getItem("Dvds")) || [];
-//   Dvd[index] = updatedDvd; // Update the DVD
-//   localStorage.setItem("Dvds", JSON.stringify(Dvd)); // Save back to localStorage
-//   displayDvd(); // Refresh the displayed DVDs
-//   document.getElementById("edit-Dvd-container").style.display = "none"; // Hide edit form
-//   document.getElementById("dashboardcontainer").style.display = "block"; // Show dashboard
-//   // location.reload();
-// }
-
 document.addEventListener("DOMContentLoaded", function () {
   const DvdsTableBody = document
     .getElementById("Dvds-table")
@@ -359,22 +196,14 @@ document.addEventListener("DOMContentLoaded", function () {
             deleteDvd(id);
           });
         });
-
-        //   // Add event listeners for delete buttons
-        //   document.querySelectorAll(".delete-button").forEach((button) => {
-        //     button.addEventListener("click", function () {
-        //       const index = this.getAttribute("data-index");
-        //       deleteDvd(index);
-        //     });
-        //   });
       })
-    // .catch((error) => console.error("Error fetching DVDs:", error));
-    // }
+  
   }
 
-  // Function to delete a DVD (using fetch)
+ // Delete Dvd by Id 
+ 
   function deleteDvd(id) {
-    fetch(`http://localhost:5272/api/Manager/GetDVDById/${id}`, {
+    fetch(`http://localhost:5272/api/Manager/${id}`, {
       method: "DELETE",
     })
       .then((response) => {
@@ -387,155 +216,50 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
+  //Add Dvd from form submit function
 
-  // document.getElementById("add-Dvd-form").addEventListener("submit", function (event) {
-  //         event.preventDefault(); // Prevent the default form submission
+document.getElementById("add-Dvd-form").addEventListener("submit", async function (event) {
+  event.preventDefault(); // Prevent the default form submission
 
-  //         // Gather form data
-  //         const title = document.getElementById("add-Dvd-title").value.trim();
-  //         const director = document.getElementById("add-Dvd-Director").value.trim();
-  //         const genre = document.getElementById("add-Dvd-category").value.trim();
-  //         const releaseDate = document.getElementById("add-dvd-date").value.trim();
-  //         const quantity = document.getElementById("add-Dvd-Quantity").value.trim();
-  //         const imageinput = document.getElementById("add-Dvd-image").files;
-  //         // Create a DVD object
-  //         const dvdData = {
-  //           title: title,
-  //           director: director,
-  //           genre: genre,
-  //           releaseDate: releaseDate,
-  //           copiesAvailable: quantity
+  // Gather form data
+  const title = document.getElementById("add-Dvd-title").value.trim();
+  const director = document.getElementById("add-Dvd-Director").value.trim();
+  const genre = document.getElementById("add-Dvd-category").value.trim();
+  const releaseDate = document.getElementById("add-dvd-date").value.trim();
+  const quantity = document.getElementById("add-Dvd-Quantity").value.trim();
+  const imageInput = document.getElementById("add-Dvd-image").files;
 
-  //         };
+  // Check for required fields
+  if (!title || !director || !genre || !releaseDate || !quantity) {
+    alert('All fields are required.');
+    return;
+  }
 
-  //       //   const formData = new FormData();
-  //       // formData.append("title", title);
-  //       // formData.append("director", director);
-  //       // formData.append("genre", genre);
-  //       // formData.append("releaseDate", releaseDate);
-  //       // formData.append("copiesAvailable", quantity);
-  //       // for (let i = 0; i < imageinput.length; i++) {
-  //       //     formData.append("ImageFile", imageinput[i]);
-  //       // }
+  // Create FormData object
+  const formData = new FormData();
+  formData.append("title", title);
+  formData.append("director", director);
+  formData.append("genre", genre);
+  formData.append("releasedate", releaseDate);
+  formData.append("copiesavailable", quantity);
 
-  //         // Send the DVD data to the server
-  //         fetch("http://localhost:5272/api/Manager/Add DVD", {
-  //           method: "POST",
-  //           headers: {
-  //             "Content-Type": "application/json", // Set the content type to JSON
-  //           },
-  //           body: JSON.stringify(dvdData)// Convert the object to a JSON string
-  //         })
-  //           .then((response) => {
-  //             if (!response.ok) {
-  //               throw new Error("Failed to add DVD");
-  //             }
-  //             return response.json(); // Parse the JSON response
-  //           })
-  //           .then((data) => {
-  //             alert(`Success! New Movie "${data.title}" has been added to your inventory! 🎉`);
-  //             document.getElementById("add-Dvd-form").reset(); // Reset the form
-  //             displayDvd(); // Call your function to refresh the displayed DVDs
-  //           })
-  //           .catch((error) => console.error("Error adding DVD:", error));
-  //       });
+  // Check if an image file is selected
+  if (imageInput.length > 0) {
+    formData.append("imagefile", imageInput[0]);
+  } else {
+    alert('Please upload an image.');
+    return;
+  }
 
-  //   document.getElementById("add-Dvd-form").addEventListener("submit", async function (event) {
-  //     event.preventDefault(); // Prevent the default form submission
+  try {
+    const response = await fetch("http://localhost:5272/api/Manager/Adddvd?${formData}", {
+      method: "POST",
+      body: formData, // Send the FormData object
+    });
 
-  //     // Gather form data
-  //     const title = document.getElementById("add-Dvd-title").value.trim();
-  //     const director = document.getElementById("add-Dvd-Director").value.trim();
-  //     const genre = document.getElementById("add-Dvd-category").value.trim();
-  //     const releaseDate = document.getElementById("add-dvd-date").value.trim();
-  //     const quantity = document.getElementById("add-Dvd-Quantity").value.trim();
-  //     const imageInput = document.getElementById("add-Dvd-Image")?.files;
-
-  //     // Check for required fields
-  //     if (!title || !director || !genre || !releaseDate || !quantity) {
-  //         alert('All fields are required.');
-  //         return;
-  //     }
-
-  //     // Create FormData object
-  //     const formData = new FormData();
-  //     formData.append("title", title);
-  //     formData.append("director", director);
-  //     formData.append("genre", genre);
-  //     formData.append("releaseDate", releaseDate);
-  //     formData.append("copiesAvailable", quantity);
-
-  //     // Append image files to FormData
-  //     for (let i = 0; i < imageInput.length; i++) {
-  //         formData.append("ImageFile", imageInput[i]);
-  //     }
-
-  //     try {
-  //         const response = await fetch("http://localhost:5272/api/Manager/AddDVD", {
-  //             method: "POST",
-  //             body: formData, // Send the FormData object
-  //         });
-
-  //         const contentType = response.headers.get('content-type');
-  //         if (contentType && contentType.includes('application/json')) {
-  //             const data = await response.json();
-  //             alert(`Success! New Movie "${data.title}" has been added to your inventory! 🎉`);
-  //             document.getElementById("add-Dvd-form").reset(); // Reset the form
-  //             displayDvd(); // Call your function to refresh the displayed DVDs
-  //         } else {
-  //             const text = await response.text();
-  //             console.error('Non-JSON response received:', text);
-  //         }
-  //     } catch (error) {
-  //         console.error('Network error:', error);
-  //     }
-  // });
+    
 
 
-  document.getElementById("add-Dvd-form").addEventListener("submit", async function (event) {
-    event.preventDefault(); // Prevent the default form submission
-
-    // Gather form data
-    const title = document.getElementById("add-Dvd-title").value.trim();
-    const director = document.getElementById("add-Dvd-Director").value.trim();
-    const genre = document.getElementById("add-Dvd-category").value.trim();
-    const releaseDate = document.getElementById("add-dvd-date").value.trim();
-    const quantity = document.getElementById("add-Dvd-Quantity").value.trim();
-    const imageInput = document.getElementById("add-Dvd-image").files;
-    console.log(imageInput[0])
-    console.log(quantity)
-    // const files = imageInput ? imageInput.files : []; // Get files or an empty array if not available
-
-    // Check for required fields
-    if (!title || !director || !genre || !releaseDate || !quantity) {
-      alert('All fields are required.');
-      return;
-    }
-
-    // Create FormData object
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("director", director);
-    formData.append("genre", genre);
-    formData.append("releaseDate", releaseDate);
-    formData.append("copiesAvailable", quantity);
-    formData.append("imageFile" , imageInput[0])
-
-    // // Append image files to FormData
-    // for (let i = 0; i < imageInput.length; i++) {
-    //   formData.append("imageUrl", imageInput[i]);
-    // }
-
-    try {
-      // const response = await fetch("http://localhost:5272/api/Manager/AddDVD", {
-      //   method: "POST",
-      //   body: formData, // Send the FormData object
-      // });
-
-      await fetch("http://localhost:5272/api/Manager/AddDVD",{
-        method:"POST",
-        body:formData
-      })
 
       const contentType = response.headers.get('content-type');
       if (contentType && contentType.includes('application/json')) {

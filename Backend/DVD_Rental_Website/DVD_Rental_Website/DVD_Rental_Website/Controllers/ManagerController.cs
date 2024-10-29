@@ -18,7 +18,7 @@ namespace DVD_Rental_Website.Controllers
         }
 
         //[HttpPost("AddDVD")]
-        //public async Task<IActionResult> AddDVD([FromBody] ManagerRequestModel managerRequestModel)
+        //public async Task<IActionResult> AddDVD( ManagerRequestModel managerRequestModel)
         //{
         //    if (managerRequestModel == null)
         //    {
@@ -27,7 +27,7 @@ namespace DVD_Rental_Website.Controllers
 
         //    try
         //    {
-        //        var result = await _managerService.AddDVD(managerRequestModel);
+        //        var result = await _managerService.AddDVDAsync(managerRequestModel);
         //        return CreatedAtAction(nameof(AddDVD), new { id = result.Id }, result);
         //    }
         //    catch (Exception ex)
@@ -35,7 +35,9 @@ namespace DVD_Rental_Website.Controllers
         //        return StatusCode(500, $"An error occurred: {ex.Message}");
         //    }
         //}
-        [HttpPost("Add DVD")]
+
+
+        [HttpPost("Adddvd")]
         public async Task<IActionResult> AddDVD(ManagerRequestModel managerRequestmodal)
         {
             try
