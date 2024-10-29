@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 // // Call the showdvd function when the window loads
   }
-window.onload = showdvd;
+
   
   
 });

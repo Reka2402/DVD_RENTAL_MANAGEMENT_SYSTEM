@@ -566,71 +566,49 @@ async function rejectRental(rentalId) {
 
 
 
-async function returnMotordvd() {
-  const nic = document.getElementById('return-nic').value;
-  const registrationNumber = document.getElementById('return-registration').value;
+async function returndvd() {
+  const customerid = document.getElementById('return-customer').value.trim(); // Trim whitespace
 
   try {
-    // Fetch all customers, dvd, and rentals
-    let [customersResponse, motordvdsResponse, rentalsResponse] = await Promise.all([
-      fetch('http://localhost:5000/api/Customer/all'),
-      fetch('http://localhost:5000/api/Manager/Alldvd'),
-      fetch('http://localhost:5000/api/Customer/GetAllRentals')
-    ]);
+    // Fetch all rentals for the specific customer
+    const rentalResponse = await fetch(`http://localhost:5272/api/Rental/GetAllRentalCustomers?customerId=${customerid}`);
+    const rentals = await rentalResponse.json();
+    console.log("Customer rental details: ", rentals);
 
-    const customers = await customersResponse.json();
-    const dvds = await dvdsResponse.json();
-    const rentals = await rentalsResponse.json();
-    console.log(dvds);
-    console.log(customers);
-
-    // Find the customer by NIC
-    const customer = customers.find(c => c.nic == nic);
-    console.log(rentals);
-
-
-    if (!customer) {
-      alert('Customer not Found');
+    // Check if any rentals were found
+    if (!Array.isArray(rentals) || rentals.length === 0) {
+      alert('No rentals found for this customer.');
       return;
     }
 
-    // Find the  by registration number
-    const dvd = dvds.find(b => b.regnumber == registrationNumber);
-    if (!dvd) {
-      alert('Dvd not found');
-      return;
-    }
+    // Loop through each rental and process the return
+    for (const rental of rentals) {
+      console.log(rental.rentalId)
+      // Ensure rentalId is properly accessed based on your response structure
+      const returndvdResponse = await fetch(`http://localhost:5272/api/Rental/returnDVDById/${rental.rentalId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
 
-    // Find the rental associated with the customer and dvd
-    const rental = rentals.find(r => r.customerID === customer.id && r.dvdid === dvd.id);
-
-
-
-    if (!rental) {
-      alert('Rental record not found or already processed');
-      return;
-    }
-
-    const returndvdResponse = await fetch(`http://localhost:5000/api/customer/dvd-return/${rental.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
+      if (!returndvdResponse.ok) {
+        alert(`Failed to process return for rental ID: ${rental.rentalId}`);
+        continue; // Skip to the next rental
       }
-    });
 
-    if (!returndvdResponse.ok) {
-      alert('Failed to process dvd return');
-      return;
+      alert(`DVD with rental ID: ${rental.rentalId} returned successfully!`);
     }
 
-    confirm('Dvd returned successfully!');
+    // Reset the form after processing
     document.getElementById('return-dvd-form').reset();
 
   } catch (error) {
-    console.error('Error during dvd return:', error);
+    console.error('Error during DVD return:', error);
     alert('An error occurred while processing the return.');
   }
 }
+
 
 function returnQuantity(dvdid, quantity) {
   const Dvds = JSON.parse(localStorage.getItem("Dvds")) || [];

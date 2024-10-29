@@ -28,7 +28,7 @@
                 </li>
                 <li><a href="#" id="displaydvd"><i class="bi bi-collection"></i><span>Invetory</span> </a></li>
                 <li><a href="#" onclick="displayRentals()"><i
-                            class="bi bi-graph-up-arrow"></i><span>Rental</span></a></li>
+                            class="bi bi-graph-up-arrow"></i><span>Rental Request</span></a></li>
 
                 <li><a href="#" onclick="overdueshow()"><i class="bi bi-exclamation-circle"></i><span>Overdue</span></a>
                 </li>
@@ -161,20 +161,27 @@
     </section>
 
 
-    <!-- Return dvd Section -->
 
+
+
+    <!-- Return dvd Section -->
     <section class="return-container" id="returncontainer" style="display: none;">
         <h2 style="margin-left:50px ;">Return Dvd</h2>
         <form id="return-DVD-form">
-            <label for="return-nic">Customer nic:</label>
-            <input type="text" id="return-nic" required>
+            <label for="return-customer">Customer Id:</label>
+            <input type="text" id="return-customer" required>
 
             <label for="return-title">Dvd-ID:</label>
-            <input type="text" id="return-title" required>
+            <input type="text" id="return-DvdID" required>
 
             <button type="button" onclick=" returndvd()">Return DVD</button>
         </form>
     </section>
+
+
+
+
+
 
     <!-- reports of the all rental return customer -->
     <section class="report-container" id="reportcontainer" style="display: none;"  onclick="loadReportCounts()">

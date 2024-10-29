@@ -94,7 +94,7 @@ namespace DVD_Rental_Website.Controllers
 
     
 
-        [HttpPut("returnDVDById")]
+        [HttpPut("returnDVDById/{id}")]
         public async Task<IActionResult> UpdateRentToReturn(Guid id)
         {
             try

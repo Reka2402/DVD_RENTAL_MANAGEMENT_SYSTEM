@@ -97,7 +97,7 @@ function storeItemDetails(buttonElement) {
           alert("Sorry, this DVD is out of stock.");
           return;
         }
-        var text = buttonElement.textContent
+       
         //console.log(text);
 
 
