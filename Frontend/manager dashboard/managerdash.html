@@ -27,7 +27,7 @@
                 <li><a href="#" onclick="customershow()"><i class="bi bi-people"></i><span>Customer</span></a>
                 </li>
                 <li><a href="#" id="displaydvd"><i class="bi bi-collection"></i><span>Invetory</span> </a></li>
-                <li><a href="#" onclick="loadPendingRentals()"><i
+                <li><a href="#" onclick="displayRentals()"><i
                             class="bi bi-graph-up-arrow"></i><span>Rental</span></a></li>
 
                 <li><a href="#" onclick="overdueshow()"><i class="bi bi-exclamation-circle"></i><span>Overdue</span></a>
@@ -116,25 +116,23 @@
     </section>
 
 
-    <!-- Edit DVD Form -->
-
-
     <!-- for rental details -->
 
     <section class="rental-container" id="rentaldcontainer" style="display: none;">
         <h2 style="margin-left:50px ;">Rental</h2>
-        <table id="rental-table">
+        <table id="rental-table" style="color: black;">
             <thead>
                 <tr>
-                    <th>NIC</th>
-                    <th>Name</th>
-                    <th>Title</th>
-                    <th>status</th>
-                    <th>rentDate</th>
+                    <th>User_Name</th>
+                    <th>Dvd_Title</th>
+                    <th>Rental-Date</th>
+                    <th>Retrun-Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody id="rental-body">
-                <!-- Customer  rental  details will be displayed here -->
+                <!-- rental details will be displayed here -->
             </tbody>
         </table>
     </section>
@@ -216,11 +214,10 @@
                 <thead>
                     <tr>
                         <th>Rental ID</th>
-                        <th>Customer(NIC)</th>
+                        <th>Customer_name</th>
                         <th>DVD Title</th>
                         <th>Rental Date</th>
                         <th>Return Date</th>
-                        <th>Actual Return Date</th>
                         <th>Status</th>
                     </tr>
                 </thead>

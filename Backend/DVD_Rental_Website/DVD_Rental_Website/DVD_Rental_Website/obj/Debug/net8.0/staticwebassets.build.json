@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "vJI9D4Qxssy94U1k9Qejt6+lfr+LiVQw22IV0Z26+2g=",
+  "Hash": "dBnQ6dcNxKCWd28QlV1AKqWs7S/P9Sug5LqvyFe4HT0=",
   "Source": "DVD_Rental_Website",
   "BasePath": "_content/DVD_Rental_Website",
   "Mode": "Default",
@@ -300,6 +300,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\dvdimages\\bfeae32b-8dde-44b5-ada4-3c7a645fe6d2.jpg"
+    },
+    {
+      "Identity": "X:\\practise\\newcode\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\wwwroot\\dvdimages\\cda305a0-c17d-4ad7-8117-bb7e7f954feb.jpg",
+      "SourceId": "DVD_Rental_Website",
+      "SourceType": "Discovered",
+      "ContentRoot": "X:\\practise\\newcode\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\wwwroot\\",
+      "BasePath": "_content/DVD_Rental_Website",
+      "RelativePath": "dvdimages/cda305a0-c17d-4ad7-8117-bb7e7f954feb.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\dvdimages\\cda305a0-c17d-4ad7-8117-bb7e7f954feb.jpg"
     },
     {
       "Identity": "X:\\practise\\newcode\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\wwwroot\\dvdimages\\d3ebf1b6-0817-4902-acab-c002fa615c94.jpg",

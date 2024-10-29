@@ -1,48 +1,5 @@
 function showdvd() {
   const rentContainer = document.getElementById("rent-container");
-
-
-
-  // async function fetchdvd() {
-  //   try{
-  //     const response = await fetch('http://localhost:5272/api/Manager/Get All DVDs');
-  //     Dvds = await response.json();
-  //     displayDvd();
-  //   }catch(error){
-  //     console.error('error fetching dvd',error)
-  //   }
-  // }
-
-  // function createDvdCard(Dvd) {
-  //   const Dvdcard = document.createElement("div");
-  //   Dvdcard.classList.add("rent-box");
-  //   Dvdcard.innerHTML = `      <div class="card" id=${Dvd.id}>
-  //           <img src="${Dvd.image}" alt="${Dvd.title}" class="item-image">
-  //           <div class="card-content">
-  //               <h2 class="item-title">Movie Name: ${Dvd.title}</h2>
-  //               <p class="item-description">Genre: ${Dvd.category} <br> Release date: ${Dvd.Date} <br> Director: ${Dvd.Director}</p>
-  //               <label>Quantity:</label><br>
-  //               <input type="number" class="item-quantity" value="${Dvd.quantity}" min="1" readonly>  <br>
-  //               <button class="rent-button" onclick="toggleRentButton(this)">Rent</button>
-
-  //           </div>
-  //       </div>
-  //   `;
-
-  //   return Dvdcard;
-  // }
-
-  // async function displayDvd() {
-  //   const  Dvds = await fetchdvd();
-  //   console.log(Dvds)
-  //   Dvds.forEach((Dvd) => {
-  //     const dvdCard = createDvdCard(Dvd);
-  //     rentContainer.appendChild(dvdCard);
-  //   });
-  // }
-
-
-
   fetch("http://localhost:5272/api/Manager/Get All DVDs")
   .then((response) => response.json())
   .then((Dvds) => {
@@ -117,7 +74,6 @@ function storeItemDetails(buttonElement) {
     }
 
     var dvdId = card.id; // Ensure this is a valid GUID
-    console.log("Fetching DVD with ID:", dvdId);
 
     fetch(`http://localhost:5272/api/Manager/GetDVDById/${dvdId}`)
       .then((response) => {
@@ -142,7 +98,7 @@ function storeItemDetails(buttonElement) {
           return;
         }
         var text = buttonElement.textContent
-        console.log(text);
+        //console.log(text);
 
 
         if (buttonElement.textContent == "Confirm Rent") {
