@@ -12,7 +12,7 @@
     * {
       margin: 0;
       padding: 0;
-      font-family: "Poppins", sans-serif;
+      font-family: sans-serif;
       box-sizing: border-box;
     }
 
@@ -20,12 +20,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('img/background.jpg') no-repeat center center fixed;
-      /* Background image */
-      background-size: cover;
       min-height: 100vh;
       color: #fff;
-      /* White text for contrast */
+      background-image: url("./img/Movie/bg.jpg");
     }
 
     .container {
@@ -34,26 +31,29 @@
       align-items: center;
       justify-content: center;
       width: 100%;
+
     }
 
     .login-form {
       background: rgba(255, 255, 255, 0.1);
       /* Semi-transparent white background */
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 20px #850e0e;
       /* Soft shadow for depth */
       border-radius: 10px;
       padding: 30px;
       width: 400px;
       /* Set a consistent width */
       text-align: center;
+      background-image: url("./img/Movie/bg.jpg");
     }
 
     h2 {
-      color: #00bfff;
+      color: #850e0e;
       /* Bright teal for heading */
       font-size: 2.5em;
       /* Increased size */
       margin-bottom: 20px;
+      text-shadow: 2px 2px 4px white;
     }
 
     .input-group {
@@ -61,6 +61,7 @@
       width: 100%;
       text-align: left;
       /* Align labels to the left */
+
     }
 
     .input-group label {
@@ -72,11 +73,10 @@
     .input-group input {
       width: 100%;
       padding: 12px;
-      border: 2px solid #00bfff;
+      border: 2px solid #850e0e;
       /* Teal border */
       border-radius: 5px;
-      background: rgba(220, 229, 233, 0.973);
-      /* Light background for inputs */
+      font-weight: bold;
       color: #fff;
       /* White text */
       transition: border-color 0.3s;
@@ -84,17 +84,17 @@
     }
 
     .input-group input:focus {
-      border-color: #00bfff;
+      border-color: #850e0e;
       /* Bright blue on focus */
     }
 
     .forgot-password {
       margin: -15px 0 10px;
-      text-align: center;
+      text-align: left;
     }
 
     .forgot-password a {
-      color: #00bfff;
+      color: white;
       /* Teal link color */
       text-decoration: none;
     }
@@ -107,9 +107,10 @@
     .btn {
       width: 100%;
       padding: 12px;
-      background-color: #00bfff;
+      background-color: #850e0e;
       /* Teal background */
-      color: #1f293a;
+      color: white;
+      font-weight: bolder;
       /* Dark text for contrast */
       border: none;
       border-radius: 5px;
@@ -120,17 +121,19 @@
     }
 
     .btn:hover {
-      background-color: #00fffc;
+      background-color: black;
       /* Bright blue on hover */
     }
 
     .signup-link {
       margin-top: 20px;
       font-weight: bold;
+      color:white;
+
     }
 
     .signup-link a {
-      color: #00bfff;
+      color: #850e0e;
       /* Teal for signup link */
       font-size: 1.2rem;
       /* Increased size */
