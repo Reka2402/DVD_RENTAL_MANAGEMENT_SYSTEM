@@ -5,34 +5,54 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-
+    /* font-family: 'Poppins', sans-serif; */
+    font-family:Verdana, Geneva, Tahoma, sans-serif
 }
 
 .dashboard-container form button:hover {
-    background-color: #446e97;
+    background-color: #850e0e;
+}
+
+.delete-button {
+    background-color:rgb(241, 19, 19) ;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .delete-button:hover {
-    background-color: rgb(224, 48, 48);
+    background-color:rgb(102, 20, 20);
+}
+
+.editBtn
+ {
+    background-color: rgb(59, 223, 59);
+    border-radius: 5px;
+    padding: 5px; 
 }
 
 .editBtn:hover {
-    background-color: #a4caf0;
-}
-
-.editBtn,
-.delete-button {
-    background-color: rgba(58, 142, 232, 0.591);
-    border-radius: 5px;
-    padding: 5px;
-    /* margin: 10px; */
+    background-color: green;
 }
 
 #rental-body td {
-    color: whitesmoke;
+    color: black;
+    
 }
 
+#customer-body{
+    background-color: white;
+    color: black;
+}
+
+.customer-container h2,
+.displaycontainer h2,
+.rental-container h2,
+.overdue-container h2,
+.return-container h2{
+    color: white;
+    text-shadow: 2px 2px 4px #850e0e;
+    text-align: center;
+}
 
 
 .dashboard-container,
@@ -43,28 +63,21 @@
 .displaycontainer,
 .report-container {
     margin: 20px;
-    border-radius: 20px;
     width: 100rem;
     padding: 20px;
-    background: rgba(213, 241, 255, 0.25);
-    box-shadow: 0 8px 32px 0 rgba(204, 208, 255, 0.37);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(3px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0), #2980b9);
+    box-shadow: 0 8px 32px 0 #080707;
+    border: 2px solid rgba(255, 255, 255, 0.18);
 }
 
 .dashboard-container h1 {
-
     text-align: center;
     margin-bottom: 20px;
-    color: #0b355f;
-
-
+    color: white;
+    text-shadow: 1px 1px 2px #850e0e;
 }
 
 .dashboard-container h2 {
-    color: #6797c6;
+    color: #850e0e;
 
 }
 
@@ -78,8 +91,6 @@
 .return-container form {
     margin: 20px 0;
     padding-left: 100px;
-
-
 }
 
 .displaycontainer,
@@ -87,12 +98,11 @@
 .overdue-container,
 .return-container,
 .report-container h2 {
-    color: #0b355f;
+    color: white;
 }
 
 #overduelist,
 .report-container {
-
     text-align: center;
 }
 
@@ -134,7 +144,8 @@
 }
 
 .return-container button:hover {
-    background-color: #2216ac;
+    background-color:#850e0e;
+    color:white;
 }
 
 .dashboard-container table,
@@ -148,6 +159,11 @@
 
 }
 
+#rentalReportBtn,#returnReportBtn{
+    padding: 6px;
+    font-weight: bolder;
+    
+}
 
 .dashboard-container th,
 .dashboard-container td,
@@ -168,7 +184,9 @@
 .rental-container th,
 .overdue-container th,
 .displaycontainer th {
-    background-color: #f4f4f4;
+    background-color: #ffffff;
+    color: black;
+   
 }
 
 .dashboard-container img {
@@ -184,24 +202,22 @@
 
 .manager-link a {
     text-decoration: none;
-    color: #007bff;
+    color: #850e0e;
     font-size: 18px;
 }
 
 
 
-:root {
+/* :root {
     --primaer-color: #fff;
-}
+} */
 
 body {
     display: flex;
     width: 100vw;
     height: 100vh;
     justify-content: start;
-    background-image: url(../img/office-supplies-table.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
+    background-image: url(../img/Movie/bg.jpg);
     background-size: cover;
 }
 
@@ -210,51 +226,23 @@ body {
     flex-direction: column;
     width: 300px;
     height: auto;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
     align-items: center;
-    box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 10px 1px #eb4e4e;
     overflow: hidden;
     transition: 1s;
-    background: #0056b3;
+    background: #860c0c;
     box-shadow: 0 8px 32px 0 rgba(204, 208, 255, 0.37);
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(3px);
     border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-.container .brand {
-    display: flex;
-    width: 100%;
-    height: 40px;
-    padding: 0 10px;
-    margin: 10px 0;
-    align-items: center;
-    gap: 10px;
-    color: #0b355f;
-
-}
-
-.container .brand img {
-    border-radius: 55px;
-
-}
-
-.container .img {
-    display: flex;
-    gap: 10px;
-    height: 50px;
-    margin-top: 7px;
-
-
-}
-
 .container .brand h1 {
     font-weight: 300;
-    font-size: 20px;
+    font-size: 40px;
     color: #fff;
+    font-family: cursive;
     text-shadow: 2px 2px 4px #000000;
-    /* color: var(--primaer-color); */
 }
 
 .container .brand a i {
@@ -266,7 +254,6 @@ body {
     display: flex;
     width: 100%;
     height: auto;
-
     margin: 50px 0;
     align-items: center;
     justify-content: center;
@@ -296,6 +283,7 @@ body {
     border-radius: 7px;
     align-items: center;
     justify-content: left;
+    
 }
 
 .add .navbar:nth-child(4) {
@@ -304,12 +292,14 @@ body {
 
 .container .navbar ul li a {
     color: whitesmoke;
+    
 
 }
 
 .container .navbar ul li a span {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 300;
+    font-weight: bold;
 }
 
 .container .navbar ul li a i {
@@ -323,7 +313,7 @@ body {
 .container .navbar ul li a:hover i {
     background: transparent;
     backdrop-filter: blur(75px);
-    background-color: #446e97;
+    background-color: #d11010;
 
     transition: 0.5s all;
 
@@ -335,7 +325,6 @@ body {
 }
 
 .container .brand {
-    /* background-color: #575555; */
     height: 70px;
     gap: 5px;
 }
@@ -379,32 +368,31 @@ body {
 #customer-table,
 #rental-table,
 #overdue-table {
-    color: #f6eeee;
-    background-color: #1d456d;
+    color: black;
+    background-color: white;
     text-align: center;
-
+    box-shadow: 0 0 10px #850e0e;
 }
 
 #Dvds-table th,
-#customer-table,
+#customer-table th,
 #overdue-table th {
-    color: #0b355f;
-    border: white 1px;
-
-
-}
-
-#customer-table td {
-    color: #fff;
-
+    color: black;
+   
 }
 
 .report-container button:hover {
     background-color: green;
 }
 
+.report-container div{
+    color: white;
+    text-align: justify;
+    line-height: 1.6rem;
+}
+
 .report-container button {
-    background-color: rgb(59, 68, 240);
+    background-color: rgb(241, 25, 25);
     width: 103px;
     border-radius: 5px;
     border: none;
@@ -418,7 +406,7 @@ body {
     margin: 20px auto;
     /* Add spacing between the tables */
     max-width: 90%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px #850e0e;
     /* Add a light shadow for styling */
 }
 
@@ -427,13 +415,14 @@ td {
     padding: 12px;
     text-align: center;
     /* Center align table data */
-    border: 1px solid #ddd;
+    border: 1px solid black;
 }
 
 /* Table header styling */
 th {
-    background-color: #5d6ffc;
+    background-color: white;
     font-weight: bold;
+    color: black;
 }
 
 
@@ -472,7 +461,7 @@ th {
 
 /* Heading Styles */
 .edit-Dvd-container h2 {
-    color: #0b355f; /* Primary color for heading */
+    color:white; /* Primary color for heading */
     margin-bottom: 20px; /* Space below the heading */
     text-align: center; /* Center the heading */
 }
@@ -485,7 +474,7 @@ th {
     width: 100%; /* Full width */
     padding: 10px; /* Spacing inside */
     margin: 10px 0; /* Space above and below */
-    border: 1px solid #0b355f; /* Border color */
+    border: 1px solid #850e0e; /* Border color */
     border-radius: 4px; /* Rounded corners */
     transition: border-color 0.3s; /* Smooth transition */
 }
@@ -494,13 +483,13 @@ th {
 .edit-Dvd-form input[type="text"]:focus,
 .edit-Dvd-form input[type="date"]:focus,
 .edit-Dvd-form input[type="number"]:focus {
-    border-color: #007bff; /* Change border color on focus */
+    border-color: black; /* Change border color on focus */
     outline: none; /* Remove default outline */
 }
 
 /* Button Styles */
 .edit-Dvd-form button {
-    background-color: #0b355f; /* Primary color */
+    background-color: #850e0e; /* Primary color */
     border: none; /* Remove border */
     padding: 10px 15px; /* Spacing inside */
     color: white; /* Text color */
@@ -513,7 +502,7 @@ th {
 
 /* Button Hover Effects */
 .edit-Dvd-form button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
+    background-color: #850e0e; /* Darker shade on hover */
 }
 
 /* Responsive Design */

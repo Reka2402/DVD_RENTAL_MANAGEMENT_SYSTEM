@@ -1,52 +1,56 @@
 document.addEventListener('DOMContentLoaded', function () {
   function showdvd() {
     fetch("http://localhost:5272/api/Manager/Get All DVDs")
-    .then((response) => response.json())
-    .then((Dvds) => {
-      console.log("Array Of The Dvd: ", Dvds);
-      rentContainer.innerHTML = ""; // Clear existing content
-  
-      Dvds.forEach((Dvd) => {
-        // Create a card for each DVD
-        const dvdCard = document.createElement("div");
-        dvdCard.classList.add("card");
-        dvdCard.id = Dvd.id; // Set the ID for the card
-        console.log("card id :" ,Dvd.id)
-  
-        // Handle multiple images
-        const imageUrls = Dvd.imageUrl.split(',');
-        let imagesHtml = '';
-        imageUrls.forEach(url => {
-          const fullUrl = `http://localhost:5272${url.trim()}`; // Ensure the URL is trimmed
-          imagesHtml += `<img src="${fullUrl}" alt="${Dvd.title}" class="item-image" style="max-width: 100px; margin-right: 10px;" />`;
+      .then((response) => response.json())
+      .then((Dvds) => {
+        console.log("Array Of The Dvd: ", Dvds);
+        const rentContainer = document.getElementById('rent-container')
+        rentContainer.innerHTML = ""; // Clear existing content
+
+        Dvds.forEach((Dvd) => {
+          // Create a card for each DVD
+          const dvdCard = document.createElement("div");
+          dvdCard.classList.add("card");
+          dvdCard.id = Dvd.id; // Set the ID for the card
+          console.log("card id :", Dvd.id);
+
+          // Handle multiple images
+          const imageUrls = Dvd.imageUrl.split(',');
+          let imagesHtml = '';
+          imageUrls.forEach(url => {
+            const fullUrl = `http://localhost:5272${url.trim()}`; // Ensure the URL is trimmed
+            imagesHtml += `<img src="${fullUrl}" alt="${Dvd.title}" class="item-image" style="max-width: 100px; margin-right: 10px;" />`;
+          });
+
+          // Set the inner HTML for the card
+          dvdCard.innerHTML = `
+        <div class="card-content1">
+
+            <div class="image-container1">${imagesHtml || '<img src="default-image.jpg" alt="Default Image" class="item-image1" />'}</div>
+            <div class="card-content">
+              <h2 class="item-title1">Movie Name: ${Dvd.title}</h2>
+              <p class="item-description1">
+                Genre: ${Dvd.genre} <br>
+                Release Date: ${Dvd.releaseDate} <br>
+                Director: ${Dvd.director}<br>
+                Quantity: ${Dvd.copiesAvailable}
+              </p>
+              <button  style="margin-left: 70px;" class="rent-button1" onclick="gologin()">Rent</button>
+            </div>
+            </div>
+
+          `;
+
+          rentContainer.appendChild(dvdCard); // Append the card to the container
         });
-  
-        // Set the inner HTML for the card
-        dvdCard.innerHTML = `
-          <div class="image-container">${imagesHtml || '<img src="default-image.jpg" alt="Default Image" class="item-image" />'}</div>
-          <div class="card-content">
-            <h2 class="item-title">Movie Name: ${Dvd.title}</h2>
-            <p class="item-description">
-              Genre: ${Dvd.genre} <br>
-              Release Date: ${Dvd.releaseDate} <br>
-              Director: ${Dvd.director}<br>
-              Quantity:${Dvd.copiesAvailable}
-            </p>
-            <button class="rent-button" onclick="gologin">Rent</button>
-          </div>
-        `;
-  
-        rentContainer.appendChild(dvdCard); // Append the card to the container
+      })
+      .catch((error) => {
+        console.error("Error fetching DVDs:", error);
       });
-    })
-    .catch((error) => {
-      console.error("Error fetching DVDs:", error);
-    });
-// // Call the showdvd function when the window loads
   }
-window.onload = showdvd;
-  
-  
+
+  // Call the showdvd function when the DOM is fully loaded
+  showdvd();
 });
 
 document.getElementById('reviews').addEventListener('click', loadReviewsFromLocalStorage);
