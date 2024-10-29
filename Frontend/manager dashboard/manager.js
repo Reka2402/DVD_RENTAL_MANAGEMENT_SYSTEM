@@ -566,12 +566,90 @@ async function rejectRental(rentalId) {
 
 
 
+// async function returndvd() {
+
+
+//   const customerid = document.getElementById('return-customer').value; // Trim whitespace
+
+//   try {
+//     // Fetch all rentals for the specific customer
+//     const rentalResponse = await fetch(`http://localhost:5272/api/Rental/GetAllRentalCustomers?customerId=${customerid}`);
+//     const rentals = await rentalResponse.json();
+//     console.log("Customer rental details: ", rentals);
+
+//     // Check if any rentals were found
+//     if (!Array.isArray(rentals) || rentals.length === 0) {
+//       alert('No rentals found for this customer.');
+//       return;
+//     }
+
+//     // Loop through each rental and process the return
+//     for (const rental of rentals) {
+//       console.log(rental.rentalId)
+//       // Ensure rentalId is properly accessed based on your response structure
+//       const returndvdResponse = await fetch(`http://localhost:5272/api/Rental/returnDVDById/${rental.rentalId}`, {
+//         method: 'PUT',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         }
+//       });
+
+//       if (!returndvdResponse.ok) {
+//         alert(`Failed to process return for rental ID: ${rental.rentalId}`);
+//         continue; // Skip to the next rental
+//       }
+
+//       alert(`DVD with rental ID: ${rental.rentalId} returned successfully!`);
+//     }
+
+//     // Reset the form after processing
+//     document.getElementById('return-dvd-form').reset();
+
+//   } catch (error) {
+//     console.error('Error during DVD return:', error);
+//     alert('An error occurred while processing the return.');
+//   }
+// }
+
+
+// function returnQuantity(dvdid, quantity) {
+//   const Dvds = JSON.parse(localStorage.getItem("Dvds")) || [];
+
+//   console.log("DVD ID to return:", dvdid);
+//   console.log("Current DVDs in local storage:", Dvds);
+
+//   // Find the DVD to update
+//   const dvdToUpdate = Dvds.find((dvd) => dvd.id === dvdid);
+//   console.log("assign dvd:", dvdToUpdate)
+
+//   if (dvdToUpdate) {
+//     dvdToUpdate.quantity -= quantity; // Increase quantity for returns
+
+//     // Save the updated DVD list back to local storage
+//     localStorage.setItem("Dvds", JSON.stringify(Dvds));
+
+//     console.log(`Updated Dvds after returning:`, Dvds);
+
+//     // Check if localStorage was updated correctly
+//     const updatedDvds = JSON.parse(localStorage.getItem("Dvds"));
+//     console.log("DVDs from localStorage after update:", updatedDvds);
+//   } else {
+//     console.log("Could not find DVD in the list.");
+//   }
+// }
+
 async function returndvd() {
-  const customerid = document.getElementById('return-customer').value; // Trim whitespace
+  const customerid = document.getElementById('return-customer').value.trim(); // Trim whitespace
 
   try {
     // Fetch all rentals for the specific customer
     const rentalResponse = await fetch(`http://localhost:5272/api/Rental/GetAllRentalCustomers?customerId=${customerid}`);
+    
+    if (!rentalResponse.ok) {
+      alert('Failed to fetch rentals for this customer.');
+      return;
+    }
+
     const rentals = await rentalResponse.json();
     console.log("Customer rental details: ", rentals);
 
@@ -583,7 +661,6 @@ async function returndvd() {
 
     // Loop through each rental and process the return
     for (const rental of rentals) {
-      console.log(rental.rentalId)
       // Ensure rentalId is properly accessed based on your response structure
       const returndvdResponse = await fetch(`http://localhost:5272/api/Rental/returnDVDById/${rental.rentalId}`, {
         method: 'PUT',
@@ -593,10 +670,12 @@ async function returndvd() {
       });
 
       if (!returndvdResponse.ok) {
+        console.log(`Failed to process return for rental ID: ${rental.rentalId}`);
         alert(`Failed to process return for rental ID: ${rental.rentalId}`);
         continue; // Skip to the next rental
       }
 
+      console.log(`DVD with rental ID: ${rental.rentalId} returned successfully!`);
       alert(`DVD with rental ID: ${rental.rentalId} returned successfully!`);
     }
 
@@ -608,34 +687,6 @@ async function returndvd() {
     alert('An error occurred while processing the return.');
   }
 }
-
-
-function returnQuantity(dvdid, quantity) {
-  const Dvds = JSON.parse(localStorage.getItem("Dvds")) || [];
-
-  console.log("DVD ID to return:", dvdid);
-  console.log("Current DVDs in local storage:", Dvds);
-
-  // Find the DVD to update
-  const dvdToUpdate = Dvds.find((dvd) => dvd.id === dvdid);
-  console.log("assign dvd:", dvdToUpdate)
-
-  if (dvdToUpdate) {
-    dvdToUpdate.quantity += quantity; // Increase quantity for returns
-
-    // Save the updated DVD list back to local storage
-    localStorage.setItem("Dvds", JSON.stringify(Dvds));
-
-    console.log(`Updated Dvds after returning:`, Dvds);
-
-    // Check if localStorage was updated correctly
-    const updatedDvds = JSON.parse(localStorage.getItem("Dvds"));
-    console.log("DVDs from localStorage after update:", updatedDvds);
-  } else {
-    console.log("Could not find DVD in the list.");
-  }
-}
-
 
 
 // Function to generate the return report
