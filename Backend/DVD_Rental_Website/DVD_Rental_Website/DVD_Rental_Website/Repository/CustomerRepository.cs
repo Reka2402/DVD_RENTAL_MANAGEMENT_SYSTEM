@@ -13,13 +13,47 @@ namespace DVD_Rental_Website.Repository
         {
             _connectionString = connectionString;
         }
+        //public async Task<Customer> AddCustomer(Customer newCustomer)
+        //{
+        //    using (var connection = new SqlConnection(_connectionString))
+        //    {
+        //        await connection.OpenAsync();
+
+        //        // Do not set the Id before the insert
+        //        newCustomer.Id = Guid.NewGuid();
+
+        //        var sqlCommand = new SqlCommand(
+        //            "INSERT INTO Customers (Id, UserName, Mobilenumber, Email, Nic, Password, IsActive) " +
+        //            "VALUES (@Id, @UserName, @Mobilenumber, @Email, @Nic, @Password, @IsActive);",
+        //            connection);
+
+        //        sqlCommand.Parameters.AddWithValue("@Id", newCustomer.Id);
+        //        sqlCommand.Parameters.AddWithValue("@UserName", newCustomer.UserName);
+        //        sqlCommand.Parameters.AddWithValue("@Mobilenumber", newCustomer.Mobilenumber);
+        //        sqlCommand.Parameters.AddWithValue("@Email", newCustomer.Email);
+        //        sqlCommand.Parameters.AddWithValue("@Nic", newCustomer.Nic);
+        //        sqlCommand.Parameters.AddWithValue("@Password", newCustomer.Password);
+        //        sqlCommand.Parameters.AddWithValue("@IsActive", newCustomer.IsActive);
+
+
+
+
+
+
+        //        await sqlCommand.ExecuteNonQueryAsync();
+
+        //        return newCustomer;
+        //    }
+        //}
+
+
         public async Task<Customer> AddCustomer(Customer newCustomer)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
 
-                // Do not set the Id before the insert
+                // Generate a new Guid for the customer ID
                 newCustomer.Id = Guid.NewGuid();
 
                 var sqlCommand = new SqlCommand(
@@ -35,15 +69,68 @@ namespace DVD_Rental_Website.Repository
                 sqlCommand.Parameters.AddWithValue("@Password", newCustomer.Password);
                 sqlCommand.Parameters.AddWithValue("@IsActive", newCustomer.IsActive);
 
-
-       
-
-
-
                 await sqlCommand.ExecuteNonQueryAsync();
 
                 return newCustomer;
             }
+        }
+
+        public async Task<Customer> GetCustomerByUserName(string userName)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.OpenAsync();
+                var sql = "SELECT * FROM Customers WHERE UserName = @UserName";
+                var command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@UserName", userName);
+
+                using (var reader = await command.ExecuteReaderAsync())
+                {
+                    if (await reader.ReadAsync())
+                    {
+                        return new Customer
+                        {
+                            Id = reader.GetGuid(reader.GetOrdinal("Id")),
+                            UserName = reader.GetString(reader.GetOrdinal("UserName")),
+                            Mobilenumber = reader.GetString(reader.GetOrdinal("Mobilenumber")),
+                            Email = reader.GetString(reader.GetOrdinal("Email")),
+                            Nic = reader.GetInt32(reader.GetOrdinal("Nic")),  // Retrieve NIC as int
+                            Password = reader.GetString(reader.GetOrdinal("Password")),
+                            IsActive = reader.GetBoolean(reader.GetOrdinal("IsActive"))
+                        };
+                    }
+                }
+            }
+            return null;
+        }
+
+        public async Task<Customer> GetCustomerByNic(int nic)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.OpenAsync();
+                var sql = "SELECT * FROM Customers WHERE Nic = @Nic";
+                var command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@Nic", nic);
+
+                using (var reader = await command.ExecuteReaderAsync())
+                {
+                    if (await reader.ReadAsync())
+                    {
+                        return new Customer
+                        {
+                            Id = reader.GetGuid(reader.GetOrdinal("Id")),
+                            UserName = reader.GetString(reader.GetOrdinal("UserName")),
+                            Mobilenumber = reader.GetString(reader.GetOrdinal("Mobilenumber")),
+                            Email = reader.GetString(reader.GetOrdinal("Email")),
+                            Nic = reader.GetInt32(reader.GetOrdinal("Nic")),  // Retrieve NIC as int
+                            Password = reader.GetString(reader.GetOrdinal("Password")),
+                            IsActive = reader.GetBoolean(reader.GetOrdinal("IsActive"))
+                        };
+                    }
+                }
+            }
+            return null;
         }
 
         public async Task<Customer> GetCustomerById(Guid id)

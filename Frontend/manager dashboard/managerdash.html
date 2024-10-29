@@ -26,8 +26,8 @@
                 <li><a href="#" onclick="customershow()"><i class="bi bi-people"></i><span>Customer</span></a>
                 </li>
                 <li><a href="#" id="displaydvd"><i class="bi bi-collection"></i><span>Invetory</span> </a></li>
-                <li><a href="#" onclick="loadPendingRentals()"><i
-                            class="bi bi-graph-up-arrow"></i><span>Rental</span></a></li>
+                <li><a href="#" onclick="displayRentals()"><i
+                            class="bi bi-graph-up-arrow"></i><span>Rental Request</span></a></li>
 
                 <li><a href="#" onclick="overdueshow()"><i class="bi bi-exclamation-circle"></i><span>Overdue</span></a>
                 </li>
@@ -41,16 +41,20 @@
     <section class="dashboard-container" id="dashboardcontainer" style="display: none;">
         <h1>Dvd Manage</h1>
 
+       
         <form id="add-Dvd-form">
             <!-- <h2>Add Dvd</h2> -->
-
-
+            <label>Dvd Title:</label>
             <input type="text" id="add-Dvd-title" placeholder="Dvd Title" required>
+            <label>Director:</label>
             <input type="text" id="add-Dvd-Director" placeholder="Film Director" required>
+            <label>Dvd Category:</label>
             <input type="text" id="add-Dvd-category" placeholder="Category" required>
+            <label>Dvd Release Date:</label>
             <input type="date" id="add-dvd-date" placeholder="" required>
+            <label>Quantity :</label>
             <input type="number" id="add-Dvd-Quantity" placeholder="Quantity" required>
-            <input type="file" id="add-Dvd-image" accept="image/*" required>
+            <input type="file" id="add-Dvd-image"  required>
             <button type="submit">Add Dvd</button>
         </form>
     </section>
@@ -119,18 +123,19 @@
 
     <section class="rental-container" id="rentaldcontainer" style="display: none;">
         <h2 style="margin-left:50px ;">Rental</h2>
-        <table id="rental-table">
+        <table id="rental-table" style="color: black;">
             <thead>
                 <tr>
-                    <th>NIC</th>
-                    <th>Name</th>
-                    <th>Title</th>
-                    <th>status</th>
-                    <th>rentDate</th>
+                    <th>User_Name</th>
+                    <th>Dvd_Title</th>
+                    <th>Rental-Date</th>
+                    <th>Retrun-Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody id="rental-body">
-                <!-- Customer  rental  details will be displayed here -->
+                <!-- rental details will be displayed here -->
             </tbody>
         </table>
     </section>
@@ -164,11 +169,8 @@
     <section class="return-container" id="returncontainer" style="display: none;">
         <h2 style="margin-left:50px ;">Return Dvd</h2>
         <form id="return-DVD-form">
-            <label for="return-nic">Customer nic:</label>
-            <input type="text" id="return-nic" required>
-
-            <label for="return-title">Dvd-ID:</label>
-            <input type="text" id="return-title" required>
+            <label for="return-customer">Customer nic:</label>
+            <input type="text" id="return-customer" required>
 
             <button type="button" onclick=" returndvd()">Return DVD</button>
         </form>

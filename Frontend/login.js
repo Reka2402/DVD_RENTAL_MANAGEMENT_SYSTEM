@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             
             }catch (error) {
                 console.error('Error registering user:', error);
-                alert('Error occurred during registration');
+                alert('Username already exists or NIC already exists. Please choose a different username.');
             }
   
         });

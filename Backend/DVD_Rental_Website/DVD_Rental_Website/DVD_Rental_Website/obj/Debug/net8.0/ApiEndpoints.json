@@ -97,15 +97,40 @@
   {
     "ContainingType": "DVD_Rental_Website.Controllers.ManagerController",
     "Method": "AddDVD",
-    "RelativePath": "api/Manager/AddDVD",
+    "RelativePath": "api/Manager/Adddvd",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "managerRequestModel",
-        "Type": "DVD_Rental_Website.Model.RequestModels.ManagerRequestModel",
-        "IsRequired": true
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Director",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Genre",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ReleaseDate",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "CopiesAvailable",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -139,7 +164,7 @@
   {
     "ContainingType": "DVD_Rental_Website.Controllers.ManagerController",
     "Method": "UpdateDVDByID",
-    "RelativePath": "api/Manager/UpdateDVDById",
+    "RelativePath": "api/Manager/UpdateDVDById/{Id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -147,12 +172,37 @@
       {
         "Name": "Id",
         "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "Title",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "managerRequestDTO",
-        "Type": "DVD_Rental_Website.Model.RequestModels.ManagerRequestModel",
-        "IsRequired": true
+        "Name": "Director",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Genre",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ReleaseDate",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "CopiesAvailable",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
