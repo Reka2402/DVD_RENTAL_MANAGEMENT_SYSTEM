@@ -149,15 +149,15 @@ function storeItemDetails(buttonElement) {
           buttonElement.textContent = "Processing..."; // Change to indicate processing
 
           const rentalDetails = {
-            dvdId: dvd.id,
-            RentalDate: new Date(),
             customerID: currentUser.id,
-            
-          };
-
+            dvdId: dvd.id,
+            rentalDate: new Date(),
+            returnDate: new Date(new Date().setDate(new Date().getDate() + 7))
+        };
+        
           console.log("Rental Details:", rentalDetails);
 
-          fetch("http://localhost:5272/api/Rental/AddRental", {
+          fetch("http://localhost:5272/api/Rental/Add Rental", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

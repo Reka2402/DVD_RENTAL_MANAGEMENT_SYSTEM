@@ -8,7 +8,7 @@
         public DateTime RentalDate { get; set; }
         public DateTime? Returndate { get; set; }
         public bool Isoverdue { get; set; } = false;
-        public string status { get; set; } = "Pending";
+        public string? status { get; set; } = "Pending";
         public Customer Customer { get; set; }
         public DVD DVD { get; set; }
 

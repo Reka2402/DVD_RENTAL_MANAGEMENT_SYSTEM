@@ -68,6 +68,7 @@ namespace DVD_Rental_Website.Service
                 DVDId = rentalRequestDTO.DVDId,
                 Returndate = rentalRequestDTO.Returndate,
                 RentalDate = rentalRequestDTO.RentalDate,
+                status = rentalRequestDTO.status,
             };
 
             var data = await _rentalRepository.AddRental(rental);
