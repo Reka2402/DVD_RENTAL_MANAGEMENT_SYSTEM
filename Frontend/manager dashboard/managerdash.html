@@ -13,9 +13,8 @@
 <body>
     <div class="container" id="container">
         <div class="brand">
-            <div class="img"><img src="../img/Other/logo.jpg" alt=""></div>
-            <h1 class="logo_name">Cine</h1>
-            <h1 class="logo_name">Cafe</h1>
+            <!-- <div class="img"><img src="../img/Other/logo.jpg" alt=""></div> -->
+            <h1 class="logo">CineWorld</h1>          
         </div>
 
 
@@ -27,7 +26,7 @@
                 <li><a href="#" onclick="customershow()"><i class="bi bi-people"></i><span>Customer</span></a>
                 </li>
                 <li><a href="#" id="displaydvd"><i class="bi bi-collection"></i><span>Invetory</span> </a></li>
-                <li><a href="#" onclick="displayRentals()"><i
+                <li><a href="#" onclick="loadPendingRentals()"><i
                             class="bi bi-graph-up-arrow"></i><span>Rental</span></a></li>
 
                 <li><a href="#" onclick="overdueshow()"><i class="bi bi-exclamation-circle"></i><span>Overdue</span></a>
@@ -44,17 +43,14 @@
 
         <form id="add-Dvd-form">
             <!-- <h2>Add Dvd</h2> -->
-            <label>Dvd Title:</label>
+
+
             <input type="text" id="add-Dvd-title" placeholder="Dvd Title" required>
-            <label>Director:</label>
             <input type="text" id="add-Dvd-Director" placeholder="Film Director" required>
-            <label>Dvd Category:</label>
             <input type="text" id="add-Dvd-category" placeholder="Category" required>
-            <label>Dvd Release Date:</label>
             <input type="date" id="add-dvd-date" placeholder="" required>
-            <label>Quantity :</label>
             <input type="number" id="add-Dvd-Quantity" placeholder="Quantity" required>
-            <input type="file" id="add-Dvd-image"  required>
+            <input type="file" id="add-Dvd-image" accept="image/*" required>
             <button type="submit">Add Dvd</button>
         </form>
     </section>
@@ -63,7 +59,7 @@
 
 
     <section class="customer-container" id="customerdcontainer" style="display: none;">
-        <h2 style="margin-left:50px ; color: #0b355f;">Registered Customers</h2>
+        <h2 >Registered Customers</h2>
         <table id="customer-table">
             <thead>
                 <tr>
@@ -109,30 +105,32 @@
                 <input type="text" id="edit-Dvd-category" placeholder="Category" required>
                 <input type="date" id="edit-dvd-date" required>
                 <input type="number" id="edit-Dvd-Quantity" placeholder="Quantity" required>
-                <<input type="file" id="add-Dvd-Image" name="ImageFile" accept="image/*" multiple>
+                <input type="file" id="edit-Dvd-image" accept="image/*">
                 <button type="submit">Update DVD</button>
             </form>
         </section>
     </section>
 
 
+    <!-- Edit DVD Form -->
+
+
     <!-- for rental details -->
 
     <section class="rental-container" id="rentaldcontainer" style="display: none;">
         <h2 style="margin-left:50px ;">Rental</h2>
-        <table id="rental-table" style="color: black;">
+        <table id="rental-table">
             <thead>
                 <tr>
-                    <th>User_Name</th>
-                    <th>Dvd_Title</th>
-                    <th>Rental-Date</th>
-                    <th>Retrun-Date</th>
-                    <th>Status</th>
-                    <th>Action</th>
+                    <th>NIC</th>
+                    <th>Name</th>
+                    <th>Title</th>
+                    <th>status</th>
+                    <th>rentDate</th>
                 </tr>
             </thead>
             <tbody id="rental-body">
-                <!-- rental details will be displayed here -->
+                <!-- Customer  rental  details will be displayed here -->
             </tbody>
         </table>
     </section>
@@ -214,10 +212,11 @@
                 <thead>
                     <tr>
                         <th>Rental ID</th>
-                        <th>Customer_name</th>
+                        <th>Customer(NIC)</th>
                         <th>DVD Title</th>
                         <th>Rental Date</th>
                         <th>Return Date</th>
+                        <th>Actual Return Date</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -227,13 +226,6 @@
             </table>
         </div>
     </section>
-    
-
-
-
-
-
-
     <script src="manager.js"></script>
 
 </body>
