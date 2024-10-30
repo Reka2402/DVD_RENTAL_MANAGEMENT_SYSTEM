@@ -167,23 +167,6 @@ function storeItemDetails(buttonElement) {
 
 //document.getElementById("saveDetails").addEventListener("click", saveDetails);
 
-function saveDetails() {
-  let rentItem = JSON.parse(localStorage.getItem("rentItem"));
-
-  alert(
-    `You have rented ${rentItem.title} with quantity ${rentItem.quantity}. You must pick up the DVD within 24 hours, or your rental will be canceled.`
-  );
-
-  document.getElementById("rentpopup").style.display = "none";
-}
-
-window.onclick = function (event) {
-  var modal = document.getElementById("rentpopup");
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
-
 // Function to close the modal
 function closeModal() {
   document.getElementById("Profile").style.display = "none";
@@ -192,12 +175,14 @@ function closeModal() {
 document.getElementById("userInfo").addEventListener("click", showProfile);
 
 function showProfile() {
+  document.getElementById("Profile").style.display = "block";
+
   const currentuser = JSON.parse(sessionStorage.getItem("currentUser"));
 
   if (currentuser) {
-    document.getElementById("name").value = currentuser.username;
+    document.getElementById("name").value = currentuser.userName;
     document.getElementById("email").value = currentuser.email;
-    document.getElementById("phone").value = currentuser.number;
+    document.getElementById("phone").value = currentuser.mobilenumber;
     document.getElementById("nic").value = currentuser.nic;
   }
 
@@ -244,4 +229,81 @@ function saveDetails() {
   document.getElementById("msg").textContent =
     "Your profile has been updated successfully!";
 
+}
+showProfile()
+
+
+
+function closeModal1(){
+    // hide the modal after populating the table
+    const modal = document.getElementById("rentalModal");
+    modal.style.display = "none";
+}
+
+async function returndvd() {
+  const currentuser = JSON.parse(sessionStorage.getItem("currentUser"));
+  console.log(currentuser);
+
+  try {
+      // Fetch all rentals for the specific customer
+      const rentalResponse = await fetch(`http://localhost:5272/api/Rental/GetAllRentalCustomers?customerId=${currentuser.id}`);
+      
+      if (!rentalResponse.ok) {
+          alert('Failed to fetch rentals for this customer.');
+          return;
+      }
+
+      const rentals = await rentalResponse.json();
+      console.log("Customer rental details: ", rentals);
+
+      // Check if any rentals were found
+      if (!Array.isArray(rentals) || rentals.length === 0) {
+          alert('No rentals found for this customer.');
+          return;
+      }
+
+      // Populate the rental report table
+      const rentalReportBody = document.getElementById('rentalReportBody');
+      rentalReportBody.innerHTML = ''; // Clear existing rows
+
+      // Fetch all customers at once to avoid multiple fetch calls
+      const customerResponse = await fetch('http://localhost:5272/api/Customer/Get All Customers');
+      const customers = await customerResponse.json();
+      console.log("All Customer Details: ", customers);
+
+      // Store DVD details in a map to access them by ID
+      const dvdPromises = rentals.map(rental =>
+          fetch(`http://localhost:5272/api/Manager/GetDVDById/${rental.dvdId}`).then(response => {
+              if (!response.ok) throw new Error('Failed to fetch DVD');
+              return response.json();
+          })
+      );
+
+      // Wait for all DVD fetches to complete
+      const dvds = await Promise.all(dvdPromises);
+      const dvdMap = Object.fromEntries(dvds.map(dvd => [dvd.id, dvd])); // Create a map by DVD ID
+
+      rentals.forEach(rental => {
+          const dvd = dvdMap[rental.dvdId]; // Access DVD details from the map
+          const customer = customers.find(c => c.id === rental.customerID);
+
+          const row = document.createElement('tr');
+          row.innerHTML = `
+              <td>${customer ? customer.userName : 'Unknown Customer'}</td>
+              <td>${dvd ? dvd.title : 'Unknown DVD'}</td>
+              <td>${new Date(rental.rentalDate).toLocaleDateString()}</td>
+              <td>${rental.returnDate ? new Date(rental.returnDate).toLocaleDateString() : 'Not Approve yet'}</td>
+              <td>${rental.status}</td>
+          `;
+          rentalReportBody.appendChild(row);
+      });
+
+      // Show the modal after populating the table
+      const modal = document.getElementById("rentalModal");
+      modal.style.display = "block";
+
+  } catch (error) {
+      console.error("Error fetching rentals: ", error);
+      alert('An error occurred while fetching rental data.');
+  }
 }
