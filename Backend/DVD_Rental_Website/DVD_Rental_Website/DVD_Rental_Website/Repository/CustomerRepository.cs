@@ -1,7 +1,9 @@
 ﻿using DVD_Rental_Website.Entities;
 using DVD_Rental_Website.IRepository;
+using DVD_Rental_Website.Model.RequestModels;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text;
 
 namespace DVD_Rental_Website.Repository
 {
@@ -190,28 +192,101 @@ namespace DVD_Rental_Website.Repository
             return customerList;
         }
 
-        public async Task<Customer> UpdateCustomer(Customer updatedCustomer)
+        //public async Task<Customer> UpdateCustomer(Customer updatedCustomer)
+        //{
+        //    using (var connection = new SqlConnection(_connectionString))
+        //    {
+        //        await connection.OpenAsync();
+
+        //        var sqlCommand = new SqlCommand(
+        //            "UPDATE Customers SET UserName = @UserName, Mobilenumber = @Mobilenumber, Email = @Email, " +
+        //            "Nic = @Nic, Password = @Password, IsActive = @IsActive WHERE Id = @Id", connection);
+
+        //        sqlCommand.Parameters.AddWithValue("@Id", updatedCustomer.Id);
+        //        sqlCommand.Parameters.AddWithValue("@UserName", updatedCustomer.UserName);
+        //        sqlCommand.Parameters.AddWithValue("@Mobilenumber", updatedCustomer.Mobilenumber);
+        //        sqlCommand.Parameters.AddWithValue("@Email", updatedCustomer.Email);
+        //        sqlCommand.Parameters.AddWithValue("@Nic", updatedCustomer.Nic);
+        //        sqlCommand.Parameters.AddWithValue("@Password", updatedCustomer.Password);
+        //        sqlCommand.Parameters.AddWithValue("@IsActive", updatedCustomer.IsActive);
+
+        //        await sqlCommand.ExecuteNonQueryAsync();
+        //        return updatedCustomer;
+        //    }
+        //}
+
+
+
+
+
+
+        public async Task<Customer> UpdateCustomer(Guid id, CustomerRequestModel updatedCustomerModel)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
 
-                var sqlCommand = new SqlCommand(
-                    "UPDATE Customers SET UserName = @UserName, Mobilenumber = @Mobilenumber, Email = @Email, " +
-                    "Nic = @Nic, Password = @Password, IsActive = @IsActive WHERE Id = @Id", connection);
+                var sqlCommand = new StringBuilder("UPDATE Customers SET ");
+                var parameters = new List<SqlParameter>();
 
-                sqlCommand.Parameters.AddWithValue("@Id", updatedCustomer.Id);
-                sqlCommand.Parameters.AddWithValue("@UserName", updatedCustomer.UserName);
-                sqlCommand.Parameters.AddWithValue("@Mobilenumber", updatedCustomer.Mobilenumber);
-                sqlCommand.Parameters.AddWithValue("@Email", updatedCustomer.Email);
-                sqlCommand.Parameters.AddWithValue("@Nic", updatedCustomer.Nic);
-                sqlCommand.Parameters.AddWithValue("@Password", updatedCustomer.Password);
-                sqlCommand.Parameters.AddWithValue("@IsActive", updatedCustomer.IsActive);
+                if (!string.IsNullOrEmpty(updatedCustomerModel.UserName))
+                {
+                    sqlCommand.Append("UserName = @UserName, ");
+                    parameters.Add(new SqlParameter("@UserName", updatedCustomerModel.UserName));
+                }
 
-                await sqlCommand.ExecuteNonQueryAsync();
-                return updatedCustomer;
+                if (!string.IsNullOrEmpty(updatedCustomerModel.Mobilenumber))
+                {
+                    sqlCommand.Append("Mobilenumber = @Mobilenumber, ");
+                    parameters.Add(new SqlParameter("@Mobilenumber", updatedCustomerModel.Mobilenumber));
+                }
+
+                if (!string.IsNullOrEmpty(updatedCustomerModel.Email))
+                {
+                    sqlCommand.Append("Email = @Email, ");
+                    parameters.Add(new SqlParameter("@Email", updatedCustomerModel.Email));
+                }
+
+
+                if (!string.IsNullOrEmpty(updatedCustomerModel.Password))
+                {
+                    sqlCommand.Append("Password = @Password, ");
+                    parameters.Add(new SqlParameter("@Password", updatedCustomerModel.Password));
+                }
+
+                if (parameters.Count == 0)
+                {
+                    throw new ArgumentException("At least one property must be provided for update.");
+                }
+
+                sqlCommand.Length -= 2; // Remove the last comma
+                sqlCommand.Append(" WHERE Id = @Id");
+                parameters.Add(new SqlParameter("@Id", id));
+
+                var command = new SqlCommand(sqlCommand.ToString(), connection);
+                command.Parameters.AddRange(parameters.ToArray());
+
+                await command.ExecuteNonQueryAsync();
+
+                // Fetch and return the updated customer from the database
+                return await GetCustomerById(id); // Implement this method to fetch customer
             }
         }
+
+          
+        
+
+
+
+
+
+
+
+
+
+
+
+
 
         public async Task<Customer> SoftDeleteCustomer(Customer customerToDelete)
         {

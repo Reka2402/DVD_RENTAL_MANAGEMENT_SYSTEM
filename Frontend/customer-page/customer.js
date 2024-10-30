@@ -23,15 +23,15 @@ function showdvd() {
 
       // Set the inner HTML for the card
       dvdCard.innerHTML = `
-        <div class="image-container">${imagesHtml || '<img src="default-image.jpg" alt="Default Image" class="item-image" />'}</div>
-        <div class="card-content">
-          <h2 class="item-title">Movie Name: ${Dvd.title}</h2>
-          <p class="item-description">
-            Genre: ${Dvd.genre} <br>
-            Release Date: ${Dvd.releaseDate} <br>
-            Director: ${Dvd.director}<br>
-            Quantity:${Dvd.copiesAvailable}
-          </p>
+      <div class="image-container">${imagesHtml || '<img src="default-image.jpg" alt="Default Image" class="item-image" />'}</div>
+      <div class="card-content">
+        <h2 class="item-title">Movie Name: ${Dvd.title}</h2>
+        <p class="item-description">
+          Genre: ${Dvd.genre} <br>
+          Release Date: ${Dvd.releaseDate} <br>
+          Director: ${Dvd.director}<br>
+          Quantity:${Dvd.copiesAvailable}
+        </p>
           <button class="rent-button" onclick="toggleRentButton(this)">Rent</button>
         </div>
       `;

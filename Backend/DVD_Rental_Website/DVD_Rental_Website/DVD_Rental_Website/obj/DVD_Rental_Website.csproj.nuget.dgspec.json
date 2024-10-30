@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\new code\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj": {}
+    "C:\\Users\\ut01210\\Desktop\\New folder\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj": {}
   },
   "projects": {
-    "D:\\new code\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj": {
+    "C:\\Users\\ut01210\\Desktop\\New folder\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\new code\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj",
+        "projectUniqueName": "C:\\Users\\ut01210\\Desktop\\New folder\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj",
         "projectName": "DVD_Rental_Website",
-        "projectPath": "D:\\new code\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj",
-        "packagesPath": "C:\\Users\\mrpsy\\.nuget\\packages\\",
-        "outputPath": "D:\\new code\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\obj\\",
+        "projectPath": "C:\\Users\\ut01210\\Desktop\\New folder\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website.csproj",
+        "packagesPath": "C:\\Users\\ut01210\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ut01210\\Desktop\\New folder\\DVD_RENTAL_MANAGEMENT_SYSTEM\\Backend\\DVD_Rental_Website\\DVD_Rental_Website\\DVD_Rental_Website\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mrpsy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ut01210\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -78,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
