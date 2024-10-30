@@ -79,8 +79,7 @@
               "RelativeToolTip": "DVD_Rental_Website\\IRepository\\ICustomerRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T04:06:59.827Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T04:06:59.827Z"
             },
             {
               "$type": "Document",
@@ -92,8 +91,7 @@
               "RelativeToolTip": "DVD_Rental_Website\\Controllers\\CustomerController.cs",
               "ViewState": "AQIAAD4AAAAAAAAAAAAiwFEAAABGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T04:00:46.608Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T04:00:46.608Z"
             },
             {
               "$type": "Document",
@@ -105,8 +103,7 @@
               "RelativeToolTip": "DVD_Rental_Website\\IService\\ICustomerService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwAsAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T04:00:31.664Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T04:00:31.664Z"
             },
             {
               "$type": "Document",
@@ -118,8 +115,7 @@
               "RelativeToolTip": "DVD_Rental_Website\\Service\\CustomerService.cs",
               "ViewState": "AQIAAH0AAAAAAAAAAAAiwI8AAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T03:59:11.722Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T03:59:11.722Z"
             },
             {
               "$type": "Document",
@@ -131,8 +127,7 @@
               "RelativeToolTip": "DVD_Rental_Website\\Repository\\CustomerRepository.cs",
               "ViewState": "AQIAAMwAAAAAAAAAAAAAAN4AAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T03:58:34.557Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T03:58:34.557Z"
             },
             {
               "$type": "Document",
@@ -144,8 +139,7 @@
               "RelativeToolTip": "DVD_Rental_Website\\Model\\Response Models\\RentalResponseModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T19:59:55.338Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-29T19:59:55.338Z"
             },
             {
               "$type": "Document",
@@ -157,8 +151,7 @@
               "RelativeToolTip": "DVD_Rental_Website\\Repository\\RentalRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T19:54:17.308Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-29T19:54:17.308Z"
             },
             {
               "$type": "Document",
@@ -170,8 +163,7 @@
               "RelativeToolTip": "DVD_Rental_Website\\Controllers\\RentalController.cs",
               "ViewState": "AQIAAFIAAAAAAAAAAAAiwGUAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T19:51:00.361Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-29T19:51:00.361Z"
             },
             {
               "$type": "Document",
@@ -195,8 +187,7 @@
               "RelativeToolTip": "DVD_Rental_Website\\Service\\RentalService.cs",
               "ViewState": "AQIAAGgAAAAAAAAAAAAiwHsAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T19:35:44.621Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-29T19:35:44.621Z"
             }
           ]
         }

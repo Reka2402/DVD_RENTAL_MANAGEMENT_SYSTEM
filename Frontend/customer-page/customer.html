@@ -58,7 +58,7 @@
     <!-- CUSTOMER PROFILE UPDATE FORM -->
     <section id="Profile" class="modal">
         <div class="modal-content">
-            <span class="close" id="closebutton">&times;</span>
+            <span class="close" id="closebutton" onclick="closeModal()" >&times;</span>
             <div class="profile-container">
                 <h2>Profile</h2>
                 <form id="customerForm">
@@ -78,28 +78,14 @@
                         <label for="nic">NIC:</label>
                         <input type="text" id="nic" readonly>
                     </div>
-                    <button type="button" id="updateButton" class="update-btn">Update Details</button>
-                    <div id="msg" class="box"></div>
+                    <button type="button" class="update-btn" id="rentalReportBtn" onclick="returndvd()"   class="rentalhistory">rentalhistory</button>
+
+               
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- POPUP SHOWS WHEN CLICK ON THE RENT BUTTON -->
-    <section id="rentpopup" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closebutton">&times;</span>
-            <div class="profile-container">
-                <!-- Rent Popup Details -->
-                <div id="popup-details">
-                    <img id="popup-image" src="" alt="Item Image">
-                    <h2 id="popup-title"></h2>
-                    <p id="popup-description"></p>
-                    <button class="rent-confirm-btn" id="saveDetails">Confirm Rent</button>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- REVIEWS -->
     <section class="reviews" id="reviews">
@@ -168,7 +154,7 @@
     <!-- Review Form Modal -->
     <div id="reviewModal" class="modal1" style="display: none;">
         <div class="modal-content1">
-            <span class="close1" id="closeModal">&times;</span>
+            <span class="close1" id="closeModal" style="background-color: black;">&times;</span>
             <h1>Customer Review Form</h1>
             <form id="reviewForm">
                 <label for="name">Name:</label>
@@ -193,8 +179,28 @@
             <div id="message"></div>
         </div>
     </div>
-    <!-- <div id="dvd-list"></div>
-    <div id="dvd-details"></div> -->
+
+<!-- Modal Structure -->
+<div id="rentalModal" class="modal2">
+    <div class="modal-conten2t">
+        <span class="close" onclick="closeModal1()">&times;</span>
+        <h2 style="color: crimson; text-align: center;">Rental Report</h2>
+        <table id="rental-table1">
+            <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>DVD Title</th>
+                    <th>Rental Date</th>
+                    <th>Return Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="rentalReportBody">
+                <!-- Rental rows will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+</div>
 
     <!-- FOOTER -->
     <footer id="Contact" class="footer">
