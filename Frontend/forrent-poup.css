@@ -1,73 +1,4 @@
-/* Card Container */
-.card {
-  background: linear-gradient(135deg, #3993DD, #b2ebf2); /* Light blue gradient */
-  border: 1px solid #00acc1; /* Darker blue border */
-  border-radius: 12px; /* More rounded corners */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow for a lifted effect */
-  padding: 0px;
-  padding-right: 0%;
-  margin: 10px;
-  flex: 1;
-  min-width: 250px;
-  max-width: 300px;
-  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
-}
 
-.card:hover  {
-  transform: translateY(-5px); /* Slight lift on hover */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* More prominent shadow on hover */
-}
-
-
-/* Image in the card */
-.card .item-image {
-    height: 165px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-
-/* Card Title */
-.card .item-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-/* Card Description */
-.card .item-description {
-    font-size: 1.2rem;
-    color: #777;
-    margin-bottom: 15px;
-}
-
-/* Quantity input */
-.item-quantity {
-  width: 70px; /* Fixed width for consistency */
-  margin-right: 10px; /* Space between input and button */
-  padding: 10px; /* Add some padding for comfort */
-  border: 1px solid #1884dd; /* Matching border color */
-  border-radius: 4px; /* Rounded corners */
-  background-color: #ffffff; /* White background for input */
-}
-
-/* Rent Button */
-.card .rent-btn {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 25px;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.card .rent-btn:hover {
-    background-color: #218838;
-}
 
 /* Modal Container */
 .modal {
@@ -128,44 +59,12 @@
     margin-bottom: 15px;
 }
 
-/* Quantity Container in Modal */
-.quantity-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-}
 
-.quantity-container button {
-    padding: 10px 15px;
-    font-size: 1.2rem;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border-radius: 4px;
-}
-
-.quantity-container button:hover {
-    background-color: #0056b3;
-}
-
-.quantity-container input {
-    width: 50px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1.2rem;
-    padding: 5px;
-    margin: 0 10px;
-}
 
 /* Rent Confirm Button */
-.rent-confirm-btn {
-    background-color: #28a745;
+.rent-button {
+    background-color: #eb0e20;
     color: white;
-    padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -173,7 +72,7 @@
     transition: background-color 0.3s ease;
 }
 
-.rent-confirm-btn:hover {
+.rent-button:hover {
     background-color: #218838;
 }
 

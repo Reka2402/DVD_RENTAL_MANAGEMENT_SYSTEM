@@ -240,6 +240,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\dvdimages\b4d2f8e6-bb35-4fb5-b366-589aae190c09.jpg))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\dvdimages\bb27e2de-2e88-487e-a896-3a89aeb45f6e.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>DVD_Rental_Website</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/DVD_Rental_Website</BasePath>
+      <RelativePath>dvdimages/bb27e2de-2e88-487e-a896-3a89aeb45f6e.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\dvdimages\bb27e2de-2e88-487e-a896-3a89aeb45f6e.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\dvdimages\bfeae32b-8dde-44b5-ada4-3c7a645fe6d2.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>DVD_Rental_Website</SourceId>

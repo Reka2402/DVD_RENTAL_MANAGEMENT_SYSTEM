@@ -113,31 +113,50 @@ namespace DVD_Rental_Website.Service
             return responseList;
         }
 
-        public async Task<CustomerResponseModel> UpdateCustomer(Guid id, CustomerRequestModel customerRequestModel)
-        {
-            var customer = new Customer
-            {
-                Id = id,
-                UserName = customerRequestModel.UserName,
-                Mobilenumber = customerRequestModel.Mobilenumber,
-                Email = customerRequestModel.Email,
-                Password = customerRequestModel.Password,
-                Nic = customerRequestModel.Nic
-            };
+        //public async Task<CustomerResponseModel> UpdateCustomer(Guid id, CustomerRequestModel customerRequestModel)
+        //{
+        //    var customer = new Customer
+        //    {
+        //        Id = id,
+        //        UserName = customerRequestModel.UserName,
+        //        Mobilenumber = customerRequestModel.Mobilenumber,
+        //        Email = customerRequestModel.Email,
+        //        Password = customerRequestModel.Password,
+        //        Nic = customerRequestModel.Nic
+        //    };
 
-            var updatedCustomer = await _customerRepository.UpdateCustomer(customer);
+        //    var updatedCustomer = await _customerRepository.UpdateCustomer(customer);
 
-            return new CustomerResponseModel
+        //    return new CustomerResponseModel
+        //    {
+        //        Id = id,
+        //        UserName = updatedCustomer.UserName,
+        //        Mobilenumber = updatedCustomer.Mobilenumber,
+        //        Email = updatedCustomer.Email,
+        //        Nic = updatedCustomer.Nic,
+        //        Password = updatedCustomer.Password,
+        //        Rentals = updatedCustomer.Rentals
+        //    };
+        //}
+
+       
+
+            public async Task<CustomerResponseModel> UpdateCustomer(Guid id, CustomerRequestModel customerRequestModel)
             {
-                Id = id,
-                UserName = updatedCustomer.UserName,
-                Mobilenumber = updatedCustomer.Mobilenumber,
-                Email = updatedCustomer.Email,
-                Nic = updatedCustomer.Nic,
-                Password = updatedCustomer.Password,
-                Rentals = updatedCustomer.Rentals
-            };
-        }
+                var updatedCustomer = await _customerRepository.UpdateCustomer(id, customerRequestModel);
+                return new CustomerResponseModel
+                {
+                    Id = updatedCustomer.Id,
+                    UserName = updatedCustomer.UserName,
+                    Mobilenumber = updatedCustomer.Mobilenumber,
+                    Email = updatedCustomer.Email,
+                    Nic = updatedCustomer.Nic,
+                    Password = updatedCustomer.Password, // Consider security implications
+                    Rentals = updatedCustomer.Rentals
+                };
+            }
+        
+
 
         public async Task<CustomerResponseModel> SoftDelete(Guid id)
         {

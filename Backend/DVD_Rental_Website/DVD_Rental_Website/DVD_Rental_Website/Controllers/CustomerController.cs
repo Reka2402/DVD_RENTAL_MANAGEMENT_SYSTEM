@@ -56,21 +56,41 @@ namespace DVD_Rental_Website.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
-        [HttpPut("UpdateCustomerById")]
-        public async Task<IActionResult> UpdateCustomerByID(Guid id, CustomerRequestModel customerRequestDTO)
-        {
-            try
+        //[HttpPut("UpdateCustomerById")]
+        //public async Task<IActionResult> UpdateCustomerByID(Guid id, CustomerRequestModel customerRequestDTO)
+        //{
+        //    try
+        //    {
+        //        var result = await _customerServies.UpdateCustomer(id, customerRequestDTO);
+        //        if (result == null)
+        //            return NotFound("Customer not found");
+        //        return Ok(result);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(500, $"Internal server error: {ex.Message}");
+        //    }
+        //}
+
+  
+
+            [HttpPut("UpdateCustomerById/{id}")]
+            public async Task<IActionResult> UpdateCustomerByID(Guid id, [FromBody] CustomerRequestModel customerRequestDTO)
             {
-                var result = await _customerServies.UpdateCustomer(id, customerRequestDTO);
-                if (result == null)
-                    return NotFound("Customer not found");
-                return Ok(result);
+                try
+                {
+                    var result = await _customerServies.UpdateCustomer(id, customerRequestDTO);
+                    if (result == null)
+                        return NotFound("Customer not found");
+                    return Ok(result);
+                }
+                catch (Exception ex)
+                {
+                    return StatusCode(500, $"Internal server error: {ex.Message}");
+                }
             }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
-            }
-        }
+       
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> SoftDelete(Guid id)
         {

@@ -9,6 +9,7 @@ namespace DVD_Rental_Website.IService
         Task<CustomerResponseModel> GetCustomerById(Guid id);
         Task<List<CustomerResponseModel>> GetAllCustomers();
         Task<CustomerResponseModel> UpdateCustomer(Guid id, CustomerRequestModel customerRequestModel);
+        //Task<CustomerResponseModel> UpdateCustomer(Guid id, CustomerRequestModel customerRequestModel);
         Task<CustomerResponseModel> SoftDelete(Guid id);
     }
 }
