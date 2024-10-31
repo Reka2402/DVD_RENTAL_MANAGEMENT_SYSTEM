@@ -67,11 +67,11 @@ document.addEventListener('DOMContentLoaded', async function () {
                 Email:email
             }
             console.log(users)
-            // Validate that the username and NIC are unique
-            if (users.some(user => user.userName === username && user.nic === nic)) {
-                alert('Username already exists or NIC already exists. Please choose a different username.');
-                return;
-            }
+            // // Validate that the username and NIC are unique
+            // if (users.some(user => user.userName === username && user.nic === nic)) {
+            //     alert('');
+            //     return;
+            // }
 
             try{
                 // send post request to add customer
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             
             }catch (error) {
                 console.error('Error registering user:', error);
-                alert('Username already exists or NIC already exists. Please choose a different username.');
+                //alert('Username already exists or NIC already exists. Please choose a different username.');
             }
   
         });
